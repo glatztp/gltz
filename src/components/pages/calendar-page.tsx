@@ -1,4 +1,5 @@
 import React from "react";
+import { ComponentDocs } from "../layout/ComponentDocs";
 import {
   Card,
   CardHeader,
@@ -69,7 +70,10 @@ export function CalendarPage() {
   ]);
 
   return (
-    <div className="space-y-8 p-6">
+    <div className="flex gap-6 min-h-screen">
+      {/* Main Content */}
+      <div className="flex-1 overflow-auto">
+        <div className="space-y-8 p-6">
       <div>
         <h1 className="text-3xl font-bold">Calendar Component</h1>
         <p className="text-muted-foreground mt-2">
@@ -701,6 +705,8 @@ export function CalendarPage() {
           </CardContent>
         </Card>
       </div>
+    </div>
+    </div>
     </div>
   );
 }

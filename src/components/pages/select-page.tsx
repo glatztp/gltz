@@ -16,7 +16,10 @@ import {
 
 export function SelectPage() {
   return (
-    <div className="space-y-8 p-6">
+    <div className="flex gap-6 min-h-screen">
+      {/* Main Content */}
+      <div className="flex-1 overflow-auto">
+        <div className="space-y-8 p-6">
       <div>
         <h1 className="text-3xl font-bold">Select Component</h1>
         <p className="text-muted-foreground mt-2">
@@ -378,6 +381,8 @@ export function SelectPage() {
           </CardContent>
         </Card>
       </div>
+    </div>
+    </div>
     </div>
   );
 }

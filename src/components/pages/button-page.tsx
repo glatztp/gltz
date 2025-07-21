@@ -199,11 +199,6 @@ export function ButtonPage() {
           </div>
         </div>
       </div>
-
-      {/* Documentation Sidebar */}
-      <div className="w-80 border-l bg-muted/20 min-h-screen overflow-auto">
-        <ComponentDocs componentName="Button" />
-      </div>
     </div>
   );
 }
