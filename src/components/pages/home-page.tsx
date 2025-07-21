@@ -124,14 +124,12 @@ const HomePage = () => {
             Gltz
           </motion.h1>
 
-
           <motion.p
             variants={itemVariants}
             className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed"
           >
             O design system mais moderno e completo para React.
             <span className="text-gradient-rainbow font-semibold">
-             
               Construa interfaces incríveis{" "}
             </span>
             com componentes premium e animações fluidas.
@@ -152,11 +150,13 @@ const HomePage = () => {
                 className="ml-2 group-hover:translate-x-1 transition-transform"
               />
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
+            <Button
+              size="lg"
+              variant="outline"
               className="hover-lift group"
-              onClick={() => window.open('https://github.com/glatztp/gltz', '_blank')}
+              onClick={() =>
+                window.open("https://github.com/glatztp/gltz", "_blank")
+              }
             >
               <GithubLogo
                 size={20}
@@ -330,7 +330,9 @@ const HomePage = () => {
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white/10 hover-lift"
-                onClick={() => window.open('https://github.com/glatztp/gltz', '_blank')}
+                onClick={() =>
+                  window.open("https://github.com/glatztp/gltz", "_blank")
+                }
               >
                 <GithubLogo size={20} className="mr-2" />
                 Fork no GitHub
