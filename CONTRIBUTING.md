@@ -212,6 +212,8 @@ npm run lint:fix     # ESLint com auto-fix
 npm run type-check   # Verificação de tipos
 npm run test         # Testes unitários
 npm run test:watch   # Testes em modo watch
+npm run test:a11y    # Testes de acessibilidade
+npm run test:visual  # Testes visuais
 ```
 
 ## 🎨 Guia de Estilo
