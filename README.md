@@ -57,19 +57,6 @@
 npm install @gltzui/components @gltzui/core
 ```
 
-### Yarn
-
-```bash
-yarn add @gltzui/components @gltzui/core
-```
-
-### PNPM
-
-```bash
-pnpm add @gltzui/components @gltzui/core
-```
-
----
 
 ## ⚡ Uso Rápido
 
