@@ -6,7 +6,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./dropdown-menu";
+} from "./overlays/dropdown-menu";
 import { useTheme } from "../../lib/theme-provider";
 
 export function ThemeToggle() {

@@ -21,7 +21,7 @@ export function TooltipPage() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-6">
       <div>
         <h1 className="text-3xl font-bold">Tooltip Component</h1>
         <p className="text-muted-foreground mt-2">

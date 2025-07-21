@@ -69,7 +69,7 @@ export function CalendarPage() {
   ]);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-6">
       <div>
         <h1 className="text-3xl font-bold">Calendar Component</h1>
         <p className="text-muted-foreground mt-2">
@@ -215,7 +215,12 @@ export function CalendarPage() {
                   }
                   onSelect={(range) => {
                     if (range && typeof range === "object" && "from" in range) {
-                      setDateRange(range as { from: Date | undefined; to: Date | undefined });
+                      setDateRange(
+                        range as {
+                          from: Date | undefined;
+                          to: Date | undefined;
+                        }
+                      );
                     } else {
                       setDateRange({ from: undefined, to: undefined });
                     }

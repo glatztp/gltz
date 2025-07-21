@@ -26,7 +26,7 @@ import {
 
 export function AspectRatioPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 p-6">
       <div>
         <h1 className="text-3xl font-bold">Aspect Ratio Component</h1>
         <p className="text-muted-foreground mt-2">
@@ -161,7 +161,10 @@ export function AspectRatioPage() {
                 <AspectRatio ratio={21 / 9}>
                   <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center h-full border-2 border-dashed border-gray-300">
                     <div className="text-center">
-                      <FilmStrip size={32} className="mx-auto text-gray-600 mb-2" />
+                      <FilmStrip
+                        size={32}
+                        className="mx-auto text-gray-600 mb-2"
+                      />
                       <p className="text-sm text-gray-700 font-medium">
                         Ultrawide
                       </p>
