@@ -32,9 +32,11 @@ import { NavigationHeader } from "./layout/NavigationHeader";
 import { ComponentsSidebar } from "./layout/ComponentsSidebar";
 import { ComponentDocs } from "./layout/ComponentDocs";
 import { DocumentationPage } from "./layout/documentation-page";
+import { ThemeProvider } from "./providers/theme-provider";
 
 // Page Components
 import { ComingSoonPage } from "./pages/coming-soon-page";
+import { ThemesPage } from "./pages/themes-page";
 import { AlertPage } from "./pages/alert-page";
 import { AlertDialogPage } from "./pages/alert-dialog-page";
 import { AspectRatioPage } from "./pages/aspect-ratio-page";
@@ -712,16 +714,7 @@ function DashboardContent() {
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/docs" element={<DocumentationPage />} />
-            <Route
-              path="/themes"
-              element={
-                <ComingSoonPage
-                  title="Sistema de Temas"
-                  description="Crie e customize temas visuais únicos para seus projetos com nossa ferramenta visual intuitiva."
-                  type="themes"
-                />
-              }
-            />
+            <Route path="/themes" element={<ThemesPage />} />
             <Route
               path="/playground"
               element={
@@ -897,8 +890,10 @@ function ComponentPage() {
 
 export default function ProfessionalDashboard() {
   return (
-    <Router>
-      <DashboardContent />
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <DashboardContent />
+      </Router>
+    </ThemeProvider>
   );
 }

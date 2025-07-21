@@ -576,6 +576,1152 @@ export function ToggleGroupPage() {
           </CardContent>
         </Card>
 
+        {/* Variantes Especiais */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Variantes Especiais</CardTitle>
+            <CardDescription>
+              Estilos únicos e casos de uso específicos do ToggleGroup
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-8">
+              {/* Toggle Group com Preview */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Seletor de Tema com Preview</h4>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <ToggleGroup
+                      type="single"
+                      defaultValue="light"
+                      className="grid grid-cols-1 gap-2"
+                    >
+                      <ToggleGroupItem
+                        value="light"
+                        className="justify-start p-4 h-auto"
+                      >
+                        <div className="flex items-center gap-3 w-full">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-50 to-white border-2 border-gray-200"></div>
+                          <div className="text-left">
+                            <div className="font-medium">Tema Claro</div>
+                            <div className="text-xs text-muted-foreground">
+                              Perfeito para o dia
+                            </div>
+                          </div>
+                        </div>
+                      </ToggleGroupItem>
+                      <ToggleGroupItem
+                        value="dark"
+                        className="justify-start p-4 h-auto"
+                      >
+                        <div className="flex items-center gap-3 w-full">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-800 to-black border-2 border-gray-600"></div>
+                          <div className="text-left">
+                            <div className="font-medium">Tema Escuro</div>
+                            <div className="text-xs text-muted-foreground">
+                              Ideal para a noite
+                            </div>
+                          </div>
+                        </div>
+                      </ToggleGroupItem>
+                      <ToggleGroupItem
+                        value="auto"
+                        className="justify-start p-4 h-auto"
+                      >
+                        <div className="flex items-center gap-3 w-full">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-white via-gray-400 to-black border-2 border-gray-300"></div>
+                          <div className="text-left">
+                            <div className="font-medium">Automático</div>
+                            <div className="text-xs text-muted-foreground">
+                              Segue o sistema
+                            </div>
+                          </div>
+                        </div>
+                      </ToggleGroupItem>
+                    </ToggleGroup>
+                  </div>
+                  <div className="p-4 border rounded-lg bg-muted/20">
+                    <div className="text-sm font-medium mb-2">
+                      Preview do Tema
+                    </div>
+                    <div className="space-y-2">
+                      <div className="h-3 bg-primary/20 rounded"></div>
+                      <div className="h-2 bg-muted rounded w-3/4"></div>
+                      <div className="h-2 bg-muted rounded w-1/2"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Toggle Group com Cores */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Paleta de Cores</h4>
+                <div className="space-y-3">
+                  <ToggleGroup
+                    type="single"
+                    defaultValue="blue"
+                    className="flex-wrap"
+                  >
+                    <ToggleGroupItem value="red" className="p-3">
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="w-6 h-6 rounded-full bg-red-500"></div>
+                        <span className="text-xs">Vermelho</span>
+                      </div>
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="blue" className="p-3">
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="w-6 h-6 rounded-full bg-blue-500"></div>
+                        <span className="text-xs">Azul</span>
+                      </div>
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="green" className="p-3">
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="w-6 h-6 rounded-full bg-green-500"></div>
+                        <span className="text-xs">Verde</span>
+                      </div>
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="purple" className="p-3">
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="w-6 h-6 rounded-full bg-purple-500"></div>
+                        <span className="text-xs">Roxo</span>
+                      </div>
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="orange" className="p-3">
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="w-6 h-6 rounded-full bg-orange-500"></div>
+                        <span className="text-xs">Laranja</span>
+                      </div>
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="pink" className="p-3">
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="w-6 h-6 rounded-full bg-pink-500"></div>
+                        <span className="text-xs">Rosa</span>
+                      </div>
+                    </ToggleGroupItem>
+                  </ToggleGroup>
+                </div>
+              </div>
+
+              {/* Toggle Group com Status */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Status do Projeto</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="in-progress"
+                  className="grid grid-cols-2 md:grid-cols-4 gap-2"
+                >
+                  <ToggleGroupItem
+                    value="planning"
+                    className="flex-col p-4 h-auto"
+                  >
+                    <div className="text-2xl mb-2">📋</div>
+                    <div className="text-sm font-medium">Planejamento</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Preparando
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="in-progress"
+                    className="flex-col p-4 h-auto"
+                  >
+                    <div className="text-2xl mb-2">⚡</div>
+                    <div className="text-sm font-medium">Em Progresso</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Trabalhando
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="review"
+                    className="flex-col p-4 h-auto"
+                  >
+                    <div className="text-2xl mb-2">👀</div>
+                    <div className="text-sm font-medium">Em Revisão</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Analisando
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="completed"
+                    className="flex-col p-4 h-auto"
+                  >
+                    <div className="text-2xl mb-2">✅</div>
+                    <div className="text-sm font-medium">Concluído</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Finalizado
+                    </div>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Toggle Group de Prioridades */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Níveis de Prioridade</h4>
+                <ToggleGroup type="single" defaultValue="medium">
+                  <ToggleGroupItem
+                    value="low"
+                    className="border-green-200 text-green-700 data-[state=on]:bg-green-100"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                      <span>Baixa</span>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="medium"
+                    className="border-yellow-200 text-yellow-700 data-[state=on]:bg-yellow-100"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+                      <span>Média</span>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="high"
+                    className="border-orange-200 text-orange-700 data-[state=on]:bg-orange-100"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                      <span>Alta</span>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="urgent"
+                    className="border-red-200 text-red-700 data-[state=on]:bg-red-100"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                      <span>Urgente</span>
+                    </div>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Toggle Group de Moedas */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Seletor de Moeda</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="usd"
+                  className="flex-wrap"
+                >
+                  <ToggleGroupItem value="usd" className="flex-col p-3">
+                    <div className="text-lg mb-1">🇺🇸</div>
+                    <div className="text-sm font-medium">USD</div>
+                    <div className="text-xs text-muted-foreground">Dólar</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="eur" className="flex-col p-3">
+                    <div className="text-lg mb-1">🇪🇺</div>
+                    <div className="text-sm font-medium">EUR</div>
+                    <div className="text-xs text-muted-foreground">Euro</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="brl" className="flex-col p-3">
+                    <div className="text-lg mb-1">🇧🇷</div>
+                    <div className="text-sm font-medium">BRL</div>
+                    <div className="text-xs text-muted-foreground">Real</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="gbp" className="flex-col p-3">
+                    <div className="text-lg mb-1">🇬🇧</div>
+                    <div className="text-sm font-medium">GBP</div>
+                    <div className="text-xs text-muted-foreground">Libra</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="jpy" className="flex-col p-3">
+                    <div className="text-lg mb-1">🇯🇵</div>
+                    <div className="text-sm font-medium">JPY</div>
+                    <div className="text-xs text-muted-foreground">Iene</div>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Toggle Group de Intervalos de Tempo */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Intervalos de Backup</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="daily"
+                  className="grid grid-cols-2 md:grid-cols-4 gap-2"
+                >
+                  <ToggleGroupItem
+                    value="hourly"
+                    className="flex-col p-3 h-auto"
+                  >
+                    <div className="text-xl mb-2">⏰</div>
+                    <div className="text-sm font-medium">A cada hora</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      24x/dia
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="daily"
+                    className="flex-col p-3 h-auto"
+                  >
+                    <div className="text-xl mb-2">📅</div>
+                    <div className="text-sm font-medium">Diário</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      1x/dia
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="weekly"
+                    className="flex-col p-3 h-auto"
+                  >
+                    <div className="text-xl mb-2">📊</div>
+                    <div className="text-sm font-medium">Semanal</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      1x/semana
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="monthly"
+                    className="flex-col p-3 h-auto"
+                  >
+                    <div className="text-xl mb-2">🗓️</div>
+                    <div className="text-sm font-medium">Mensal</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      1x/mês
+                    </div>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Toggle Group de Planos */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Planos de Assinatura</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="pro"
+                  className="grid md:grid-cols-3 gap-3"
+                >
+                  <ToggleGroupItem
+                    value="basic"
+                    className="flex-col p-6 h-auto border-2"
+                  >
+                    <div className="text-2xl mb-3">🥉</div>
+                    <div className="text-lg font-bold">Básico</div>
+                    <div className="text-2xl font-bold text-primary my-2">
+                      $9
+                    </div>
+                    <div className="text-xs text-muted-foreground">por mês</div>
+                    <div className="mt-3 space-y-1 text-xs">
+                      <div>• 10 projetos</div>
+                      <div>• 1GB armazenamento</div>
+                      <div>• Suporte por email</div>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="pro"
+                    className="flex-col p-6 h-auto border-2 border-primary"
+                  >
+                    <div className="text-2xl mb-3">🥈</div>
+                    <div className="text-lg font-bold">Profissional</div>
+                    <div className="text-2xl font-bold text-primary my-2">
+                      $29
+                    </div>
+                    <div className="text-xs text-muted-foreground">por mês</div>
+                    <Badge className="absolute -top-2 left-1/2 transform -translate-x-1/2 text-xs">
+                      Popular
+                    </Badge>
+                    <div className="mt-3 space-y-1 text-xs">
+                      <div>• 100 projetos</div>
+                      <div>• 10GB armazenamento</div>
+                      <div>• Suporte prioritário</div>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="enterprise"
+                    className="flex-col p-6 h-auto border-2 relative"
+                  >
+                    <div className="text-2xl mb-3">🥇</div>
+                    <div className="text-lg font-bold">Enterprise</div>
+                    <div className="text-2xl font-bold text-primary my-2">
+                      $99
+                    </div>
+                    <div className="text-xs text-muted-foreground">por mês</div>
+                    <div className="mt-3 space-y-1 text-xs">
+                      <div>• Projetos ilimitados</div>
+                      <div>• 100GB armazenamento</div>
+                      <div>• Suporte 24/7</div>
+                    </div>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Toggle Group de Dispositivos */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Dispositivos Conectados</h4>
+                <ToggleGroup
+                  type="multiple"
+                  className="grid grid-cols-2 md:grid-cols-4 gap-3"
+                >
+                  <ToggleGroupItem
+                    value="phone"
+                    className="flex-col p-4 h-auto"
+                  >
+                    <div className="text-2xl mb-2">📱</div>
+                    <div className="text-sm font-medium">iPhone 13</div>
+                    <div className="text-xs text-green-600 mt-1">• Online</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="laptop"
+                    className="flex-col p-4 h-auto"
+                  >
+                    <div className="text-2xl mb-2">💻</div>
+                    <div className="text-sm font-medium">MacBook Pro</div>
+                    <div className="text-xs text-green-600 mt-1">• Online</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="tablet"
+                    className="flex-col p-4 h-auto"
+                  >
+                    <div className="text-2xl mb-2">📱</div>
+                    <div className="text-sm font-medium">iPad Air</div>
+                    <div className="text-xs text-gray-600 mt-1">• Offline</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="watch"
+                    className="flex-col p-4 h-auto"
+                  >
+                    <div className="text-2xl mb-2">⌚</div>
+                    <div className="text-sm font-medium">Apple Watch</div>
+                    <div className="text-xs text-green-600 mt-1">• Online</div>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Toggle Group de Redes Sociais */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Publicar em Redes Sociais</h4>
+                <ToggleGroup
+                  type="multiple"
+                  defaultValue={["twitter", "linkedin"]}
+                  className="flex-wrap"
+                >
+                  <ToggleGroupItem value="twitter" className="p-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded bg-blue-400 flex items-center justify-center text-white text-xs font-bold">
+                        T
+                      </div>
+                      <span>Twitter</span>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="facebook" className="p-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                        F
+                      </div>
+                      <span>Facebook</span>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="linkedin" className="p-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded bg-blue-700 flex items-center justify-center text-white text-xs font-bold">
+                        In
+                      </div>
+                      <span>LinkedIn</span>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="instagram" className="p-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white text-xs font-bold">
+                        Ig
+                      </div>
+                      <span>Instagram</span>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="youtube" className="p-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded bg-red-600 flex items-center justify-center text-white text-xs font-bold">
+                        YT
+                      </div>
+                      <span>YouTube</span>
+                    </div>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Toggle Group de Qualidade de Vídeo */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Qualidade de Streaming</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="1080p"
+                  className="grid grid-cols-2 md:grid-cols-5 gap-2"
+                >
+                  <ToggleGroupItem value="480p" className="flex-col p-3">
+                    <div className="text-sm font-bold">480p</div>
+                    <div className="text-xs text-muted-foreground">SD</div>
+                    <div className="text-xs text-green-600">Baixo</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="720p" className="flex-col p-3">
+                    <div className="text-sm font-bold">720p</div>
+                    <div className="text-xs text-muted-foreground">HD</div>
+                    <div className="text-xs text-yellow-600">Médio</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="1080p" className="flex-col p-3">
+                    <div className="text-sm font-bold">1080p</div>
+                    <div className="text-xs text-muted-foreground">Full HD</div>
+                    <div className="text-xs text-orange-600">Alto</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="1440p" className="flex-col p-3">
+                    <div className="text-sm font-bold">1440p</div>
+                    <div className="text-xs text-muted-foreground">2K</div>
+                    <div className="text-xs text-red-600">Muito Alto</div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="2160p" className="flex-col p-3">
+                    <div className="text-sm font-bold">2160p</div>
+                    <div className="text-xs text-muted-foreground">4K</div>
+                    <div className="text-xs text-purple-600">Ultra</div>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Casos de Uso Criativos */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Casos de Uso Criativos</CardTitle>
+            <CardDescription>
+              Implementações únicas e criativas do ToggleGroup
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-8">
+              {/* Sistema de Avaliação */}
+              <div className="space-y-4">
+                <h4 className="font-medium">
+                  Sistema de Avaliação por Estrelas
+                </h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="4"
+                  className="flex gap-1"
+                >
+                  <ToggleGroupItem value="1" className="p-2">
+                    <span className="text-yellow-400 text-xl">⭐</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="2" className="p-2">
+                    <div className="flex">
+                      <span className="text-yellow-400 text-xl">⭐⭐</span>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="3" className="p-2">
+                    <div className="flex">
+                      <span className="text-yellow-400 text-xl">⭐⭐⭐</span>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="4" className="p-2">
+                    <div className="flex">
+                      <span className="text-yellow-400 text-xl">⭐⭐⭐⭐</span>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="5" className="p-2">
+                    <div className="flex">
+                      <span className="text-yellow-400 text-xl">
+                        ⭐⭐⭐⭐⭐
+                      </span>
+                    </div>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Controle de Volume Visual */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Controle de Volume Visual</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="medium"
+                  className="flex"
+                >
+                  <ToggleGroupItem value="mute" className="p-3">
+                    <div className="flex flex-col items-center">
+                      <span className="text-lg">🔇</span>
+                      <div className="w-1 h-1 bg-gray-300 rounded mt-1"></div>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="low" className="p-3">
+                    <div className="flex flex-col items-center">
+                      <span className="text-lg">🔈</span>
+                      <div className="w-1 h-2 bg-green-400 rounded mt-1"></div>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="medium" className="p-3">
+                    <div className="flex flex-col items-center">
+                      <span className="text-lg">🔉</span>
+                      <div className="w-1 h-3 bg-yellow-400 rounded mt-1"></div>
+                    </div>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="high" className="p-3">
+                    <div className="flex flex-col items-center">
+                      <span className="text-lg">🔊</span>
+                      <div className="w-1 h-4 bg-red-400 rounded mt-1"></div>
+                    </div>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Seletor de Temperatura */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Controle de Temperatura</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="22"
+                  className="flex-wrap"
+                >
+                  <ToggleGroupItem
+                    value="16"
+                    className="flex-col p-3 text-blue-600 border-blue-200"
+                  >
+                    <span className="text-lg">❄️</span>
+                    <span className="text-sm font-bold">16°C</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="18"
+                    className="flex-col p-3 text-blue-500 border-blue-200"
+                  >
+                    <span className="text-lg">🧊</span>
+                    <span className="text-sm font-bold">18°C</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="20"
+                    className="flex-col p-3 text-green-600 border-green-200"
+                  >
+                    <span className="text-lg">🌿</span>
+                    <span className="text-sm font-bold">20°C</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="22"
+                    className="flex-col p-3 text-green-500 border-green-200"
+                  >
+                    <span className="text-lg">🌤️</span>
+                    <span className="text-sm font-bold">22°C</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="24"
+                    className="flex-col p-3 text-orange-500 border-orange-200"
+                  >
+                    <span className="text-lg">☀️</span>
+                    <span className="text-sm font-bold">24°C</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="26"
+                    className="flex-col p-3 text-red-500 border-red-200"
+                  >
+                    <span className="text-lg">🔥</span>
+                    <span className="text-sm font-bold">26°C</span>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Fases da Lua */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Fases da Lua</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="full"
+                  className="flex gap-2"
+                >
+                  <ToggleGroupItem value="new" className="flex-col p-3">
+                    <span className="text-2xl">🌑</span>
+                    <span className="text-xs mt-1">Nova</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="waxing-crescent"
+                    className="flex-col p-3"
+                  >
+                    <span className="text-2xl">🌒</span>
+                    <span className="text-xs mt-1">Crescente</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="first-quarter"
+                    className="flex-col p-3"
+                  >
+                    <span className="text-2xl">🌓</span>
+                    <span className="text-xs mt-1">Quarto</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="waxing-gibbous"
+                    className="flex-col p-3"
+                  >
+                    <span className="text-2xl">🌔</span>
+                    <span className="text-xs mt-1">Crescente</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="full" className="flex-col p-3">
+                    <span className="text-2xl">🌕</span>
+                    <span className="text-xs mt-1">Cheia</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="waning-gibbous"
+                    className="flex-col p-3"
+                  >
+                    <span className="text-2xl">🌖</span>
+                    <span className="text-xs mt-1">Minguante</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="last-quarter"
+                    className="flex-col p-3"
+                  >
+                    <span className="text-2xl">🌗</span>
+                    <span className="text-xs mt-1">Quarto</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="waning-crescent"
+                    className="flex-col p-3"
+                  >
+                    <span className="text-2xl">🌘</span>
+                    <span className="text-xs mt-1">Minguante</span>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Humor/Emoji */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Como você está se sentindo?</h4>
+                <ToggleGroup type="single" className="flex gap-2">
+                  <ToggleGroupItem value="very-sad" className="p-4">
+                    <span className="text-3xl">😢</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="sad" className="p-4">
+                    <span className="text-3xl">😔</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="neutral" className="p-4">
+                    <span className="text-3xl">😐</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="happy" className="p-4">
+                    <span className="text-3xl">😊</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="very-happy" className="p-4">
+                    <span className="text-3xl">🤩</span>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Intensidade de Exercício */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Intensidade do Treino</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="moderate"
+                  className="grid grid-cols-1 md:grid-cols-4 gap-2"
+                >
+                  <ToggleGroupItem
+                    value="light"
+                    className="flex-col p-4 border-green-200"
+                  >
+                    <span className="text-xl mb-2">🚶</span>
+                    <span className="font-medium">Leve</span>
+                    <span className="text-xs text-green-600 mt-1">
+                      Caminhada
+                    </span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="moderate"
+                    className="flex-col p-4 border-yellow-200"
+                  >
+                    <span className="text-xl mb-2">🏃</span>
+                    <span className="font-medium">Moderado</span>
+                    <span className="text-xs text-yellow-600 mt-1">
+                      Corrida
+                    </span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="vigorous"
+                    className="flex-col p-4 border-orange-200"
+                  >
+                    <span className="text-xl mb-2">🏋️</span>
+                    <span className="font-medium">Intenso</span>
+                    <span className="text-xs text-orange-600 mt-1">
+                      Musculação
+                    </span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="extreme"
+                    className="flex-col p-4 border-red-200"
+                  >
+                    <span className="text-xl mb-2">🔥</span>
+                    <span className="font-medium">Extremo</span>
+                    <span className="text-xs text-red-600 mt-1">HIIT</span>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Elementos da Natureza */}
+              <div className="space-y-4">
+                <h4 className="font-medium">Elementos da Natureza</h4>
+                <ToggleGroup
+                  type="multiple"
+                  className="grid grid-cols-2 md:grid-cols-4 gap-3"
+                >
+                  <ToggleGroupItem
+                    value="fire"
+                    className="flex-col p-4 border-red-200 text-red-600"
+                  >
+                    <span className="text-2xl mb-2">🔥</span>
+                    <span className="font-medium">Fogo</span>
+                    <span className="text-xs mt-1">Energia, Paixão</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="water"
+                    className="flex-col p-4 border-blue-200 text-blue-600"
+                  >
+                    <span className="text-2xl mb-2">💧</span>
+                    <span className="font-medium">Água</span>
+                    <span className="text-xs mt-1">Fluidez, Calma</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="earth"
+                    className="flex-col p-4 border-green-200 text-green-600"
+                  >
+                    <span className="text-2xl mb-2">🌍</span>
+                    <span className="font-medium">Terra</span>
+                    <span className="text-xs mt-1">Estabilidade</span>
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="air"
+                    className="flex-col p-4 border-gray-200 text-gray-600"
+                  >
+                    <span className="text-2xl mb-2">💨</span>
+                    <span className="font-medium">Ar</span>
+                    <span className="text-xs mt-1">Liberdade</span>
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Variantes Mini e Compactas */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Variantes Mini e Compactas</CardTitle>
+            <CardDescription>
+              Versões compactas e minimalistas do ToggleGroup para espaços
+              limitados
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              {/* Toggle Pills */}
+              <div className="space-y-3">
+                <h4 className="font-medium">Toggle Pills</h4>
+                <ToggleGroup
+                  type="multiple"
+                  size="sm"
+                  className="flex-wrap gap-1"
+                >
+                  <ToggleGroupItem
+                    value="react"
+                    className="px-3 py-1 text-xs rounded-full"
+                  >
+                    React
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="vue"
+                    className="px-3 py-1 text-xs rounded-full"
+                  >
+                    Vue
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="angular"
+                    className="px-3 py-1 text-xs rounded-full"
+                  >
+                    Angular
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="svelte"
+                    className="px-3 py-1 text-xs rounded-full"
+                  >
+                    Svelte
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="next"
+                    className="px-3 py-1 text-xs rounded-full"
+                  >
+                    Next.js
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="nuxt"
+                    className="px-3 py-1 text-xs rounded-full"
+                  >
+                    Nuxt.js
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Dots Navigation */}
+              <div className="space-y-3">
+                <h4 className="font-medium">Navegação por Pontos</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="2"
+                  className="flex gap-2"
+                >
+                  <ToggleGroupItem
+                    value="1"
+                    className="w-3 h-3 p-0 rounded-full data-[state=on]:bg-primary"
+                  ></ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="2"
+                    className="w-3 h-3 p-0 rounded-full data-[state=on]:bg-primary"
+                  ></ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="3"
+                    className="w-3 h-3 p-0 rounded-full data-[state=on]:bg-primary"
+                  ></ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="4"
+                    className="w-3 h-3 p-0 rounded-full data-[state=on]:bg-primary"
+                  ></ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="5"
+                    className="w-3 h-3 p-0 rounded-full data-[state=on]:bg-primary"
+                  ></ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Mini Icons */}
+              <div className="space-y-3">
+                <h4 className="font-medium">Ícones Compactos</h4>
+                <ToggleGroup type="multiple" size="sm" className="flex gap-1">
+                  <ToggleGroupItem value="save" className="w-8 h-8 p-0">
+                    💾
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="print" className="w-8 h-8 p-0">
+                    🖨️
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="share" className="w-8 h-8 p-0">
+                    📤
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="copy" className="w-8 h-8 p-0">
+                    📋
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="edit" className="w-8 h-8 p-0">
+                    ✏️
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="delete" className="w-8 h-8 p-0">
+                    🗑️
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Color Dots */}
+              <div className="space-y-3">
+                <h4 className="font-medium">Seletor de Cor Compacto</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="blue"
+                  className="flex gap-2"
+                >
+                  <ToggleGroupItem
+                    value="red"
+                    className="w-6 h-6 p-0 rounded-full bg-red-500 border-2 data-[state=on]:ring-2 data-[state=on]:ring-red-300"
+                  ></ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="blue"
+                    className="w-6 h-6 p-0 rounded-full bg-blue-500 border-2 data-[state=on]:ring-2 data-[state=on]:ring-blue-300"
+                  ></ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="green"
+                    className="w-6 h-6 p-0 rounded-full bg-green-500 border-2 data-[state=on]:ring-2 data-[state=on]:ring-green-300"
+                  ></ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="yellow"
+                    className="w-6 h-6 p-0 rounded-full bg-yellow-500 border-2 data-[state=on]:ring-2 data-[state=on]:ring-yellow-300"
+                  ></ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="purple"
+                    className="w-6 h-6 p-0 rounded-full bg-purple-500 border-2 data-[state=on]:ring-2 data-[state=on]:ring-purple-300"
+                  ></ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Number badges */}
+              <div className="space-y-3">
+                <h4 className="font-medium">Seletor Numérico</h4>
+                <ToggleGroup
+                  type="single"
+                  defaultValue="5"
+                  size="sm"
+                  className="flex gap-1"
+                >
+                  <ToggleGroupItem
+                    value="1"
+                    className="w-8 h-8 p-0 rounded-full text-xs font-bold"
+                  >
+                    1
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="2"
+                    className="w-8 h-8 p-0 rounded-full text-xs font-bold"
+                  >
+                    2
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="3"
+                    className="w-8 h-8 p-0 rounded-full text-xs font-bold"
+                  >
+                    3
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="4"
+                    className="w-8 h-8 p-0 rounded-full text-xs font-bold"
+                  >
+                    4
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="5"
+                    className="w-8 h-8 p-0 rounded-full text-xs font-bold"
+                  >
+                    5
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="6"
+                    className="w-8 h-8 p-0 rounded-full text-xs font-bold"
+                  >
+                    6
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="7"
+                    className="w-8 h-8 p-0 rounded-full text-xs font-bold"
+                  >
+                    7
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="8"
+                    className="w-8 h-8 p-0 rounded-full text-xs font-bold"
+                  >
+                    8
+                  </ToggleGroupItem>
+                  <ToggleGroupItem
+                    value="9"
+                    className="w-8 h-8 p-0 rounded-full text-xs font-bold"
+                  >
+                    9
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+
+              {/* Progress Steps */}
+              <div className="space-y-3">
+                <h4 className="font-medium">Etapas de Progresso</h4>
+                <div className="flex items-center gap-2">
+                  <ToggleGroup
+                    type="single"
+                    defaultValue="step2"
+                    className="flex"
+                  >
+                    <ToggleGroupItem
+                      value="step1"
+                      className="flex items-center px-3 py-2 text-sm"
+                    >
+                      <div className="w-6 h-6 rounded-full bg-green-500 text-white text-xs flex items-center justify-center mr-2">
+                        ✓
+                      </div>
+                      Configurar
+                    </ToggleGroupItem>
+                    <ToggleGroupItem
+                      value="step2"
+                      className="flex items-center px-3 py-2 text-sm"
+                    >
+                      <div className="w-6 h-6 rounded-full bg-primary text-white text-xs flex items-center justify-center mr-2">
+                        2
+                      </div>
+                      Personalizar
+                    </ToggleGroupItem>
+                    <ToggleGroupItem
+                      value="step3"
+                      className="flex items-center px-3 py-2 text-sm"
+                    >
+                      <div className="w-6 h-6 rounded-full bg-muted text-muted-foreground text-xs flex items-center justify-center mr-2">
+                        3
+                      </div>
+                      Finalizar
+                    </ToggleGroupItem>
+                  </ToggleGroup>
+                </div>
+              </div>
+
+              {/* Inline Tags */}
+              <div className="space-y-3">
+                <h4 className="font-medium">Tags Inline</h4>
+                <div className="flex flex-wrap gap-2 items-center">
+                  <span className="text-sm text-muted-foreground">
+                    Tecnologias:
+                  </span>
+                  <ToggleGroup
+                    type="multiple"
+                    size="sm"
+                    className="flex flex-wrap gap-1"
+                  >
+                    <ToggleGroupItem
+                      value="js"
+                      className="px-2 py-1 text-xs border rounded"
+                    >
+                      JavaScript
+                    </ToggleGroupItem>
+                    <ToggleGroupItem
+                      value="ts"
+                      className="px-2 py-1 text-xs border rounded"
+                    >
+                      TypeScript
+                    </ToggleGroupItem>
+                    <ToggleGroupItem
+                      value="react"
+                      className="px-2 py-1 text-xs border rounded"
+                    >
+                      React
+                    </ToggleGroupItem>
+                    <ToggleGroupItem
+                      value="node"
+                      className="px-2 py-1 text-xs border rounded"
+                    >
+                      Node.js
+                    </ToggleGroupItem>
+                    <ToggleGroupItem
+                      value="python"
+                      className="px-2 py-1 text-xs border rounded"
+                    >
+                      Python
+                    </ToggleGroupItem>
+                  </ToggleGroup>
+                </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div className="space-y-3">
+                <h4 className="font-medium">Ações Rápidas</h4>
+                <div className="flex items-center justify-between p-3 border rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
+                      📄
+                    </div>
+                    <div>
+                      <div className="font-medium text-sm">Documento.pdf</div>
+                      <div className="text-xs text-muted-foreground">
+                        2.4 MB
+                      </div>
+                    </div>
+                  </div>
+                  <ToggleGroup type="multiple" size="sm" className="flex gap-1">
+                    <ToggleGroupItem value="download" className="w-8 h-8 p-0">
+                      ⬇️
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="share" className="w-8 h-8 p-0">
+                      📤
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="star" className="w-8 h-8 p-0">
+                      ⭐
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="more" className="w-8 h-8 p-0">
+                      ⋯
+                    </ToggleGroupItem>
+                  </ToggleGroup>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Dicas de Uso */}
         <Card>
           <CardHeader>
