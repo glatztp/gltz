@@ -1,7 +1,8 @@
 import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]): string {
-  return clsx(inputs);
+  return twMerge(clsx(inputs));
 }
 
 export function formatDate(
@@ -24,7 +25,4 @@ export function formatCurrency(
     style: "currency",
     currency,
   }).format(amount);
-}
-function twMerge(arg0: string) {
-  throw new Error("Function not implemented.");
 }
