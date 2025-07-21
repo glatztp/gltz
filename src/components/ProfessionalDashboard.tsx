@@ -36,6 +36,7 @@ import { ThemeProvider } from "./providers/theme-provider";
 
 // Page Components
 import { ComingSoonPage } from "./pages/coming-soon-page";
+import { PlaygroundPage } from "./pages/playground-page";
 import { ThemesPage } from "./pages/themes-page";
 import { AlertPage } from "./pages/alert-page";
 import { AlertDialogPage } from "./pages/alert-dialog-page";
@@ -715,16 +716,7 @@ function DashboardContent() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/docs" element={<DocumentationPage />} />
             <Route path="/themes" element={<ThemesPage />} />
-            <Route
-              path="/playground"
-              element={
-                <ComingSoonPage
-                  title="Playground"
-                  description="Experimente e teste todos os componentes em um ambiente interativo com editor de código ao vivo."
-                  type="playground"
-                />
-              }
-            />
+            <Route path="/playground" element={<PlaygroundPage />} />
             <Route
               path="/components"
               element={
