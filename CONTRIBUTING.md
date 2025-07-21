@@ -327,8 +327,6 @@ Contribuidores são reconhecidos no README e no hall da fama do projeto. Muito o
 Se tiver qualquer dúvida:
 
 - Abra uma [Discussion](https://github.com/glatztp/gltz/discussions)
-- Entre no nosso [Discord](https://discord.gg/gltzui)
-- Envie um email para support@gltzui.com
 
 ---
 

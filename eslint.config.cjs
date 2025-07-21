@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   extends: ["eslint:recommended", "@typescript-eslint/recommended"],
-  ignorePatterns: ["dist", "node_modules", "eslint.config.js"],
+  ignorePatterns: ["dist", "node_modules", "eslint.config.cjs"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2020,

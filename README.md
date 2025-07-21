@@ -1,8 +1,6 @@
-﻿# 🚀 gltzUI
+﻿#  gltz
 
 <div align="center">
-
-![gltzUI Logo](https://via.placeholder.com/200x80/6366f1/ffffff?text=gltzUI)
 
 **Biblioteca de componentes React moderna, acessível e customizável**
 
@@ -200,27 +198,6 @@ function App() {
 }
 ```
 
----
-
-## 📱 Screenshots
-
-<div align="center">
-
-### 🌅 Light Mode
-
-![Light Mode](https://via.placeholder.com/800x400/ffffff/333333?text=Light+Mode+Preview)
-
-### 🌙 Dark Mode
-
-![Dark Mode](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=Dark+Mode+Preview)
-
-### 📱 Mobile Responsive
-
-![Mobile](https://via.placeholder.com/400x600/6366f1/ffffff?text=Mobile+Preview)
-
-</div>
-
----
 
 ## 🛠️ Desenvolvimento
 
