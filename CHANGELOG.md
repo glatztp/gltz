@@ -162,7 +162,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - ✅ Tailwind CSS integration
 - ✅ Acessibilidade básica
 - ✅ Responsive design
-- ✅ Storybook documentation
+- ✅ Jest testing framework
 
 ---
 

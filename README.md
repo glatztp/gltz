@@ -1,4 +1,4 @@
-﻿#  gltz
+﻿# gltz
 
 <div align="center">
 
@@ -54,7 +54,6 @@
 ```bash
 npm install @gltzui/components @gltzui/core
 ```
-
 
 ## ⚡ Uso Rápido
 
@@ -198,7 +197,6 @@ function App() {
 }
 ```
 
-
 ## 🛠️ Desenvolvimento
 
 ### Pré-requisitos
@@ -229,7 +227,6 @@ npm run dev      # Servidor de desenvolvimento
 npm run build    # Build para produção
 npm run lint     # Verificação de código
 npm run test     # Executar testes
-npm run storybook # Documentação interativa
 ```
 
 ---

@@ -60,9 +60,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Storybook
-        run: npm run build-storybook
-
       - name: Run accessibility tests
         run: npm run test:a11y
 
@@ -85,33 +82,6 @@ jobs:
 
       - name: Run visual regression tests
         run: npm run test:visual
-
-  deploy-storybook:
-    runs-on: ubuntu-latest
-    needs: [test, accessibility]
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Storybook
-        run: npm run build-storybook
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./storybook-static
 
   release:
     runs-on: ubuntu-latest
