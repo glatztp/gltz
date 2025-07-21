@@ -1,8 +1,8 @@
 {
-  "name": "@gltz/ui",
+  "name": "@gltz-packages/ui",
   "version": "2.0.0",
   "type": "module",
-  "description": "🎨 Biblioteca de componentes React/TypeScript moderna, acessível e customizável construída com Radix UI + Tailwind CSS",
+  "description": " Biblioteca de componentes React/TypeScript moderna, acessível e customizável construída com Radix UI + Tailwind CSS",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -89,6 +89,7 @@
     "npm": ">=8.0.0"
   },
   "peerDependencies": {
+    "lucide-react": "^0.303.0",
     "phosphor-react": "^1.4.1",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
@@ -153,7 +154,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "framer-motion": "^12.23.6",
-    "lucide-react": "^0.303.0",
     "phosphor-react": "^1.4.1",
     "react-router-dom": "^7.7.0",
     "tailwind-merge": "^2.6.0",

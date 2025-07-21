@@ -7,13 +7,6 @@ import {
   useLocation,
 } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Button } from "../ui";
-import { Badge } from "../ui";
-import { Card, CardContent } from "../ui";
-import { NavigationHeader } from "../layout/NavigationHeader";
-import { ComponentsSidebar } from "../layout/ComponentsSidebar";
-import { ComponentDocs } from "../layout/ComponentDocs";
-import { ComingSoonPage } from "./coming-soon-page";
 import {
   Zap,
   Palette,
@@ -30,51 +23,62 @@ import {
   Globe,
 } from "lucide-react";
 
-// Importar as páginas dos componentes
-import { AlertPage } from "./alert-page";
-import { AlertDialogPage } from "./alert-dialog-page";
-import { AspectRatioPage } from "./aspect-ratio-page";
-import { AvatarPage } from "./avatar-page";
-import { BadgePage } from "./badge-page";
-import { ButtonPage } from "./button-page";
-import { CalendarPage } from "./calendar-page";
-import { CardPage } from "./card-page";
-import { CheckboxPage } from "./checkbox-page";
-import { ComboboxPage } from "./combobox-page";
-import { CommandPage } from "./command-page";
-import { ContextMenuPage } from "./context-menu-page";
-import { DataTablePage } from "./data-table-page";
-import { DatePickerPage } from "./date-picker-page";
-import { DialogPage } from "./dialog-page";
-import { DrawerPage } from "./drawer-page";
-import { DropdownMenuPage } from "./dropdown-menu-page";
-import { FormPage } from "./form-page";
-import { HoverCardPage } from "./hover-card-page";
-import { InputPage } from "./input-page";
-import { InputOTPPage } from "./input-otp-page";
-import { LabelPage } from "./label-page";
-import { MenubarPage } from "./menubar-page";
-import { NavigationMenuPage } from "./navigation-menu-page";
-import { PaginationPage } from "./pagination-page";
-import { PopoverPage } from "./popover-page";
-import { ProgressPage } from "./progress-page";
-import { RadioGroupPage } from "./radio-group-page";
-import { ScrollAreaPage } from "./scroll-area-page";
-import { SelectPage } from "./select-page";
-import { SeparatorPage } from "./separator-page";
-import { SheetPage } from "./sheet-page";
-import { SkeletonPage } from "./skeleton-page";
-import { SliderPage } from "./slider-page";
-import { SonnerPage } from "./sonner-page";
-import { SwitchPage } from "./switch-page";
-import { TabsPage } from "./tabs-page";
-import { TextareaPage } from "./textarea-page";
-import { ToastPage } from "./toast-page";
-import { TogglePage } from "./toggle-page";
-import { ToggleGroupPage } from "./toggle-group-page";
-import { TooltipPage } from "./tooltip-page";
-import { ResizablePage } from "./resizable-page";
-import { CollapsiblePage } from "./collapsible-page";
+// UI Components
+import { Button, Badge } from "./ui";
+import { Card, CardContent } from "./ui/layout";
+
+// Layout Components
+import { NavigationHeader } from "./layout/NavigationHeader";
+import { ComponentsSidebar } from "./layout/ComponentsSidebar";
+import { ComponentDocs } from "./layout/ComponentDocs";
+import { DocumentationPage } from "./layout/documentation-page";
+
+// Page Components
+import { ComingSoonPage } from "./pages/coming-soon-page";
+import { AlertPage } from "./pages/alert-page";
+import { AlertDialogPage } from "./pages/alert-dialog-page";
+import { AspectRatioPage } from "./pages/aspect-ratio-page";
+import { AvatarPage } from "./pages/avatar-page";
+import { BadgePage } from "./pages/badge-page";
+import { ButtonPage } from "./pages/button-page";
+import { CalendarPage } from "./pages/calendar-page";
+import { CardPage } from "./pages/card-page";
+import { CheckboxPage } from "./pages/checkbox-page";
+import { ComboboxPage } from "./pages/combobox-page";
+import { CommandPage } from "./pages/command-page";
+import { ContextMenuPage } from "./pages/context-menu-page";
+import { DataTablePage } from "./pages/data-table-page";
+import { DatePickerPage } from "./pages/date-picker-page";
+import { DialogPage } from "./pages/dialog-page";
+import { DrawerPage } from "./pages/drawer-page";
+import { DropdownMenuPage } from "./pages/dropdown-menu-page";
+import { FormPage } from "./pages/form-page";
+import { HoverCardPage } from "./pages/hover-card-page";
+import { InputPage } from "./pages/input-page";
+import { InputOTPPage } from "./pages/input-otp-page";
+import { LabelPage } from "./pages/label-page";
+import { MenubarPage } from "./pages/menubar-page";
+import { NavigationMenuPage } from "./pages/navigation-menu-page";
+import { PaginationPage } from "./pages/pagination-page";
+import { PopoverPage } from "./pages/popover-page";
+import { ProgressPage } from "./pages/progress-page";
+import { RadioGroupPage } from "./pages/radio-group-page";
+import { ScrollAreaPage } from "./pages/scroll-area-page";
+import { SelectPage } from "./pages/select-page";
+import { SeparatorPage } from "./pages/separator-page";
+import { SheetPage } from "./pages/sheet-page";
+import { SkeletonPage } from "./pages/skeleton-page";
+import { SliderPage } from "./pages/slider-page";
+import { SonnerPage } from "./pages/sonner-page";
+import { SwitchPage } from "./pages/switch-page";
+import { TabsPage } from "./pages/tabs-page";
+import { TextareaPage } from "./pages/textarea-page";
+import { ToastPage } from "./pages/toast-page";
+import { TogglePage } from "./pages/toggle-page";
+import { ToggleGroupPage } from "./pages/toggle-group-page";
+import { TooltipPage } from "./pages/tooltip-page";
+import { ResizablePage } from "./pages/resizable-page";
+import { CollapsiblePage } from "./pages/collapsible-page";
 
 // Mapeamento de componentes
 const componentPages: Record<string, React.ComponentType> = {
@@ -190,25 +194,26 @@ function HomePage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
         <div className="relative">
-          <div className="container mx-auto px-6 py-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center max-w-4xl mx-auto"
+              className="text-center max-w-5xl mx-auto"
             >
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
-                className="mb-6"
+                className="mb-6 sm:mb-8"
               >
                 <Badge
                   variant="outline"
-                  className="px-4 py-2 text-sm font-medium"
+                  className="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium border-2 bg-background/80 backdrop-blur-sm hover:bg-primary/5 transition-colors"
                 >
-                  <Sparkles className="h-4 w-4 mr-2" />
+                  <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                   v2.0 • Novos componentes e melhorias
                 </Badge>
               </motion.div>
@@ -217,9 +222,9 @@ function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-4 sm:mb-6 lg:mb-8"
               >
-                <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent drop-shadow-sm">
                   gltzUI
                 </span>
               </motion.h1>
@@ -228,7 +233,7 @@ function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-6 sm:mb-8 lg:mb-12 leading-relaxed max-w-4xl mx-auto px-4"
               >
                 Biblioteca de componentes React moderna, acessível e
                 customizável. Construa interfaces excepcionais com componentes
@@ -239,14 +244,14 @@ function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-2xl mx-auto"
               >
                 <Button
                   size="lg"
-                  className="group relative overflow-hidden"
+                  className="group relative overflow-hidden w-full sm:w-auto shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={() => navigate("/components")}
                 >
-                  <Rocket className="h-5 w-5 mr-2 transition-transform group-hover:scale-110" />
+                  <Rocket className="h-4 w-4 sm:h-5 sm:w-5 mr-2 transition-transform group-hover:scale-110" />
                   Começar Agora
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                 </Button>
@@ -254,22 +259,22 @@ function HomePage() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="group"
+                  className="group w-full sm:w-auto border-2 hover:bg-primary/5 transition-all duration-300"
                   onClick={() =>
                     window.open("https://github.com/glatztp/gltz", "_blank")
                   }
                 >
-                  <Github className="h-5 w-5 mr-2 transition-transform group-hover:rotate-12" />
+                  <Github className="h-4 w-4 sm:h-5 sm:w-5 mr-2 transition-transform group-hover:rotate-12" />
                   Ver no GitHub
                 </Button>
 
                 <Button
                   variant="ghost"
                   size="lg"
-                  className="group"
+                  className="group w-full sm:w-auto hover:bg-primary/5 transition-all duration-300"
                   onClick={() => navigate("/docs")}
                 >
-                  <BookOpen className="h-5 w-5 mr-2 transition-transform group-hover:scale-110" />
+                  <BookOpen className="h-4 w-4 sm:h-5 sm:w-5 mr-2 transition-transform group-hover:scale-110" />
                   Documentação
                 </Button>
               </motion.div>
@@ -279,14 +284,14 @@ function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 border-y bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 lg:py-20 border-y bg-gradient-to-r from-muted/30 via-muted/10 to-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -295,15 +300,15 @@ function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="text-center group"
+                className="text-center group cursor-pointer"
               >
-                <div className="flex items-center justify-center mb-2 text-primary group-hover:scale-110 transition-transform">
+                <div className="flex items-center justify-center mb-3 sm:mb-4 text-primary group-hover:scale-110 transition-transform duration-300">
                   {stat.icon}
                 </div>
-                <div className="text-3xl font-bold text-foreground mb-1">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-1 sm:mb-2 group-hover:text-primary transition-colors duration-300">
                   {stat.value}
                 </div>
-                <div className="text-sm text-muted-foreground">
+                <div className="text-xs sm:text-sm lg:text-base text-muted-foreground font-medium">
                   {stat.label}
                 </div>
               </motion.div>
@@ -313,25 +318,25 @@ function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
+      <section className="py-16 sm:py-20 lg:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16 lg:mb-20"
           >
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
               Por que escolher o gltzUI?
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
               Desenvolvemos cada componente pensando na experiência do
               desenvolvedor e na satisfação do usuário final.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -339,18 +344,19 @@ function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
+                className="group"
               >
-                <Card className="h-full group hover:shadow-lg transition-all duration-300 border-0 bg-gradient-to-br from-background to-muted/30">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                <Card className="h-full group-hover:shadow-xl group-hover:shadow-primary/5 transition-all duration-500 border-2 border-border/50 hover:border-primary/20 bg-gradient-to-br from-background via-background to-muted/20 backdrop-blur-sm">
+                  <CardContent className="p-6 sm:p-8">
+                    <div className="flex items-center mb-6">
+                      <div className="p-3 sm:p-4 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 text-primary group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-primary/10">
                         {feature.icon}
                       </div>
                     </div>
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300">
                       {feature.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                       {feature.description}
                     </p>
                   </CardContent>
@@ -362,19 +368,19 @@ function HomePage() {
       </section>
 
       {/* Code Example Section */}
-      <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section className="py-16 sm:py-20 lg:py-32 bg-gradient-to-br from-muted/30 via-muted/10 to-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16 lg:mb-20"
           >
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
               Simples de usar, poderoso de customizar
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
               Instale, importe e comece a usar. É realmente simples assim.
             </p>
           </motion.div>
@@ -384,21 +390,23 @@ function HomePage() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
-            <div className="bg-background border rounded-lg overflow-hidden shadow-xl">
-              <div className="bg-muted px-4 py-3 border-b">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <span className="ml-4 text-sm text-muted-foreground font-mono">
+            <div className="bg-background/80 backdrop-blur-sm border-2 border-border/50 rounded-2xl overflow-hidden shadow-2xl shadow-primary/5 hover:shadow-primary/10 transition-all duration-500">
+              <div className="bg-gradient-to-r from-muted via-muted/80 to-muted px-4 sm:px-6 py-3 sm:py-4 border-b-2 border-border/50">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="flex gap-1.5 sm:gap-2">
+                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
+                  </div>
+                  <span className="ml-3 sm:ml-4 text-xs sm:text-sm text-muted-foreground font-mono font-medium">
                     App.tsx
                   </span>
                 </div>
               </div>
-              <div className="p-6">
-                <pre className="text-sm text-foreground overflow-x-auto">
+              <div className="p-4 sm:p-6 lg:p-8 overflow-x-auto">
+                <pre className="text-xs sm:text-sm lg:text-base text-foreground font-mono leading-relaxed">
                   {`import { Button, Card, Toast } from '@gltzui/components'
 
 export function App() {
@@ -421,38 +429,44 @@ export function App() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-16 sm:py-20 lg:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
               Pronto para acelerar seu desenvolvimento?
             </h2>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-10 lg:mb-12 leading-relaxed max-w-3xl mx-auto px-4">
               Junte-se a milhares de desenvolvedores que já estão criando
               interfaces incríveis com o gltzUI.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center max-w-xl mx-auto">
               <Button
                 size="lg"
-                className="group"
-                onClick={() => navigate("/docs")}
+                className="group w-full sm:w-auto shadow-lg hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
+                onClick={() =>
+                  window.open(
+                    "https://www.npmjs.com/package/@gltz-packages/ui",
+                    "_blank"
+                  )
+                }
               >
-                <Rocket className="h-5 w-5 mr-2 group-hover:translate-x-1 transition-transform" />
+                <Rocket className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:translate-x-1 transition-transform duration-300" />
                 Instalar Agora
               </Button>
               <Button
                 variant="outline"
                 size="lg"
+                className="w-full sm:w-auto border-2 hover:bg-primary/5 transition-all duration-300"
                 onClick={() => navigate("/components")}
               >
-                <Globe className="h-5 w-5 mr-2" />
+                <Globe className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 Ver Exemplos
               </Button>
             </div>
@@ -461,135 +475,170 @@ export function App() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t bg-muted/30">
-        <div className="container mx-auto px-6 py-12">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-bold text-lg mb-4">gltzUI</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+      <footer className="border-t-2 border-border/50 bg-gradient-to-br from-muted/40 via-muted/20 to-muted/40 backdrop-blur-sm">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            <div className="sm:col-span-2 lg:col-span-1">
+              <h3 className="font-bold text-xl sm:text-2xl mb-4 sm:mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                gltzUI
+              </h3>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-sm">
                 Componentes React modernos para interfaces excepcionais.
+                Construindo o futuro do desenvolvimento web.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Recursos</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h4 className="font-semibold text-base sm:text-lg mb-4 sm:mb-6">
+                Recursos
+              </h4>
+              <ul className="space-y-3 text-sm sm:text-base text-muted-foreground">
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors cursor-pointer"
+                    className="hover:text-primary transition-colors duration-300 cursor-pointer flex items-center group"
                     onClick={() => navigate("/docs")}
                   >
-                    Documentação
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      Documentação
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors cursor-pointer"
+                    className="hover:text-primary transition-colors duration-300 cursor-pointer flex items-center group"
                     onClick={() => navigate("/components")}
                   >
-                    Componentes
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      Componentes
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors cursor-pointer"
+                    className="hover:text-primary transition-colors duration-300 cursor-pointer flex items-center group"
                     onClick={() => navigate("/components")}
                   >
-                    Exemplos
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      Exemplos
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors cursor-pointer"
+                    className="hover:text-primary transition-colors duration-300 cursor-pointer flex items-center group"
                     onClick={() => navigate("/themes")}
                   >
-                    Temas
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      Temas
+                    </span>
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Comunidade</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h4 className="font-semibold text-base sm:text-lg mb-4 sm:mb-6">
+                Comunidade
+              </h4>
+              <ul className="space-y-3 text-sm sm:text-base text-muted-foreground">
                 <li>
                   <a
                     href="https://github.com/glatztp/gltz"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-primary transition-colors duration-300 flex items-center group"
                   >
-                    GitHub
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      GitHub
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-primary transition-colors duration-300 flex items-center group"
                   >
-                    Discord
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      Discord
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-primary transition-colors duration-300 flex items-center group"
                   >
-                    Twitter
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      Twitter
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-primary transition-colors duration-300 flex items-center group"
                   >
-                    Blog
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      Blog
+                    </span>
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Suporte</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h4 className="font-semibold text-base sm:text-lg mb-4 sm:mb-6">
+                Suporte
+              </h4>
+              <ul className="space-y-3 text-sm sm:text-base text-muted-foreground">
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-primary transition-colors duration-300 flex items-center group"
                   >
-                    FAQ
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      FAQ
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-primary transition-colors duration-300 flex items-center group"
                   >
-                    Issues
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      Issues
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-primary transition-colors duration-300 flex items-center group"
                   >
-                    Contribuir
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      Contribuir
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="hover:text-foreground transition-colors"
+                    className="hover:text-primary transition-colors duration-300 flex items-center group"
                   >
-                    Roadmap
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      Roadmap
+                    </span>
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="border-t mt-12 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 gltzUI. Todos os direitos reservados.</p>
+          <div className="border-t-2 border-border/50 mt-12 sm:mt-16 pt-6 sm:pt-8 text-center text-sm sm:text-base text-muted-foreground">
+            <p className="bg-gradient-to-r from-muted-foreground to-muted-foreground/70 bg-clip-text text-transparent">
+              &copy; 2025 gltzUI. Todos os direitos reservados.
+            </p>
           </div>
         </div>
       </footer>
@@ -662,16 +711,7 @@ function DashboardContent() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
-            <Route
-              path="/docs"
-              element={
-                <ComingSoonPage
-                  title="Documentação"
-                  description="Guias completos, exemplos de código e referência da API para todos os componentes da gltzUI."
-                  type="docs"
-                />
-              }
-            />
+            <Route path="/docs" element={<DocumentationPage />} />
             <Route
               path="/themes"
               element={

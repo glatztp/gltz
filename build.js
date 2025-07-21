@@ -29,6 +29,7 @@ const external = [
   "phosphor-react",
   "react-remove-scroll",
   "aria-hidden",
+  "lucide-react",
 ];
 
 await build({

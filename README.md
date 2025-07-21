@@ -231,6 +231,34 @@ npm run test     # Executar testes
 
 ---
 
+## 📦 Instalação via NPM
+
+A biblioteca está disponível no NPM como `@gltz-packages/ui`:
+
+```bash
+npm install @gltz-packages/ui lucide-react
+```
+
+### Uso Básico
+
+```tsx
+import { Button, Card, Badge } from "@gltz-packages/ui";
+import "@gltz-packages/ui/styles.css";
+
+function App() {
+  return (
+    <Card className="p-6">
+      <Button>Hello World!</Button>
+      <Badge>v2.0.0</Badge>
+    </Card>
+  );
+}
+```
+
+**📚 [Ver documentação completa de instalação e uso →](./README-NPM.md)**
+
+---
+
 ## 🤝 Contribuindo
 
 Adoramos contribuições! Veja nosso [Guia de Contribuição](CONTRIBUTING.md) para começar.

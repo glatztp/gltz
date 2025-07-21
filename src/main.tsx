@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "./lib/theme-provider";
 import "./styles/globals.css";
 import { SonnerProvider } from "./components/ui/feedback/sonner";
-import ProfessionalDashboard from "./components/pages/professional-home-page";
+import ProfessionalDashboard from "./components/ProfessionalDashboard";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
