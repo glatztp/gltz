@@ -9,7 +9,6 @@ import {
   Button,
 } from "../../index";
 import { Star, Crown, Shield, Trophy } from "phosphor-react";
-import { ComponentDocs } from "../layout/ComponentDocs";
 
 export function CardPage() {
   return (
@@ -326,8 +325,6 @@ export function CardPage() {
           </div>
         </div>
       </div>
-
-    
     </div>
   );
 }

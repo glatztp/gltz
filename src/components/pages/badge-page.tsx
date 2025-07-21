@@ -9,7 +9,6 @@ import {
   Button,
 } from "../../index";
 import { Star, Crown, Shield, Warning, Check, X, Clock } from "phosphor-react";
-import { ComponentDocs } from "../layout/ComponentDocs";
 
 export function BadgePage() {
   return (
@@ -411,8 +410,6 @@ export function BadgePage() {
           </div>
         </div>
       </div>
-
-     
     </div>
   );
 }

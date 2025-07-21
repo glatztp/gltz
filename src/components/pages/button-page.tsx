@@ -9,7 +9,6 @@ import {
   Badge,
 } from "../../index";
 import { Download, Heart, Star, Share, Plus, Minus } from "phosphor-react";
-import { ComponentDocs } from "../layout/ComponentDocs";
 
 export function ButtonPage() {
   return (

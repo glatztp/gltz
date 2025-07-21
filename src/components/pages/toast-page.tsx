@@ -345,7 +345,7 @@ export function ToastPage() {
                   <pre className="text-sm overflow-x-auto">
                     {`// Importar o hook
 import { useToast } from '../hooks/useToast';
-import { ComponentDocs } from "../layout/ComponentDocs";
+
 import { ToastContainer } from '../ui/feedback/toast-container';
 
 // No componente

@@ -10,7 +10,6 @@ import {
   Label,
   Checkbox,
 } from "../../index";
-import { ComponentDocs } from "../layout/ComponentDocs";
 
 export function FormPage() {
   const [formData, setFormData] = React.useState({
@@ -109,8 +108,6 @@ export function FormPage() {
           </div>
         </div>
       </div>
-
-    
     </div>
   );
 }

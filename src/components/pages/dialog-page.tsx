@@ -16,7 +16,6 @@ import {
   Input,
   Label,
 } from "../../index";
-import { ComponentDocs } from "../layout/ComponentDocs";
 
 export function DialogPage() {
   const [open, setOpen] = React.useState(false);
@@ -113,8 +112,6 @@ export function DialogPage() {
           </div>
         </div>
       </div>
-
-    
     </div>
   );
 }

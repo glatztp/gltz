@@ -16,7 +16,6 @@ import {
   Label,
 } from "../../index";
 import { User, Gear, Bell, CreditCard, Shield, Star } from "phosphor-react";
-import { ComponentDocs } from "../layout/ComponentDocs";
 
 export function TabsPage() {
   return (
@@ -478,8 +477,6 @@ export function TabsPage() {
           </div>
         </div>
       </div>
-
-    
     </div>
   );
 }

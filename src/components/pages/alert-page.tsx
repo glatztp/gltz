@@ -30,7 +30,6 @@ import {
   Trash,
   Gear,
 } from "phosphor-react";
-import { ComponentDocs } from "../layout/ComponentDocs";
 
 export function AlertPage() {
   return (

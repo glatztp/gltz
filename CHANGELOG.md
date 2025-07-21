@@ -5,6 +5,30 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2025-07-21
+
+### Adicionado
+
+- **Playground Interativo**: Sistema completo de playground com preview ao vivo
+- **Novos Componentes Core**: Card, Tabs, Separator, Label com suporte completo
+- **Templates Pré-definidos**: 4 templates profissionais (Button, Card, Form, Dashboard)
+- **Visualização Responsiva**: Suporte para preview em mobile, tablet e desktop
+- **Sistema de Exportação**: Funcionalidade para copiar e baixar código dos componentes
+- **Interface Aprimorada**: Design moderno com gradientes e melhor experiência visual
+
+### Melhorado
+
+- **Sistema de Exportação**: Resolução de conflitos de componentes duplicados
+- **Organização de Código**: Estrutura de importação otimizada e exportações explícitas
+- **Performance**: Build otimizado e redução de dependências desnecessárias
+- **Usabilidade**: Interface mais intuitiva no playground com tabs para código e informações
+
+### Corrigido
+
+- Conflitos de exportação entre componentes layout e core
+- Problemas de importação no sistema de templates
+- Dependências faltantes para componentes Card, Tabs, Separator e Label
+
 ## [Não lançado]
 
 ### Adicionado

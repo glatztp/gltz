@@ -26,7 +26,6 @@ import {
   Eye,
   EyeSlash,
 } from "phosphor-react";
-import { ComponentDocs } from "../layout/ComponentDocs";
 
 export function InputPage() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -392,8 +391,6 @@ export function InputPage() {
           </div>
         </div>
       </div>
-
-    
     </div>
   );
 }

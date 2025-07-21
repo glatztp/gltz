@@ -30,7 +30,6 @@ import { Card, CardContent } from "./ui/layout";
 // Layout Components
 import { NavigationHeader } from "./layout/NavigationHeader";
 import { ComponentsSidebar } from "./layout/ComponentsSidebar";
-import { ComponentDocs } from "./layout/ComponentDocs";
 import { DocumentationPage } from "./layout/documentation-page";
 import { ThemeProvider } from "./providers/theme-provider";
 
