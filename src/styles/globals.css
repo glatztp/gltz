@@ -1,0 +1,735 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paleta de cores espetacular - Tema Claro */
+    --background: 0 0% 99%;
+    --foreground: 240 15% 9%;
+
+    /* Cards com gradiente sutil */
+    --card: 0 0% 100%;
+    --card-foreground: 240 15% 9%;
+
+    /* Popovers elegantes */
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 15% 9%;
+
+    /* Cores primárias vibrantes - Azul royal moderno */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 217 91% 55%;
+    --primary-active: 217 91% 50%;
+
+    /* Cores secundárias sofisticadas */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 240 15% 9%;
+    --secondary-hover: 220 14% 92%;
+
+    /* Cores neutras refinadas */
+    --muted: 220 14% 96%;
+    --muted-foreground: 240 10% 45%;
+
+    /* Cores de destaque elegantes */
+    --accent: 217 91% 95%;
+    --accent-foreground: 217 91% 25%;
+    --accent-hover: 217 91% 90%;
+
+    /* Cores de ação */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    /* Bordas e inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    /* Gradientes especiais */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(217 91% 60%) 0%,
+      hsl(229 84% 72%) 100%
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(220 14% 96%) 0%,
+      hsl(220 14% 92%) 100%
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(217 91% 95%) 0%,
+      hsl(217 91% 90%) 100%
+    );
+    --gradient-rainbow: linear-gradient(
+      45deg,
+      #ff6b6b,
+      #4ecdc4,
+      #45b7d1,
+      #96ceb4,
+      #feca57,
+      #ff9ff3
+    );
+
+    /* Sombras sofisticadas */
+    --shadow-sm: 0 1px 2px hsl(240 15% 9% / 0.05);
+    --shadow-md: 0 4px 6px hsl(240 15% 9% / 0.1),
+      0 2px 4px hsl(240 15% 9% / 0.06);
+    --shadow-lg: 0 10px 15px hsl(240 15% 9% / 0.1),
+      0 4px 6px hsl(240 15% 9% / 0.05);
+    --shadow-xl: 0 20px 25px hsl(240 15% 9% / 0.1),
+      0 10px 10px hsl(240 15% 9% / 0.04);
+    --shadow-glow: 0 0 20px hsl(217 91% 60% / 0.3);
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Paleta de cores espetacular - Tema Escuro */
+    --background: 240 15% 6%;
+    --foreground: 0 0% 95%;
+
+    /* Cards com elegância dark */
+    --card: 240 15% 8%;
+    --card-foreground: 0 0% 95%;
+
+    /* Popovers dark refinados */
+    --popover: 240 15% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Cores primárias brilhantes no dark */
+    --primary: 217 91% 65%;
+    --primary-foreground: 240 15% 6%;
+    --primary-hover: 217 91% 70%;
+    --primary-active: 217 91% 60%;
+
+    /* Cores secundárias dark */
+    --secondary: 240 15% 12%;
+    --secondary-foreground: 0 0% 95%;
+    --secondary-hover: 240 15% 16%;
+
+    /* Cores neutras dark */
+    --muted: 240 15% 12%;
+    --muted-foreground: 240 10% 60%;
+
+    /* Cores de destaque dark */
+    --accent: 240 15% 12%;
+    --accent-foreground: 217 91% 65%;
+    --accent-hover: 240 15% 16%;
+
+    /* Cores de ação dark */
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 76% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 60%;
+    --warning-foreground: 0 0% 100%;
+    --info: 217 91% 65%;
+    --info-foreground: 0 0% 100%;
+
+    /* Bordas e inputs dark */
+    --border: 240 15% 18%;
+    --input: 240 15% 18%;
+    --ring: 217 91% 65%;
+
+    /* Gradientes especiais dark */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(217 91% 65%) 0%,
+      hsl(229 84% 75%) 100%
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(240 15% 12%) 0%,
+      hsl(240 15% 16%) 100%
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(240 15% 12%) 0%,
+      hsl(240 15% 16%) 100%
+    );
+    --gradient-rainbow: linear-gradient(
+      45deg,
+      #ff8a80,
+      #4ecdc4,
+      #64b5f6,
+      #81c784,
+      #ffb74d,
+      #f8bbd9
+    );
+
+    /* Sombras dark sofisticadas */
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 6px hsl(0 0% 0% / 0.3), 0 2px 4px hsl(0 0% 0% / 0.2);
+    --shadow-lg: 0 10px 15px hsl(0 0% 0% / 0.4), 0 4px 6px hsl(0 0% 0% / 0.3);
+    --shadow-xl: 0 20px 25px hsl(0 0% 0% / 0.5), 0 10px 10px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 30px hsl(217 91% 65% / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Animações espetaculares e efeitos visuais */
+@layer utilities {
+  /* Animações de entrada */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 5px hsl(var(--primary) / 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.8),
+        0 0 30px hsl(var(--primary) / 0.4);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes rotate-gradient {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Classes de animação */
+  .animate-fade-in {
+    animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.1),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Efeitos de hover espetaculares */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+    transform: scale(1.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-gradient {
+    background: var(--gradient-primary);
+    background-size: 200% 100%;
+    transition: all 0.4s ease;
+  }
+
+  .hover-gradient:hover {
+    background-position: 100% 0;
+    transform: scale(1.05);
+  }
+
+  .hover-rainbow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hover-rainbow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-rainbow);
+    opacity: 0;
+    transition: all 0.6s ease;
+    z-index: -1;
+  }
+
+  .hover-rainbow:hover::before {
+    left: 0;
+    opacity: 0.1;
+  }
+
+  /* Gradientes de fundo incríveis */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .bg-gradient-rainbow {
+    background: var(--gradient-rainbow);
+    background-size: 200% 200%;
+  }
+
+  .bg-gradient-aurora {
+    background: linear-gradient(
+      45deg,
+      hsl(217 91% 60% / 0.8),
+      hsl(142 76% 36% / 0.8),
+      hsl(295 71% 73% / 0.8),
+      hsl(38 92% 50% / 0.8)
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .bg-gradient-cosmic {
+    background: linear-gradient(
+      135deg,
+      #667eea 0%,
+      #764ba2 25%,
+      #f093fb 50%,
+      #f5576c 75%,
+      #4facfe 100%
+    );
+    background-size: 300% 300%;
+    animation: gradient-shift 10s ease infinite;
+  }
+
+  /* Bordas com gradiente */
+  .border-gradient {
+    border: 2px solid transparent;
+    background: linear-gradient(hsl(var(--background)), hsl(var(--background)))
+        padding-box,
+      var(--gradient-primary) border-box;
+  }
+
+  .border-gradient-rainbow {
+    border: 2px solid transparent;
+    background: linear-gradient(hsl(var(--background)), hsl(var(--background)))
+        padding-box,
+      var(--gradient-rainbow) border-box;
+  }
+
+  /* Texto com gradiente */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .text-gradient-rainbow {
+    background: var(--gradient-rainbow);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  /* Efeitos de partículas */
+  .particle-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particle-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+        circle at 20% 80%,
+        hsl(var(--primary) / 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        hsl(var(--accent) / 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 40%,
+        hsl(var(--secondary) / 0.1) 0%,
+        transparent 50%
+      );
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* Efeito de cristal/glass */
+  .glass-effect {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.2);
+    box-shadow: 0 8px 32px hsl(var(--foreground) / 0.1),
+      inset 0 1px 0 hsl(var(--background) / 0.2);
+  }
+
+  .glass-effect-strong {
+    background: hsl(var(--background) / 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsl(var(--border) / 0.3);
+    box-shadow: 0 12px 40px hsl(var(--foreground) / 0.15),
+      inset 0 1px 0 hsl(var(--background) / 0.3);
+  }
+
+  /* Sombras customizadas */
+  .shadow-soft {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-md);
+  }
+
+  .shadow-strong {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .shadow-epic {
+    box-shadow: var(--shadow-xl);
+  }
+
+  .shadow-glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-rainbow {
+    box-shadow: 0 10px 25px hsl(0 70% 60% / 0.3),
+      0 20px 40px hsl(120 70% 60% / 0.2), 0 30px 60px hsl(240 70% 60% / 0.1);
+  }
+}
+
+/* Estilos personalizados para scrollbar */
+@layer utilities {
+  /* Scrollbar geral para webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted) / 0.2);
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 8px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px hsl(var(--muted-foreground) / 0.2);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: hsl(var(--muted));
+  }
+
+  /* Scrollbar mais fino para a sidebar */
+  .sidebar-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .sidebar-scroll::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+    border-radius: 6px;
+  }
+
+  .sidebar-scroll::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.2);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 transparent;
+  }
+
+  .sidebar-scroll::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.4);
+    transform: scaleX(1.2);
+    box-shadow: 0 0 8px hsl(var(--primary) / 0.3);
+  }
+
+  .sidebar-scroll::-webkit-scrollbar-thumb:active {
+    background: hsl(var(--primary) / 0.6);
+    box-shadow: 0 0 12px hsl(var(--primary) / 0.5);
+  }
+
+  /* Animação suave para o scrollbar */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) hsl(var(--muted));
+  }
+
+  /* Firefox scrollbar styling */
+  .sidebar-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.2) hsl(var(--background));
+  }
+
+  /* Hover effect para área de scroll */
+  .scroll-area-hover:hover::-webkit-scrollbar-thumb {
+    background: hsl(var(--accent-foreground) / 0.4);
+  }
+
+  /* Scrollbar para conteúdo principal */
+  .main-content-scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .main-content-scroll::-webkit-scrollbar-track {
+    background: hsl(var(--muted) / 0.3);
+    border-radius: 10px;
+    margin: 4px;
+  }
+
+  .main-content-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.3),
+      hsl(var(--primary) / 0.5),
+      hsl(var(--primary) / 0.3)
+    );
+    border-radius: 10px;
+    border: 2px solid hsl(var(--background));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px hsl(var(--primary) / 0.1);
+  }
+
+  .main-content-scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.5),
+      hsl(var(--primary) / 0.7),
+      hsl(var(--primary) / 0.5)
+    );
+    transform: scaleY(1.05);
+    box-shadow: 0 4px 16px hsl(var(--primary) / 0.2);
+  }
+
+  .main-content-scroll::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.7),
+      hsl(var(--primary) / 0.9),
+      hsl(var(--primary) / 0.7)
+    );
+    transform: scaleY(1.1);
+    box-shadow: 0 6px 20px hsl(var(--primary) / 0.3);
+  }
+
+  /* Animação de fade para scrollbar */
+  .fade-scrollbar::-webkit-scrollbar {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .fade-scrollbar:hover::-webkit-scrollbar {
+    opacity: 1;
+  }
+
+  /* Animação de pulse para scrollbar durante loading */
+  @keyframes scrollbar-pulse {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .pulse-scrollbar::-webkit-scrollbar-thumb {
+    animation: scrollbar-pulse 2s ease-in-out infinite;
+  }
+
+  /* Efeito de rainbow no scrollbar (modo especial) */
+  .rainbow-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      45deg,
+      hsl(0 70% 60%),
+      hsl(60 70% 60%),
+      hsl(120 70% 60%),
+      hsl(180 70% 60%),
+      hsl(240 70% 60%),
+      hsl(300 70% 60%)
+    );
+    background-size: 200% 200%;
+    animation: rainbow-gradient 3s ease infinite;
+  }
+
+  @keyframes rainbow-gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Scrollbar responsivo para mobile */
+  @media (max-width: 768px) {
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    .sidebar-scroll::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .main-content-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+  }
+}
