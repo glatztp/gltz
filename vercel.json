@@ -1,13 +1,8 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist-demo"
-      }
-    }
-  ],
+  "framework": "vite",
+  "buildCommand": "vite build",
+  "outputDirectory": "dist-demo",
+  "devCommand": "vite dev --port $PORT",
   "rewrites": [
     {
       "source": "/(.*)",

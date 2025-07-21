@@ -10,7 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run clean && node build.js && npm run build:types && npm run build:css",
+    "build": "vite build",
+    "build:lib": "npm run clean && node build.js && npm run build:types && npm run build:css",
     "build:js": "node build.js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:css": "tailwindcss -i ./src/styles/globals.css -o ./dist/styles.css --minify",
@@ -21,7 +22,7 @@
     "demo:preview": "vite preview",
     "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build:lib"
   },
   "keywords": [
     "react",
