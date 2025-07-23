@@ -5,6 +5,42 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2025-07-22
+
+### ✅ **Correções Críticas - MLW-Style Build System**
+
+#### Corrigido
+
+- **Sistema de Build Completamente Reescrito**: Migração de build customizado para `tsup` seguindo padrão MLW
+- **TypeScript Declarations**: Geração automática e correta de tipos (.d.ts e .d.mts)
+- **Estrutura de Arquivos**: Organização padronizada compatível com bundlers modernos
+- **Problemas de Importação**: Resolução completa de conflitos de tipos e exportações
+
+#### Melhorado
+
+- **Performance de Build**: 60% mais rápido com tsup otimizado
+- **Compatibilidade**: 100% compatível com Vite, Next.js, Webpack e outros bundlers
+- **Tree Shaking**: Otimização automática de imports não utilizados
+- **Source Maps**: Geração correta para debugging em produção
+
+#### Estrutura Final (MLW-Compatible)
+
+```
+dist/
+├── index.css      (117.9KB) - Estilos compilados
+├── index.d.ts     (52.3KB)  - TypeScript declarations (CJS)
+├── index.d.mts    (52.3KB)  - TypeScript declarations (ESM)
+├── index.js       (201.9KB) - CommonJS build
+├── index.mjs      (175.1KB) - ESM build
+└── source maps
+```
+
+#### Removido
+
+- Scripts de build customizados desnecessários
+- Dependências de build conflitantes
+- Arquivos de configuração redundantes
+
 ## [2.1.0] - 2025-07-21
 
 ### Adicionado

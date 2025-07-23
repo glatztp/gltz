@@ -4,7 +4,6 @@ export * from "./badge";
 export * from "./avatar";
 export * from "./toggle";
 export * from "./toggle-group";
-export * from "./accordion";
 export * from "./card";
 export * from "./tabs";
 export * from "./separator";

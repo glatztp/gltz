@@ -328,7 +328,7 @@ export const DocumentationPage = () => {
                         variant="ghost"
                         onClick={() =>
                           copyToClipboard(
-                            "import '@gltz-packages/ui/styles.css';"
+                            "import '@gltz-packages/ui/dist/index.css';"
                           )
                         }
                         className="h-6 px-2 text-xs"
@@ -339,7 +339,7 @@ export const DocumentationPage = () => {
                     <div className="bg-gray-900 dark:bg-gray-100 text-gray-100 dark:text-gray-900 p-4 rounded-lg">
                       <pre className="text-sm font-mono">
                         {`// pages/_app.tsx ou app/layout.tsx
-import '@gltz-packages/ui/styles.css';
+import '@gltz-packages/ui/dist/index.css';
 
 export default function App() {
   // seu código...
@@ -358,7 +358,7 @@ export default function App() {
                         variant="ghost"
                         onClick={() =>
                           copyToClipboard(
-                            "import '@gltz-packages/ui/styles.css';"
+                            "import '@gltz-packages/ui/dist/index.css';"
                           )
                         }
                         className="h-6 px-2 text-xs"
@@ -371,7 +371,7 @@ export default function App() {
                         {`// main.tsx ou index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '@gltz-packages/ui/styles.css';
+import '@gltz-packages/ui/dist/index.css';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(<App />);`}
@@ -404,6 +404,105 @@ function TestComponent() {
   );
 }`}
                   </pre>
+                </div>
+              </div>
+
+              {/* Troubleshooting */}
+              <div className="bg-orange-50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-800 rounded-lg p-6">
+                <h3 className="font-semibold text-orange-800 dark:text-orange-200 mb-3 flex items-center gap-2">
+                  🔧 Troubleshooting - Problemas Comuns
+                </h3>
+
+                <div className="space-y-4">
+                  <div className="border-l-4 border-red-400 pl-4">
+                    <h4 className="font-medium text-red-800 dark:text-red-200 mb-2">
+                      Erro: "Missing field 'negated' on ScannerOptions.sources"
+                    </h4>
+                    <p className="text-sm text-red-700 dark:text-red-300 mb-3">
+                      Este erro ocorre quando há conflito entre versões do
+                      Tailwind CSS. Soluções:
+                    </p>
+
+                    <div className="space-y-3">
+                      <div>
+                        <span className="text-sm font-medium">
+                          Solução 1: Usar apenas o CSS compilado (Recomendado)
+                        </span>
+                        <div className="bg-gray-900 dark:bg-gray-100 text-gray-100 dark:text-gray-900 p-3 rounded mt-2">
+                          <pre className="text-xs font-mono">
+                            {`// ✅ Use apenas o CSS compilado, não configure Tailwind no seu projeto
+import '@gltz-packages/ui/dist/index.css';
+
+// ❌ NÃO faça isso se estiver usando nossa biblioteca:
+// import './tailwind.css' // Remove se existir`}
+                          </pre>
+                        </div>
+                      </div>
+
+                      <div>
+                        <span className="text-sm font-medium">
+                          Solução 2: Atualizar Tailwind CSS (se necessário)
+                        </span>
+                        <div className="bg-gray-900 dark:bg-gray-100 text-gray-100 dark:text-gray-900 p-3 rounded mt-2">
+                          <pre className="text-xs font-mono">
+                            {`npm install tailwindcss@latest postcss@latest autoprefixer@latest`}
+                          </pre>
+                        </div>
+                      </div>
+
+                      <div>
+                        <span className="text-sm font-medium">
+                          Solução 3: Configuração tailwind.config.js (para
+                          projetos avançados)
+                        </span>
+                        <div className="bg-gray-900 dark:bg-gray-100 text-gray-100 dark:text-gray-900 p-3 rounded mt-2">
+                          <pre className="text-xs font-mono">
+                            {`// tailwind.config.js
+module.exports = {
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    // ❌ NÃO inclua node_modules da nossa biblioteca
+    // "./node_modules/@gltz-packages/ui/**/*.{js,ts,jsx,tsx}"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}`}
+                          </pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="border-l-4 border-yellow-400 pl-4">
+                    <h4 className="font-medium text-yellow-800 dark:text-yellow-200 mb-2">
+                      Estilos não aparecem corretamente
+                    </h4>
+                    <p className="text-sm text-yellow-700 dark:text-yellow-300 mb-2">
+                      Verifique se você importou o CSS da biblioteca:
+                    </p>
+                    <div className="bg-gray-900 dark:bg-gray-100 text-gray-100 dark:text-gray-900 p-3 rounded">
+                      <pre className="text-xs font-mono">
+                        {`// ✅ Correto - no topo do seu App.tsx ou main.tsx
+import '@gltz-packages/ui/dist/index.css';`}
+                      </pre>
+                    </div>
+                  </div>
+
+                  <div className="border-l-4 border-blue-400 pl-4">
+                    <h4 className="font-medium text-blue-800 dark:text-blue-200 mb-2">
+                      Componentes não funcionam (TypeScript)
+                    </h4>
+                    <p className="text-sm text-blue-700 dark:text-blue-300 mb-2">
+                      Verifique as peer dependencies e tipos:
+                    </p>
+                    <div className="bg-gray-900 dark:bg-gray-100 text-gray-100 dark:text-gray-900 p-3 rounded">
+                      <pre className="text-xs font-mono">
+                        {`npm install @types/react @types/react-dom`}
+                      </pre>
+                    </div>
+                  </div>
                 </div>
               </div>
             </CardContent>
