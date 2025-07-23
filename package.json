@@ -1,6 +1,7 @@
 {
   "name": "@gltz-packages/ui",
   "version": "2.2.0",
+  "type": "module",
   "description": "Biblioteca de componentes React/TypeScript moderna, acessível e customizável construída com Radix UI + Tailwind CSS",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -24,6 +25,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run build:css && tsup",
+    "build:demo": "vite build",
     "build:css": "npx tailwindcss -i ./src/styles/library.css -o ./dist/index.css --config ./tailwind.config.js",
     "clean": "rimraf dist",
     "lint": "eslint .",
