@@ -772,3 +772,38 @@
     transition: box-shadow 0.15s ease;
   }
 }
+
+/* Estilos para alto contraste */
+.high-contrast {
+  filter: contrast(var(--contrast-multiplier, 1));
+}
+
+.high-contrast * {
+  text-shadow: 0 0 1px currentColor;
+}
+
+.high-contrast .border {
+  border-width: 2px !important;
+}
+
+/* Estilos para modo reduzido */
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  animation-duration: var(--animation-duration, 0.1s) !important;
+  animation-delay: 0s !important;
+  transition-duration: var(--animation-duration, 0.1s) !important;
+  transition-delay: 0s !important;
+}
+
+/* Estilos para desabilitar animações */
+.no-animations *,
+.no-animations *::before,
+.no-animations *::after {
+  animation-duration: 0.01ms !important;
+  animation-delay: -0.01ms !important;
+  transition-duration: 0.01ms !important;
+  transition-delay: 0s !important;
+  scroll-behavior: auto !important;
+}
+

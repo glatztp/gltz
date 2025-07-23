@@ -31,7 +31,6 @@ import { Card, CardContent } from "./ui/layout";
 import { NavigationHeader } from "./layout/NavigationHeader";
 import { ComponentsSidebar } from "./layout/ComponentsSidebar";
 import { DocumentationPage } from "./layout/documentation-page";
-import { ThemeProvider } from "./providers/theme-provider";
 
 // Page Components
 import { ComingSoonPage } from "./pages/coming-soon-page";
@@ -81,6 +80,7 @@ import { ToggleGroupPage } from "./pages/toggle-group-page";
 import { TooltipPage } from "./pages/tooltip-page";
 import { ResizablePage } from "./pages/resizable-page";
 import { CollapsiblePage } from "./pages/collapsible-page";
+import { ThemeProvider } from "./providers/theme-provider";
 
 // Mapeamento de componentes
 const componentPages: Record<string, React.ComponentType> = {
@@ -192,126 +192,233 @@ function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-secondary/10 via-transparent to-transparent" />
+
+        {/* Floating geometric shapes */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-40 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-primary/3 rounded-full blur-2xl animate-pulse delay-2000" />
+
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
+      </div>
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
-        <div className="relative">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
+      <section className="relative overflow-hidden min-h-screen flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/60" />
+        <div className="relative w-full">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-5xl mx-auto"
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center max-w-6xl mx-auto"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2, duration: 0.5, type: "spring" }}
-                className="mb-6 sm:mb-8"
-              >
-                <Badge
-                  variant="outline"
-                  className="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium border-2 bg-background/80 backdrop-blur-sm hover:bg-primary/5 transition-colors"
+              {/* Floating badges */}
+              <div className="relative mb-8 sm:mb-12">
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{
+                    delay: 0.3,
+                    duration: 0.8,
+                    type: "spring",
+                    stiffness: 100,
+                  }}
+                  className="inline-block"
                 >
-                  <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                  v2.0 • Novos componentes e melhorias
-                </Badge>
+                  <Badge
+                    variant="outline"
+                    className="relative px-4 sm:px-6 py-3 text-sm sm:text-base font-bold border-2 bg-background/90 backdrop-blur-md hover:bg-primary/10 transition-all duration-500 shadow-2xl shadow-primary/20 hover:shadow-primary/40 hover:scale-105"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full blur-xl" />
+                    <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 animate-spin-slow text-primary" />
+                    <span className="relative bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                      v2.5 • Revolucionário e Poderoso
+                    </span>
+                  </Badge>
+                </motion.div>
+              </div>
+
+              {/* Hero Title with advanced typography */}
+              <motion.div
+                initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                className="mb-6 sm:mb-8 lg:mb-12"
+              >
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-none">
+                  <span className="relative inline-block">
+                    <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent blur-sm opacity-50 scale-110">
+                      gltzUI
+                    </span>
+                    <span className="relative bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent drop-shadow-2xl">
+                      gltzUI
+                    </span>
+                  </span>
+                </h1>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+                  className="h-1 sm:h-2 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mt-4 sm:mt-6 max-w-md opacity-80"
+                />
               </motion.div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-4 sm:mb-6 lg:mb-8"
-              >
-                <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent drop-shadow-sm">
-                  gltzUI
-                </span>
-              </motion.h1>
-
+              {/* Enhanced subtitle */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-6 sm:mb-8 lg:mb-12 leading-relaxed max-w-4xl mx-auto px-4"
+                transition={{ delay: 0.7, duration: 0.8 }}
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-12 lg:mb-16 leading-relaxed max-w-4xl mx-auto px-4 font-medium"
               >
-                Biblioteca de componentes React moderna, acessível e
-                customizável. Construa interfaces excepcionais com componentes
-                que seus usuários vão amar.
+                A biblioteca de componentes React mais{" "}
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
+                  avançada
+                </span>{" "}
+                e{" "}
+                <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-bold">
+                  elegante
+                </span>{" "}
+                do mercado. Transforme suas ideias em interfaces que{" "}
+                <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent font-bold">
+                  impressionam
+                </span>
+                .
               </motion.p>
 
+              {/* Enhanced CTA Buttons */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-2xl mx-auto"
+                transition={{ delay: 0.9, duration: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-center items-center max-w-3xl mx-auto"
               >
                 <Button
                   size="lg"
-                  className="group relative overflow-hidden w-full sm:w-auto shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="group relative overflow-hidden w-full sm:w-auto px-6 py-3 text-base font-bold shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-500 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary border-0"
                   onClick={() => navigate("/components")}
                 >
-                  <Rocket className="h-4 w-4 sm:h-5 sm:w-5 mr-2 transition-transform group-hover:scale-110" />
-                  Começar Agora
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                  <Rocket className="h-4 w-4 sm:h-5 sm:w-5 mr-2 transition-all duration-300 group-hover:scale-125 group-hover:rotate-12" />
+                  <span className="relative z-10">Descobrir Agora</span>
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/50 to-secondary/50 blur-xl scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </Button>
 
                 <Button
                   variant="outline"
                   size="lg"
-                  className="group w-full sm:w-auto border-2 hover:bg-primary/5 transition-all duration-300"
+                  className="group relative w-full sm:w-auto px-6 py-3 text-base font-bold border-2 border-primary/30 hover:border-primary/60 bg-background/80 backdrop-blur-md hover:bg-primary/5 transition-all duration-500 shadow-xl hover:shadow-2xl"
                   onClick={() =>
                     window.open("https://github.com/glatztp/gltz", "_blank")
                   }
                 >
-                  <Github className="h-4 w-4 sm:h-5 sm:w-5 mr-2 transition-transform group-hover:rotate-12" />
-                  Ver no GitHub
+                  <Github className="h-5 w-5 sm:h-6 sm:w-6 mr-3 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110" />
+                  <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent group-hover:from-primary group-hover:to-secondary transition-all duration-300">
+                    Código Aberto
+                  </span>
                 </Button>
 
                 <Button
                   variant="ghost"
                   size="lg"
-                  className="group w-full sm:w-auto hover:bg-primary/5 transition-all duration-300"
+                  className="group relative w-full sm:w-auto px-8 py-4 text-lg font-bold hover:bg-primary/10 transition-all duration-500 shadow-lg hover:shadow-xl"
                   onClick={() => navigate("/docs")}
                 >
-                  <BookOpen className="h-4 w-4 sm:h-5 sm:w-5 mr-2 transition-transform group-hover:scale-110" />
-                  Documentação
+                  <BookOpen className="h-5 w-5 sm:h-6 sm:w-6 mr-3 transition-all duration-300 group-hover:scale-110 group-hover:-rotate-12" />
+                  <span className="bg-gradient-to-r from-muted-foreground to-foreground bg-clip-text text-transparent group-hover:from-primary group-hover:to-secondary transition-all duration-300">
+                    Documentação
+                  </span>
                 </Button>
               </motion.div>
+
+              {/* Floating elements around the hero */}
+              <div className="absolute top-20 left-10 hidden lg:block">
+                <motion.div
+                  animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="w-16 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl backdrop-blur-sm shadow-2xl"
+                />
+              </div>
+              <div className="absolute top-32 right-20 hidden lg:block">
+                <motion.div
+                  animate={{ y: [0, 15, 0], rotate: [0, -8, 0] }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1,
+                  }}
+                  className="w-12 h-12 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-full backdrop-blur-sm shadow-2xl"
+                />
+              </div>
+              <div className="absolute bottom-20 left-20 hidden lg:block">
+                <motion.div
+                  animate={{ y: [0, -10, 0], rotate: [0, 10, 0] }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2,
+                  }}
+                  className="w-20 h-20 bg-gradient-to-br from-primary/15 to-secondary/15 rounded-3xl backdrop-blur-sm shadow-2xl"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-12 sm:py-16 lg:py-20 border-y bg-gradient-to-r from-muted/30 via-muted/10 to-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Enhanced Stats Section */}
+      <section className="relative py-16 sm:py-20 lg:py-28 border-y-2 border-primary/10 bg-gradient-to-r from-background via-primary/5 to-background overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:20px_20px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-transparent" />
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-16"
           >
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                initial={{ opacity: 0, y: 40, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  delay: index * 0.15,
+                  duration: 0.8,
+                  ease: "easeOut",
+                }}
                 viewport={{ once: true }}
-                className="text-center group cursor-pointer"
+                className="text-center group cursor-pointer relative"
               >
-                <div className="flex items-center justify-center mb-3 sm:mb-4 text-primary group-hover:scale-110 transition-transform duration-300">
-                  {stat.icon}
-                </div>
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-1 sm:mb-2 group-hover:text-primary transition-colors duration-300">
-                  {stat.value}
-                </div>
-                <div className="text-xs sm:text-sm lg:text-base text-muted-foreground font-medium">
-                  {stat.label}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl blur-xl scale-125 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                <div className="relative bg-background/80 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-xl group-hover:shadow-2xl border border-primary/20 group-hover:border-primary/40 transition-all duration-500">
+                  <div className="flex items-center justify-center mb-4 sm:mb-6">
+                    <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 text-primary group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                      {stat.icon}
+                    </div>
+                  </div>
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-black mb-2 sm:mb-3 transition-all duration-500">
+                    <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent group-hover:from-primary group-hover:to-secondary">
+                      {stat.value}
+                    </span>
+                  </div>
+                  <div className="text-sm sm:text-base lg:text-lg text-muted-foreground font-bold tracking-wide">
+                    {stat.label}
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -319,139 +426,319 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 sm:py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Revolutionary Features Section */}
+      <section className="relative py-20 sm:py-28 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-12 sm:mb-16 lg:mb-20"
+            className="text-center mb-16 sm:mb-20 lg:mb-28"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-              Por que escolher o gltzUI?
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="mb-8"
+            >
+              <Badge
+                variant="outline"
+                className="px-6 py-3 text-base font-bold border-2 border-primary/30 bg-background/90 backdrop-blur-md shadow-xl"
+              >
+                ✨ Recursos Inovadores
+              </Badge>
+            </motion.div>
+
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 sm:mb-8">
+              <span className="bg-gradient-to-r from-foreground via-primary to-secondary bg-clip-text text-transparent">
+                Por que escolher o
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+                gltzUI?
+              </span>
             </h2>
-            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-              Desenvolvemos cada componente pensando na experiência do
-              desenvolvedor e na satisfação do usuário final.
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="h-2 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-8 max-w-lg"
+            />
+            <p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4 font-medium">
+              Cada componente foi{" "}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
+                meticulosamente crafted
+              </span>{" "}
+              pensando na experiência do desenvolvedor e na{" "}
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-bold">
+                satisfação do usuário final
+              </span>
+              .
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  delay: index * 0.15,
+                  duration: 0.8,
+                  ease: "easeOut",
+                }}
                 viewport={{ once: true }}
-                className="group"
+                className="group h-full"
               >
-                <Card className="h-full group-hover:shadow-xl group-hover:shadow-primary/5 transition-all duration-500 border-2 border-border/50 hover:border-primary/20 bg-gradient-to-br from-background via-background to-muted/20 backdrop-blur-sm">
-                  <CardContent className="p-6 sm:p-8">
-                    <div className="flex items-center mb-6">
-                      <div className="p-3 sm:p-4 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 text-primary group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-primary/10">
-                        {feature.icon}
+                <div className="relative h-full">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl blur-xl scale-105 opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                  <Card className="relative h-full group-hover:shadow-2xl group-hover:shadow-primary/10 transition-all duration-700 border-2 border-border/50 hover:border-primary/30 bg-gradient-to-br from-background via-background to-primary/5 backdrop-blur-sm overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <CardContent className="relative p-8 sm:p-10 h-full flex flex-col">
+                      <div className="flex items-center mb-8">
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-2xl blur-lg scale-110 opacity-0 group-hover:opacity-50 transition-all duration-700" />
+                          <div className="relative p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 text-primary group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 shadow-xl shadow-primary/20">
+                            {feature.icon}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                    <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300">
-                      {feature.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                      <h3 className="text-2xl sm:text-3xl font-black mb-4 sm:mb-6 group-hover:text-primary transition-colors duration-500 leading-tight">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed text-base sm:text-lg flex-grow">
+                        {feature.description}
+                      </p>
+
+                      {/* Hover effect line */}
+                      <motion.div
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        transition={{ delay: index * 0.1 + 0.5, duration: 0.8 }}
+                        viewport={{ once: true }}
+                        className="h-1 bg-gradient-to-r from-primary to-secondary rounded-full mt-6 group-hover:h-2 transition-all duration-500"
+                      />
+                    </CardContent>
+                  </Card>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Code Example Section */}
-      <section className="py-16 sm:py-20 lg:py-32 bg-gradient-to-br from-muted/30 via-muted/10 to-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Revolutionary Code Example Section */}
+      <section className="relative py-20 sm:py-28 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-muted/40 via-background to-primary/10" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-secondary/15 via-transparent to-transparent" />
+
+        {/* Animated background elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/10 rounded-full blur-2xl animate-pulse delay-1000" />
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-12 sm:mb-16 lg:mb-20"
+            className="text-center mb-16 sm:mb-20 lg:mb-28"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-              Simples de usar, poderoso de customizar
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="mb-8"
+            >
+              <Badge
+                variant="outline"
+                className="px-6 py-3 text-base font-bold border-2 border-secondary/30 bg-background/90 backdrop-blur-md shadow-xl"
+              >
+                🚀 Developer Experience
+              </Badge>
+            </motion.div>
+
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 sm:mb-8">
+              <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+                Simples de usar,
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+                poderoso de customizar
+              </span>
             </h2>
-            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-              Instale, importe e comece a usar. É realmente simples assim.
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="h-2 bg-gradient-to-r from-secondary via-primary to-secondary rounded-full mx-auto mb-8 max-w-2xl"
+            />
+            <p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4 font-medium">
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
+                Instale, importe e comece a usar
+              </span>
+              . É realmente simples assim.
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
+            whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="max-w-5xl mx-auto"
+            className="max-w-6xl mx-auto perspective-1000"
           >
-            <div className="bg-background/80 backdrop-blur-sm border-2 border-border/50 rounded-2xl overflow-hidden shadow-2xl shadow-primary/5 hover:shadow-primary/10 transition-all duration-500">
-              <div className="bg-gradient-to-r from-muted via-muted/80 to-muted px-4 sm:px-6 py-3 sm:py-4 border-b-2 border-border/50">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="flex gap-1.5 sm:gap-2">
-                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
-                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
+            <div className="relative group">
+              {/* Glowing border effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary rounded-3xl blur-xl scale-105 opacity-20 group-hover:opacity-40 transition-all duration-1000" />
+
+              <div className="relative bg-background/95 backdrop-blur-xl border-2 border-primary/20 rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 group-hover:shadow-primary/20 transition-all duration-700">
+                {/* Enhanced header */}
+                <div className="bg-gradient-to-r from-muted via-primary/10 to-muted px-6 sm:px-8 py-4 sm:py-6 border-b-2 border-primary/20 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5" />
+                  <div className="relative flex items-center gap-4 sm:gap-6">
+                    <div className="flex gap-2 sm:gap-3">
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-lg animate-pulse"></div>
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-lg animate-pulse delay-100"></div>
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg animate-pulse delay-200"></div>
+                    </div>
+                    <span className="ml-4 text-sm sm:text-base font-mono font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                      App.tsx • gltzUI Magic ✨
+                    </span>
                   </div>
-                  <span className="ml-3 sm:ml-4 text-xs sm:text-sm text-muted-foreground font-mono font-medium">
-                    App.tsx
-                  </span>
                 </div>
-              </div>
-              <div className="p-4 sm:p-6 lg:p-8 overflow-x-auto">
-                <pre className="text-xs sm:text-sm lg:text-base text-foreground font-mono leading-relaxed">
-                  {`import { Button, Card, Toast } from '@gltzui/components'
+
+                {/* Enhanced code content */}
+                <div className="relative p-6 sm:p-8 lg:p-12 overflow-x-auto bg-gradient-to-br from-background/50 to-primary/5">
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]" />
+                  <pre className="relative text-sm sm:text-base lg:text-lg text-foreground font-mono leading-relaxed">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.8, duration: 1.5 }}
+                      viewport={{ once: true }}
+                    >
+                      {`import { Button, Card, Toast, Avatar } from '@gltzui/components'
 
 export function App() {
   return (
-    <Card className="p-6">
-      <h1 className="text-2xl font-bold mb-4">
-        Bem-vindo ao gltzUI
-      </h1>
-      <Button onClick={() => toast.success("Sucesso!")}>
-        Clique aqui
-      </Button>
+    <Card className="p-8 max-w-md mx-auto shadow-2xl">
+      <div className="text-center space-y-6">
+        <Avatar
+          size="xl"
+          src="https://github.com/glatztp.png"
+          animation="glow"
+          badge={<Crown className="h-4 w-4" />}
+          badgeColor="yellow"
+        />
+        
+        <h1 className="text-3xl font-bold bg-gradient-to-r 
+                       from-primary to-secondary bg-clip-text 
+                       text-transparent">
+          Bem-vindo ao gltzUI
+        </h1>
+        
+        <Button 
+          size="lg"
+          className="w-full" 
+          onClick={() => toast.success("🎉 Incrível!")}>
+          Experiência Mágica
+        </Button>
+      </div>
     </Card>
   )
 }`}
-                </pre>
+                    </motion.div>
+                  </pre>
+                </div>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Epic CTA Section */}
+      <section className="relative py-20 sm:py-28 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-transparent" />
+
+        {/* Animated particles */}
+        <div className="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-ping" />
+        <div className="absolute top-40 right-32 w-3 h-3 bg-secondary rounded-full animate-ping delay-1000" />
+        <div className="absolute bottom-32 left-32 w-2 h-2 bg-primary rounded-full animate-ping delay-2000" />
+        <div className="absolute bottom-20 right-20 w-3 h-3 bg-secondary rounded-full animate-ping delay-500" />
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-              Pronto para acelerar seu desenvolvimento?
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="mb-12"
+            >
+              <Badge
+                variant="outline"
+                className="px-8 py-4 text-lg font-black border-2 border-primary/40 bg-background/95 backdrop-blur-md shadow-2xl hover:shadow-primary/30 transition-all duration-500"
+              >
+                 Última Chamada
+              </Badge>
+            </motion.div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-black mb-8 sm:mb-12 lg:mb-16 leading-none">
+              <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+                Pronto para
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+                revolucionar
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-secondary to-foreground bg-clip-text text-transparent">
+                seu desenvolvimento?
+              </span>
             </h2>
-            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-10 lg:mb-12 leading-relaxed max-w-3xl mx-auto px-4">
-              Junte-se a milhares de desenvolvedores que já estão criando
-              interfaces incríveis com o gltzUI.
+
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="h-3 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-12 max-w-3xl"
+            />
+
+            <p className="text-2xl sm:text-3xl lg:text-4xl text-muted-foreground mb-12 sm:mb-16 lg:mb-20 leading-relaxed max-w-4xl mx-auto px-4 font-medium">
+              Junte-se a{" "}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-black">
+                milhares de desenvolvedores
+              </span>{" "}
+              que já estão criando interfaces{" "}
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-black">
+                extraordinárias
+              </span>{" "}
+              com o gltzUI.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center max-w-xl mx-auto">
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-10 justify-center max-w-2xl mx-auto">
               <Button
                 size="lg"
-                className="group w-full sm:w-auto shadow-lg hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
+                className="group relative overflow-hidden w-full sm:w-auto px-12 py-6 text-xl font-black shadow-2xl shadow-primary/40 hover:shadow-primary/60 transition-all duration-700 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary border-0 transform hover:scale-105"
                 onClick={() =>
                   window.open(
                     "https://www.npmjs.com/package/@gltz-packages/ui",
@@ -459,189 +746,176 @@ export function App() {
                   )
                 }
               >
-                <Rocket className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:translate-x-1 transition-transform duration-300" />
-                Instalar Agora
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                <Rocket className="h-6 w-6 sm:h-7 sm:w-7 mr-4 group-hover:translate-x-2 group-hover:scale-125 transition-all duration-500" />
+                <span className="relative z-10">Instalar Agora</span>
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/50 to-secondary/50 blur-2xl scale-125 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </Button>
+
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-2 hover:bg-primary/5 transition-all duration-300"
+                className="group relative w-full sm:w-auto px-12 py-6 text-xl font-black border-3 border-primary/40 hover:border-primary/70 bg-background/90 backdrop-blur-md hover:bg-primary/10 transition-all duration-700 shadow-xl hover:shadow-2xl transform hover:scale-105"
                 onClick={() => navigate("/components")}
               >
-                <Globe className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                Ver Exemplos
+                <Globe className="h-6 w-6 sm:h-7 sm:w-7 mr-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500" />
+                <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent group-hover:from-primary group-hover:to-secondary transition-all duration-500">
+                  Ver Exemplos
+                </span>
               </Button>
             </div>
+
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="mt-16 sm:mt-20 lg:mt-24"
+            >
+              <p className="text-sm sm:text-base text-muted-foreground mb-6 font-medium">
+                Confiado por desenvolvedores em mais de 50 países
+              </p>
+              <div className="flex justify-center items-center gap-8 sm:gap-12 opacity-60">
+                <div className="text-2xl sm:text-3xl font-black text-primary">
+                  100K+
+                </div>
+                <div className="w-1 h-8 bg-gradient-to-b from-primary to-secondary rounded-full" />
+                <div className="text-2xl sm:text-3xl font-black text-secondary">
+                  12K ⭐
+                </div>
+                <div className="w-1 h-8 bg-gradient-to-b from-secondary to-primary rounded-full" />
+                <div className="text-2xl sm:text-3xl font-black text-primary">
+                  5K+ Devs
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t-2 border-border/50 bg-gradient-to-br from-muted/40 via-muted/20 to-muted/40 backdrop-blur-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-            <div className="sm:col-span-2 lg:col-span-1">
-              <h3 className="font-bold text-xl sm:text-2xl mb-4 sm:mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                gltzUI
-              </h3>
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-sm">
-                Componentes React modernos para interfaces excepcionais.
-                Construindo o futuro do desenvolvimento web.
+      {/* Revolutionary Footer */}
+      <footer className="relative border-t-2 border-primary/20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-secondary/5" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:20px_20px]" />
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="sm:col-span-2 lg:col-span-1"
+            >
+              <div className="mb-8">
+                <h3 className="font-black text-3xl sm:text-4xl mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+                  gltzUI
+                </h3>
+                <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary rounded-full mb-6" />
+              </div>
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-sm font-medium">
+                Componentes React modernos para interfaces{" "}
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
+                  extraordinárias
+                </span>
+                . Construindo o futuro do desenvolvimento web.
               </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-base sm:text-lg mb-4 sm:mb-6">
-                Recursos
-              </h4>
-              <ul className="space-y-3 text-sm sm:text-base text-muted-foreground">
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 cursor-pointer flex items-center group"
-                    onClick={() => navigate("/docs")}
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      Documentação
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 cursor-pointer flex items-center group"
-                    onClick={() => navigate("/components")}
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      Componentes
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 cursor-pointer flex items-center group"
-                    onClick={() => navigate("/components")}
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      Exemplos
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 cursor-pointer flex items-center group"
-                    onClick={() => navigate("/themes")}
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      Temas
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-base sm:text-lg mb-4 sm:mb-6">
-                Comunidade
-              </h4>
-              <ul className="space-y-3 text-sm sm:text-base text-muted-foreground">
-                <li>
-                  <a
-                    href="https://github.com/glatztp/gltz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-primary transition-colors duration-300 flex items-center group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      GitHub
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 flex items-center group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      Discord
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 flex items-center group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      Twitter
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 flex items-center group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      Blog
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-base sm:text-lg mb-4 sm:mb-6">
-                Suporte
-              </h4>
-              <ul className="space-y-3 text-sm sm:text-base text-muted-foreground">
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 flex items-center group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      FAQ
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 flex items-center group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      Issues
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 flex items-center group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      Contribuir
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hover:text-primary transition-colors duration-300 flex items-center group"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      Roadmap
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            </motion.div>
+
+            {[
+              {
+                title: "Recursos",
+                items: [
+                  { name: "Documentação", action: () => navigate("/docs") },
+                  {
+                    name: "Componentes",
+                    action: () => navigate("/components"),
+                  },
+                  { name: "Exemplos", action: () => navigate("/components") },
+                  { name: "Temas", action: () => navigate("/themes") },
+                ],
+              },
+              {
+                title: "Comunidade",
+                items: [
+                  {
+                    name: "GitHub",
+                    action: () =>
+                      window.open("https://github.com/glatztp/gltz", "_blank"),
+                  },
+                  { name: "Discord", action: () => {} },
+                  { name: "Twitter", action: () => {} },
+                  { name: "Blog", action: () => {} },
+                ],
+              },
+              {
+                title: "Suporte",
+                items: [
+                  { name: "FAQ", action: () => {} },
+                  { name: "Issues", action: () => {} },
+                  { name: "Contribuir", action: () => {} },
+                  { name: "Roadmap", action: () => {} },
+                ],
+              },
+            ].map((section, sectionIndex) => (
+              <motion.div
+                key={section.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: sectionIndex * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h4 className="font-black text-xl sm:text-2xl mb-6 sm:mb-8 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+                  {section.title}
+                </h4>
+                <ul className="space-y-4 text-base sm:text-lg text-muted-foreground">
+                  {section.items.map((item, itemIndex) => (
+                    <motion.li
+                      key={item.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: sectionIndex * 0.1 + itemIndex * 0.05,
+                        duration: 0.4,
+                      }}
+                      viewport={{ once: true }}
+                    >
+                      <a
+                        href="#"
+                        className="group flex items-center hover:text-primary transition-all duration-300 cursor-pointer font-medium"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          item.action();
+                        }}
+                      >
+                        <span className="group-hover:translate-x-2 transition-transform duration-300">
+                          {item.name}
+                        </span>
+                        <div className="ml-2 w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300" />
+                      </a>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
-          <div className="border-t-2 border-border/50 mt-12 sm:mt-16 pt-6 sm:pt-8 text-center text-sm sm:text-base text-muted-foreground">
-            <p className="bg-gradient-to-r from-muted-foreground to-muted-foreground/70 bg-clip-text text-transparent">
-              &copy; 2025 gltzUI. Todos os direitos reservados.
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="border-t-2 border-primary/20 mt-16 sm:mt-20 pt-8 sm:pt-12 text-center"
+          >
+            <div className="mb-6">
+              <div className="h-1 w-32 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-6" />
+            </div>
+            <p className="text-base sm:text-lg font-bold bg-gradient-to-r from-muted-foreground via-primary to-muted-foreground bg-clip-text text-transparent">
+              &copy; 2025 gltzUI. Todos os direitos reservados. Feito com ❤️
+              para a comunidade dev.
             </p>
-          </div>
+          </motion.div>
         </div>
       </footer>
     </div>

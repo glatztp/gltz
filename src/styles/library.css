@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import custom animations */
+@import "./animations.css";
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -57,3 +60,63 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+/* Estilos específicos para temas personalizados */
+.neon {
+  background-image: radial-gradient(
+    ellipse at center,
+    hsl(280 100% 10%) 0%,
+    hsl(240 15% 3%) 100%
+  );
+}
+
+.neon * {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.neon .border {
+  box-shadow: 0 0 10px hsl(280 100% 70%);
+}
+
+.sunset {
+  background-image: linear-gradient(
+    135deg,
+    hsl(20 100% 98%) 0%,
+    hsl(30 100% 95%) 100%
+  );
+}
+
+.ocean {
+  background-image: linear-gradient(
+    135deg,
+    hsl(200 100% 97%) 0%,
+    hsl(180 100% 95%) 100%
+  );
+}
+
+.coffee {
+  background-image: linear-gradient(
+    135deg,
+    hsl(30 40% 98%) 0%,
+    hsl(25 50% 95%) 100%
+  );
+}
+
+.galaxy {
+  background-image: radial-gradient(
+    ellipse at center,
+    hsl(260 100% 8%) 0%,
+    hsl(240 15% 4%) 100%
+  );
+}
+
+.galaxy * {
+  text-shadow: 0 0 5px currentColor;
+}
+
+.galaxy .border {
+  box-shadow: 0 0 8px hsl(260 100% 65%);
+}
+
+

@@ -1,7 +1,14 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+﻿import React, { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "light" | "dark" | "system";
-
+type Theme =
+  | "light"
+  | "dark"
+  | "system"
+  | "neon"
+  | "sunset"
+  | "ocean"
+  | "coffee"
+  | "galaxy";
 type ColorScheme = "blue" | "emerald" | "violet" | "rose" | "orange" | "cyan";
 
 interface ThemeContextType {
@@ -9,7 +16,14 @@ interface ThemeContextType {
   colorScheme: ColorScheme;
   setTheme: (theme: Theme) => void;
   setColorScheme: (scheme: ColorScheme) => void;
-  actualTheme: "light" | "dark"; // Tema real aplicado (resolve "system")
+  actualTheme:
+    | "light"
+    | "dark"
+    | "neon"
+    | "sunset"
+    | "ocean"
+    | "coffee"
+    | "galaxy";
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -31,179 +45,248 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return "blue";
   });
 
-  const [actualTheme, setActualTheme] = useState<"light" | "dark">("light");
+  const [actualTheme, setActualTheme] = useState<
+    "light" | "dark" | "neon" | "sunset" | "ocean" | "coffee" | "galaxy"
+  >("light");
 
-  // Função para aplicar as variáveis CSS
-  const applyTheme = (resolvedTheme: "light" | "dark", scheme: ColorScheme) => {
-    const root = document.documentElement;
-
-    // Aplicar classe do tema
-    root.classList.remove("light", "dark");
-    root.classList.add(resolvedTheme);
-
-    // Aplicar esquema de cores baseado no esquema selecionado
-    const schemeColors = getSchemeColors(scheme);
-
-    // Aplicar cores primárias do esquema selecionado
-    root.style.setProperty("--primary", schemeColors.primary);
-    root.style.setProperty(
-      "--primary-foreground",
-      schemeColors.primaryForeground
-    );
-    root.style.setProperty("--ring", schemeColors.primary);
-
-    // Aplicar cores específicas do tema (light/dark) mantendo as cores do CSS original
-    if (resolvedTheme === "dark") {
-      // Tema escuro - usando as cores do globals.css
-      root.style.setProperty("--background", "240 15% 6%");
-      root.style.setProperty("--foreground", "0 0% 95%");
-      root.style.setProperty("--muted", "240 15% 12%");
-      root.style.setProperty("--muted-foreground", "240 10% 60%");
-      root.style.setProperty("--popover", "240 15% 8%");
-      root.style.setProperty("--popover-foreground", "0 0% 95%");
-      root.style.setProperty("--card", "240 15% 8%");
-      root.style.setProperty("--card-foreground", "0 0% 95%");
-      root.style.setProperty("--border", "240 15% 18%");
-      root.style.setProperty("--input", "240 15% 18%");
-      root.style.setProperty("--secondary", "240 15% 12%");
-      root.style.setProperty("--secondary-foreground", "0 0% 95%");
-      root.style.setProperty("--accent", "240 15% 12%");
-      root.style.setProperty("--accent-foreground", schemeColors.primary);
-    } else {
-      // Tema claro - usando as cores do globals.css
-      root.style.setProperty("--background", "0 0% 99%");
-      root.style.setProperty("--foreground", "240 15% 9%");
-      root.style.setProperty("--muted", "220 14% 96%");
-      root.style.setProperty("--muted-foreground", "240 10% 45%");
-      root.style.setProperty("--popover", "0 0% 100%");
-      root.style.setProperty("--popover-foreground", "240 15% 9%");
-      root.style.setProperty("--card", "0 0% 100%");
-      root.style.setProperty("--card-foreground", "240 15% 9%");
-      root.style.setProperty("--border", "220 13% 91%");
-      root.style.setProperty("--input", "220 13% 91%");
-      root.style.setProperty("--secondary", "220 14% 96%");
-      root.style.setProperty("--secondary-foreground", "240 15% 9%");
-      root.style.setProperty("--accent", "217 91% 95%");
-      root.style.setProperty("--accent-foreground", schemeColors.primary);
-    }
-  };
-
-  // Função para obter cores do esquema selecionado em formato HSL
-  const getSchemeColors = (scheme: ColorScheme) => {
-    const schemes = {
-      blue: {
+  const getThemeColors = (
+    themeType:
+      | "light"
+      | "dark"
+      | "neon"
+      | "sunset"
+      | "ocean"
+      | "coffee"
+      | "galaxy"
+  ) => {
+    const themes = {
+      light: {
+        background: "0 0% 99%",
+        foreground: "240 15% 9%",
         primary: "217 91% 60%",
-        primaryForeground: "0 0% 100%",
+        "primary-foreground": "0 0% 100%",
+        secondary: "220 14% 96%",
+        "secondary-foreground": "240 15% 9%",
+        muted: "220 14% 96%",
+        "muted-foreground": "240 10% 45%",
+        accent: "217 91% 95%",
+        "accent-foreground": "240 15% 9%",
+        border: "220 13% 91%",
+        input: "220 13% 91%",
+        ring: "217 91% 60%",
+        card: "0 0% 100%",
+        "card-foreground": "240 15% 9%",
+        popover: "0 0% 100%",
+        "popover-foreground": "240 15% 9%",
+        destructive: "0 84% 60%",
+        "destructive-foreground": "210 40% 98%",
       },
-      emerald: {
-        primary: "160 84% 39%",
-        primaryForeground: "0 0% 100%",
+      dark: {
+        background: "240 15% 6%",
+        foreground: "0 0% 95%",
+        primary: "217 91% 65%",
+        "primary-foreground": "0 0% 100%",
+        secondary: "240 15% 12%",
+        "secondary-foreground": "0 0% 95%",
+        muted: "240 15% 12%",
+        "muted-foreground": "240 10% 60%",
+        accent: "240 15% 12%",
+        "accent-foreground": "0 0% 95%",
+        border: "240 15% 18%",
+        input: "240 15% 18%",
+        ring: "217 91% 65%",
+        card: "240 15% 8%",
+        "card-foreground": "0 0% 95%",
+        popover: "240 15% 8%",
+        "popover-foreground": "0 0% 95%",
+        destructive: "0 84% 60%",
+        "destructive-foreground": "210 40% 98%",
       },
-      violet: {
-        primary: "262 83% 58%",
-        primaryForeground: "0 0% 100%",
+      neon: {
+        background: "240 15% 3%",
+        foreground: "0 100% 100%",
+        primary: "280 100% 70%",
+        "primary-foreground": "0 0% 0%",
+        secondary: "240 15% 8%",
+        "secondary-foreground": "0 100% 100%",
+        muted: "240 15% 8%",
+        "muted-foreground": "280 50% 80%",
+        accent: "320 100% 60%",
+        "accent-foreground": "0 0% 0%",
+        border: "280 100% 30%",
+        input: "280 100% 30%",
+        ring: "280 100% 70%",
+        card: "240 15% 5%",
+        "card-foreground": "0 100% 100%",
+        popover: "240 15% 5%",
+        "popover-foreground": "0 100% 100%",
+        destructive: "0 100% 50%",
+        "destructive-foreground": "0 0% 0%",
       },
-      rose: {
-        primary: "346 77% 49%",
-        primaryForeground: "0 0% 100%",
+      sunset: {
+        background: "20 100% 98%",
+        foreground: "20 20% 10%",
+        primary: "15 100% 55%",
+        "primary-foreground": "0 0% 100%",
+        secondary: "20 100% 95%",
+        "secondary-foreground": "20 20% 10%",
+        muted: "20 100% 95%",
+        "muted-foreground": "20 30% 40%",
+        accent: "340 100% 85%",
+        "accent-foreground": "20 20% 10%",
+        border: "20 100% 85%",
+        input: "20 100% 85%",
+        ring: "15 100% 55%",
+        card: "20 100% 99%",
+        "card-foreground": "20 20% 10%",
+        popover: "20 100% 99%",
+        "popover-foreground": "20 20% 10%",
+        destructive: "0 84% 60%",
+        "destructive-foreground": "210 40% 98%",
       },
-      orange: {
-        primary: "20 91% 48%",
-        primaryForeground: "0 0% 100%",
+      ocean: {
+        background: "200 100% 97%",
+        foreground: "200 20% 10%",
+        primary: "200 100% 45%",
+        "primary-foreground": "0 0% 100%",
+        secondary: "200 100% 95%",
+        "secondary-foreground": "200 20% 10%",
+        muted: "200 100% 95%",
+        "muted-foreground": "200 30% 40%",
+        accent: "180 100% 85%",
+        "accent-foreground": "200 20% 10%",
+        border: "200 100% 80%",
+        input: "200 100% 80%",
+        ring: "200 100% 45%",
+        card: "200 100% 99%",
+        "card-foreground": "200 20% 10%",
+        popover: "200 100% 99%",
+        "popover-foreground": "200 20% 10%",
+        destructive: "0 84% 60%",
+        "destructive-foreground": "210 40% 98%",
       },
-      cyan: {
-        primary: "189 85% 43%",
-        primaryForeground: "0 0% 100%",
+      coffee: {
+        background: "30 40% 98%",
+        foreground: "30 20% 15%",
+        primary: "25 75% 50%",
+        "primary-foreground": "0 0% 100%",
+        secondary: "30 40% 95%",
+        "secondary-foreground": "30 20% 15%",
+        muted: "30 40% 95%",
+        "muted-foreground": "30 30% 35%",
+        accent: "45 90% 85%",
+        "accent-foreground": "30 20% 15%",
+        border: "30 50% 85%",
+        input: "30 50% 85%",
+        ring: "25 75% 50%",
+        card: "30 40% 99%",
+        "card-foreground": "30 20% 15%",
+        popover: "30 40% 99%",
+        "popover-foreground": "30 20% 15%",
+        destructive: "0 84% 60%",
+        "destructive-foreground": "210 40% 98%",
+      },
+      galaxy: {
+        background: "240 15% 4%",
+        foreground: "0 0% 98%",
+        primary: "260 100% 65%",
+        "primary-foreground": "0 0% 100%",
+        secondary: "240 15% 10%",
+        "secondary-foreground": "0 0% 98%",
+        muted: "240 15% 10%",
+        "muted-foreground": "260 50% 70%",
+        accent: "300 100% 75%",
+        "accent-foreground": "0 0% 0%",
+        border: "260 80% 25%",
+        input: "260 80% 25%",
+        ring: "260 100% 65%",
+        card: "240 15% 6%",
+        "card-foreground": "0 0% 98%",
+        popover: "240 15% 6%",
+        "popover-foreground": "0 0% 98%",
+        destructive: "0 84% 60%",
+        "destructive-foreground": "210 40% 98%",
       },
     };
-
-    return schemes[scheme];
+    return themes[themeType];
   };
 
-  // Resolver tema baseado na preferência do sistema
-  const resolveTheme = (theme: Theme): "light" | "dark" => {
-    if (theme === "system") {
+  const applyTheme = (
+    resolvedTheme:
+      | "light"
+      | "dark"
+      | "neon"
+      | "sunset"
+      | "ocean"
+      | "coffee"
+      | "galaxy"
+  ) => {
+    const root = document.documentElement;
+    root.classList.remove(
+      "light",
+      "dark",
+      "neon",
+      "sunset",
+      "ocean",
+      "coffee",
+      "galaxy"
+    );
+    root.classList.add(resolvedTheme);
+
+    const themeColors = getThemeColors(resolvedTheme);
+    Object.entries(themeColors).forEach(([property, value]) => {
+      root.style.setProperty(`--${property}`, value);
+    });
+  };
+
+  const resolveTheme = (
+    themeValue: Theme
+  ): "light" | "dark" | "neon" | "sunset" | "ocean" | "coffee" | "galaxy" => {
+    if (themeValue === "system") {
       return window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light";
     }
-    return theme;
+    return themeValue;
   };
 
-  // Efeito para aplicar tema
   useEffect(() => {
     if (typeof window === "undefined") return;
-
     const resolved = resolveTheme(theme);
     setActualTheme(resolved);
-    applyTheme(resolved, colorScheme);
-
-    // Salvar no localStorage
+    applyTheme(resolved);
     localStorage.setItem("gltzui-theme", theme);
-  }, [theme, colorScheme]);
+  }, [theme]);
 
-  // Efeito para escutar mudanças na preferência do sistema
   useEffect(() => {
     if (typeof window === "undefined") return;
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const handleChange = () => {
-      if (theme === "system") {
-        const resolved = resolveTheme(theme);
-        setActualTheme(resolved);
-        applyTheme(resolved, colorScheme);
-      }
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme, colorScheme]);
-
-  // Efeito para aplicar esquema de cores
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
     localStorage.setItem("gltzui-color-scheme", colorScheme);
-    applyTheme(actualTheme, colorScheme);
-  }, [colorScheme, actualTheme]);
+  }, [colorScheme]);
 
-  const handleSetTheme = (newTheme: Theme) => {
-    setTheme(newTheme);
-  };
-
-  const handleSetColorScheme = (newScheme: ColorScheme) => {
-    setColorScheme(newScheme);
-  };
-
-  const value: ThemeContextType = {
+  const value = {
     theme,
     colorScheme,
-    setTheme: handleSetTheme,
-    setColorScheme: handleSetColorScheme,
+    setTheme,
+    setColorScheme,
     actualTheme,
   };
 
-  return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
-  );
+  return React.createElement(ThemeContext.Provider, { value }, children);
 }
 
 export function useTheme() {
   const context = useContext(ThemeContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
 }
 
-// Hook para usar apenas o tema atual
 export function useCurrentTheme() {
   const { actualTheme } = useTheme();
   return actualTheme;
 }
 
-// Hook para verificar se está no modo escuro
 export function useIsDarkMode() {
   const { actualTheme } = useTheme();
   return actualTheme === "dark";
