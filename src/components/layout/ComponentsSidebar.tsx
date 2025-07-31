@@ -119,7 +119,6 @@ export function ComponentsSidebar({
       description: "Notificações e alertas",
       components: [
         { id: "alert", name: "Alert", new: false },
-        { id: "toast", name: "Toast", new: false },
         { id: "sonner", name: "Sonner", new: true },
         { id: "progress", name: "Progress", new: false },
         { id: "skeleton", name: "Skeleton", new: false },

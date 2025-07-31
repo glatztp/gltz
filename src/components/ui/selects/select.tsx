@@ -2,6 +2,7 @@ import React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, CaretDown, CaretUp } from "phosphor-react";
 import { cn } from "../../../lib/utils";
+import { motion } from "framer-motion";
 
 const Select = SelectPrimitive.Root;
 
@@ -9,24 +10,68 @@ const SelectGroup = SelectPrimitive.Group;
 
 const SelectValue = SelectPrimitive.Value;
 
+interface SelectTriggerProps
+  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> {
+  iconSize?: number;
+  iconClassName?: string;
+  animationDuration?: number;
+  animationType?: "spring" | "tween";
+  indicator?: React.ReactNode;
+}
+
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <SelectPrimitive.Icon asChild>
-      <CaretDown className="h-4 w-4 opacity-50" />
-    </SelectPrimitive.Icon>
-  </SelectPrimitive.Trigger>
-));
+  SelectTriggerProps
+>(
+  (
+    {
+      className,
+      children,
+      iconSize = 20,
+      iconClassName = "h-4 w-4 opacity-50",
+      animationDuration = 0.25,
+      animationType = "spring",
+      indicator,
+      ...props
+    },
+    ref
+  ) => {
+    const [open, setOpen] = React.useState(false);
+
+    return (
+      <SelectPrimitive.Trigger
+        ref={ref}
+        className={cn(
+          "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+          className
+        )}
+        data-state={open ? "open" : "closed"}
+        onPointerDown={() => setOpen((v) => !v)}
+        onBlur={() => setOpen(false)}
+        {...props}
+      >
+        {children}
+        <SelectPrimitive.Icon asChild>
+          <motion.span
+            animate={{ rotate: open ? 180 : 0 }}
+            transition={
+              animationType === "spring"
+                ? { type: "spring", stiffness: 300, damping: 25 }
+                : { duration: animationDuration }
+            }
+            className={cn("flex items-center", iconClassName)}
+          >
+            {indicator ? (
+              indicator
+            ) : (
+              <CaretDown size={iconSize} weight="regular" />
+            )}
+          </motion.span>
+        </SelectPrimitive.Icon>
+      </SelectPrimitive.Trigger>
+    );
+  }
+);
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectScrollUpButton = React.forwardRef<
@@ -155,5 +200,3 @@ export {
   SelectScrollUpButton,
   SelectScrollDownButton,
 };
-
-

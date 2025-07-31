@@ -33,7 +33,6 @@ import { ComponentsSidebar } from "./layout/ComponentsSidebar";
 import { DocumentationPage } from "./layout/documentation-page";
 
 // Page Components
-import { ComingSoonPage } from "./pages/coming-soon-page";
 import { PlaygroundPage } from "./pages/playground-page";
 import { ThemesPage } from "./pages/themes-page";
 import { AlertPage } from "./pages/alert-page";
@@ -74,13 +73,13 @@ import { SonnerPage } from "./pages/sonner-page";
 import { SwitchPage } from "./pages/switch-page";
 import { TabsPage } from "./pages/tabs-page";
 import { TextareaPage } from "./pages/textarea-page";
-import { ToastPage } from "./pages/toast-page";
 import { TogglePage } from "./pages/toggle-page";
 import { ToggleGroupPage } from "./pages/toggle-group-page";
 import { TooltipPage } from "./pages/tooltip-page";
 import { ResizablePage } from "./pages/resizable-page";
 import { CollapsiblePage } from "./pages/collapsible-page";
 import { ThemeProvider } from "./providers/theme-provider";
+import MultiComboBoxPage from "./pages/multicombobox-page";
 
 // Mapeamento de componentes
 const componentPages: Record<string, React.ComponentType> = {
@@ -122,12 +121,12 @@ const componentPages: Record<string, React.ComponentType> = {
   switch: SwitchPage,
   tabs: TabsPage,
   textarea: TextareaPage,
-  toast: ToastPage,
   toggle: TogglePage,
   "toggle-group": ToggleGroupPage,
   tooltip: TooltipPage,
   resizable: ResizablePage,
   collapsible: CollapsiblePage,
+  multicombo: MultiComboBoxPage
 };
 
 function HomePage() {

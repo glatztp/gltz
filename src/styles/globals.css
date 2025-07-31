@@ -807,3 +807,42 @@
   scroll-behavior: auto !important;
 }
 
+/* ...existing code... */
+
+/* Classes de posição específicas para Sonner */
+.bottom-4 {
+  bottom: 1rem;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.top-4 {
+  top: 1rem;
+}
+
+.left-4 {
+  left: 1rem;
+}
+
+.bottom-6 {
+  bottom: 1.5rem;
+}
+
+.right-6 {
+  right: 1.5rem;
+}
+
+.top-6 {
+  top: 1.5rem;
+}
+
+.left-6 {
+  left: 1.5rem;
+}
+
+/* Garantir que o z-index funcione */
+.z-\[100\] {
+  z-index: 100;
+}
