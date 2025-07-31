@@ -29,11 +29,13 @@
     "build:css": "npx tailwindcss -i ./src/styles/library.css -o ./dist/index.css --config ./tailwind.config.js",
     "clean": "rimraf dist",
     "lint": "eslint",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:a11y": "echo \"No accessibility tests configured\" && exit 0",
+    "test:visual": "echo \"No visual regression tests configured\" && exit 0",
     "publish:patch": "npm version patch && npm publish",
     "publish:minor": "npm version minor && npm publish",
-    "publish:major": "npm version major && npm publish",
-    "type-check": "tsc --noEmit",
-    "test": "echo \"No tests specified\" && exit 0"
+    "publish:major": "npm version major && npm publish"
   },
   "keywords": [
     "react",
