@@ -28,7 +28,7 @@
     "build:demo": "vite build",
     "build:css": "npx tailwindcss -i ./src/styles/library.css -o ./dist/index.css --config ./tailwind.config.js",
     "clean": "rimraf dist",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "publish:patch": "npm version patch && npm publish",
     "publish:minor": "npm version minor && npm publish",
     "publish:major": "npm version major && npm publish"
