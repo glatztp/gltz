@@ -55,7 +55,6 @@ import { useTheme } from "../providers/theme-provider";
 const themes = {
   light: {
     name: "Claro Classic",
-    description: "Tema claro elegante e minimalista",
     icon: <Sun className="h-4 w-4" />,
     category: "Básico",
     gradient: "from-white to-gray-50",
@@ -71,7 +70,6 @@ const themes = {
   },
   dark: {
     name: "Escuro Professional",
-    description: "Tema escuro sofisticado para desenvolvedores",
     icon: <Moon className="h-4 w-4" />,
     category: "Básico",
     gradient: "from-gray-900 to-black",
@@ -87,7 +85,6 @@ const themes = {
   },
   system: {
     name: "Auto Sistema",
-    description: "Adapta-se automaticamente ao seu OS",
     icon: <Monitor className="h-4 w-4" />,
     category: "Inteligente",
     gradient: "from-blue-100 to-purple-100",
@@ -103,7 +100,6 @@ const themes = {
   },
   neon: {
     name: "Neon Cyber",
-    description: "Tema futurista com cores vibrantes",
     icon: <Lightning className="h-4 w-4" />,
     category: "Futurista",
     gradient: "from-purple-900 via-blue-900 to-indigo-900",
@@ -119,7 +115,6 @@ const themes = {
   },
   sunset: {
     name: "Sunset Paradise",
-    description: "Inspirado no pôr do sol tropical",
     icon: <Fire className="h-4 w-4" />,
     category: "Natureza",
     gradient: "from-orange-400 via-red-500 to-pink-500",
@@ -135,7 +130,6 @@ const themes = {
   },
   ocean: {
     name: "Ocean Deep",
-    description: "Profundidade e serenidade dos oceanos",
     icon: <Snowflake className="h-4 w-4" />,
     category: "Natureza",
     gradient: "from-blue-600 via-cyan-500 to-teal-400",
@@ -151,7 +145,6 @@ const themes = {
   },
   coffee: {
     name: "Coffee House",
-    description: "Aconchego e produtividade",
     icon: <Coffee className="h-4 w-4" />,
     category: "Aconchegante",
     gradient: "from-amber-700 via-orange-600 to-yellow-500",
@@ -167,7 +160,6 @@ const themes = {
   },
   galaxy: {
     name: "Galaxy Explorer",
-    description: "As cores do cosmos infinito",
     icon: <Planet className="h-4 w-4" />,
     category: "Futurista",
     gradient: "from-indigo-900 via-purple-900 to-pink-800",
@@ -516,9 +508,6 @@ export function ThemesPage() {
                                     <h3 className="font-black text-lg mb-1">
                                       {themeObj.name}
                                     </h3>
-                                    <p className="text-sm text-muted-foreground">
-                                      {themeObj.description}
-                                    </p>
                                   </div>
 
                                   <div className="space-y-3">

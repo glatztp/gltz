@@ -30,7 +30,6 @@ import { Card, CardContent } from "./ui/layout";
 // Layout Components
 import { NavigationHeader } from "./layout/NavigationHeader";
 import { ComponentsSidebar } from "./layout/ComponentsSidebar";
-import { DocumentationPage } from "./layout/documentation-page";
 
 // Context for sidebar state
 interface SidebarContextType {
@@ -97,6 +96,7 @@ import { ResizablePage } from "./pages/resizable-page";
 import { CollapsiblePage } from "./pages/collapsible-page";
 import { ThemeProvider } from "./providers/theme-provider";
 import MultiComboBoxPage from "./pages/multicombobox-page";
+import DocumentationPage from "./layout/documentation-page";
 
 // Mapeamento de componentes
 const componentPages: Record<string, React.ComponentType<any>> = {
@@ -948,8 +948,14 @@ function DashboardContent() {
   const currentSection = location.pathname.split("/")[1] || "home";
   const selectedComponent = location.pathname.split("/")[2] || "";
 
-  const handleNavigation = (section: string) => {
-    navigate(`/${section}`);
+  const handleNavigation = (section: string, componentId?: string) => {
+    if (componentId && section === "components") {
+      // Navegar diretamente para a página do componente
+      navigate(`/components/${componentId}`);
+    } else {
+      navigate(`/${section}`);
+    }
+
     // Se navegar para componentes, abre a sidebar automaticamente
     if (section === "components") {
       setSidebarOpen(true);

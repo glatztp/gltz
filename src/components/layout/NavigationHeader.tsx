@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui";
 import { Badge } from "../ui";
 import { ThemeToggle } from "../ui";
+import { Input } from "../ui";
 import { cn } from "../../lib/utils";
 import {
   Menu,
@@ -16,13 +17,16 @@ import {
   ExternalLink,
   ChevronDown,
   Component,
+  Search,
+  Home,
 } from "lucide-react";
 
 interface NavigationHeaderProps {
-  onNavigate: (section: string) => void;
+  onNavigate: (section: string, componentId?: string) => void;
   currentSection: string;
   onToggleSidebar: () => void;
   sidebarOpen: boolean;
+  onSelectComponent?: (componentId: string) => void;
 }
 
 export function NavigationHeader({
@@ -30,39 +34,424 @@ export function NavigationHeader({
   currentSection,
   onToggleSidebar,
   sidebarOpen,
+  onSelectComponent,
 }: NavigationHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // Keyboard shortcuts
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+      if (e.key === "Escape") {
+        setSearchOpen(false);
+        setSearchQuery("");
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Click outside to close search
+  React.useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as Element;
+      if (searchOpen && !target.closest("[data-search-container]")) {
+        setSearchOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [searchOpen]);
+
+  // Lista completa de todos os componentes da biblioteca
+  const allComponents = [
+    // Forms
+    {
+      id: "button",
+      label: "Button",
+      category: "Forms",
+      description: "Interactive button component",
+      status: "stable",
+    },
+    {
+      id: "input",
+      label: "Input",
+      category: "Forms",
+      description: "Text input field",
+      status: "stable",
+    },
+    {
+      id: "textarea",
+      label: "Textarea",
+      category: "Forms",
+      description: "Multi-line text input",
+      status: "stable",
+    },
+    {
+      id: "select",
+      label: "Select",
+      category: "Forms",
+      description: "Dropdown selection",
+      status: "stable",
+    },
+    {
+      id: "checkbox",
+      label: "Checkbox",
+      category: "Forms",
+      description: "Multiple selection input",
+      status: "stable",
+    },
+    {
+      id: "radio-group",
+      label: "Radio Group",
+      category: "Forms",
+      description: "Single selection group",
+      status: "stable",
+    },
+    {
+      id: "switch",
+      label: "Switch",
+      category: "Forms",
+      description: "Toggle switch",
+      status: "stable",
+    },
+    {
+      id: "slider",
+      label: "Slider",
+      category: "Forms",
+      description: "Range slider input",
+      status: "stable",
+    },
+    {
+      id: "date-picker",
+      label: "Date Picker",
+      category: "Forms",
+      description: "Date selection",
+      status: "stable",
+    },
+    {
+      id: "calendar",
+      label: "Calendar",
+      category: "Forms",
+      description: "Calendar widget",
+      status: "stable",
+    },
+    {
+      id: "input-otp",
+      label: "Input OTP",
+      category: "Forms",
+      description: "One-time password input",
+      status: "beta",
+    },
+    {
+      id: "form",
+      label: "Form",
+      category: "Forms",
+      description: "Form validation wrapper",
+      status: "stable",
+    },
+    {
+      id: "label",
+      label: "Label",
+      category: "Forms",
+      description: "Form field labels",
+      status: "stable",
+    },
+    {
+      id: "combobox",
+      label: "Combobox",
+      category: "Forms",
+      description: "Searchable select",
+      status: "stable",
+    },
+    {
+      id: "multicombobox",
+      label: "Multi Combobox",
+      category: "Forms",
+      description: "Multiple selection combobox",
+      status: "beta",
+    },
+    {
+      id: "command",
+      label: "Command",
+      category: "Forms",
+      description: "Command palette",
+      status: "stable",
+    },
+
+    // Layout & Display
+    {
+      id: "card",
+      label: "Card",
+      category: "Layout",
+      description: "Content container",
+      status: "stable",
+    },
+    {
+      id: "separator",
+      label: "Separator",
+      category: "Layout",
+      description: "Visual divider",
+      status: "stable",
+    },
+    {
+      id: "aspect-ratio",
+      label: "Aspect Ratio",
+      category: "Layout",
+      description: "Maintain element proportions",
+      status: "stable",
+    },
+    {
+      id: "skeleton",
+      label: "Skeleton",
+      category: "Layout",
+      description: "Loading placeholder",
+      status: "stable",
+    },
+    {
+      id: "avatar",
+      label: "Avatar",
+      category: "Layout",
+      description: "User profile image",
+      status: "stable",
+    },
+    {
+      id: "badge",
+      label: "Badge",
+      category: "Layout",
+      description: "Status indicator",
+      status: "stable",
+    },
+    {
+      id: "progress",
+      label: "Progress",
+      category: "Layout",
+      description: "Progress indicator",
+      status: "stable",
+    },
+    {
+      id: "scroll-area",
+      label: "Scroll Area",
+      category: "Layout",
+      description: "Custom scrollable area",
+      status: "stable",
+    },
+    {
+      id: "resizable",
+      label: "Resizable",
+      category: "Layout",
+      description: "Resizable panels",
+      status: "stable",
+    },
+    {
+      id: "collapsible",
+      label: "Collapsible",
+      category: "Layout",
+      description: "Collapsible content",
+      status: "stable",
+    },
+
+    // Navigation
+    {
+      id: "tabs",
+      label: "Tabs",
+      category: "Navigation",
+      description: "Tab navigation",
+      status: "stable",
+    },
+    {
+      id: "navigation-menu",
+      label: "Navigation Menu",
+      category: "Navigation",
+      description: "Navigation menu with dropdowns",
+      status: "stable",
+    },
+    {
+      id: "menubar",
+      label: "Menubar",
+      category: "Navigation",
+      description: "Application menu bar",
+      status: "stable",
+    },
+    {
+      id: "pagination",
+      label: "Pagination",
+      category: "Navigation",
+      description: "Page navigation",
+      status: "stable",
+    },
+
+    // Overlays & Feedback
+    {
+      id: "dialog",
+      label: "Dialog",
+      category: "Overlay",
+      description: "Modal dialog",
+      status: "stable",
+    },
+    {
+      id: "alert-dialog",
+      label: "Alert Dialog",
+      category: "Overlay",
+      description: "Confirmation dialog",
+      status: "stable",
+    },
+    {
+      id: "sheet",
+      label: "Sheet",
+      category: "Overlay",
+      description: "Side panel",
+      status: "stable",
+    },
+    {
+      id: "drawer",
+      label: "Drawer",
+      category: "Overlay",
+      description: "Sliding drawer",
+      status: "beta",
+    },
+    {
+      id: "popover",
+      label: "Popover",
+      category: "Overlay",
+      description: "Floating content",
+      status: "stable",
+    },
+    {
+      id: "hover-card",
+      label: "Hover Card",
+      category: "Overlay",
+      description: "Hover information card",
+      status: "stable",
+    },
+    {
+      id: "tooltip",
+      label: "Tooltip",
+      category: "Overlay",
+      description: "Tooltip on hover",
+      status: "stable",
+    },
+    {
+      id: "context-menu",
+      label: "Context Menu",
+      category: "Overlay",
+      description: "Right-click menu",
+      status: "stable",
+    },
+    {
+      id: "dropdown-menu",
+      label: "Dropdown Menu",
+      category: "Overlay",
+      description: "Dropdown menu",
+      status: "stable",
+    },
+
+    // Feedback
+    {
+      id: "alert",
+      label: "Alert",
+      category: "Feedback",
+      description: "Alert notifications",
+      status: "stable",
+    },
+    {
+      id: "toast",
+      label: "Toast",
+      category: "Feedback",
+      description: "Toast notifications",
+      status: "stable",
+    },
+    {
+      id: "sonner",
+      label: "Sonner",
+      category: "Feedback",
+      description: "Advanced toast system",
+      status: "stable",
+    },
+
+    // Interaction
+    {
+      id: "toggle",
+      label: "Toggle",
+      category: "Interaction",
+      description: "Toggle button",
+      status: "stable",
+    },
+    {
+      id: "toggle-group",
+      label: "Toggle Group",
+      category: "Interaction",
+      description: "Group of toggle buttons",
+      status: "stable",
+    },
+
+    // Data
+    {
+      id: "data-table",
+      label: "Data Table",
+      category: "Data",
+      description: "Advanced data table",
+      status: "stable",
+    },
+
+    // Themes
+    {
+      id: "theme-toggle",
+      label: "Theme Toggle",
+      category: "Themes",
+      description: "Dark/light mode toggle",
+      status: "stable",
+    },
+  ];
+
+  const filteredSearchItems = allComponents.filter(
+    (item) =>
+      item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "stable":
+        return "text-green-600";
+      case "beta":
+        return "text-yellow-600";
+      case "coming-soon":
+        return "text-purple-600";
+      default:
+        return "text-gray-600";
+    }
+  };
 
   const navigationItems = [
     {
       id: "home",
       label: "Home",
-      icon: <Component className="h-4 w-4" />,
-      description: "Página inicial",
+      icon: <Home className="h-4 w-4" />,
     },
     {
       id: "docs",
-      label: "Documentação",
+      label: "Docs",
       icon: <BookOpen className="h-4 w-4" />,
-      description: "Guias e API",
     },
     {
       id: "components",
-      label: "Componentes",
-      icon: <Code className="h-4 w-4" />,
-      description: "Biblioteca de componentes",
+      label: "Components",
+      icon: <Component className="h-4 w-4" />,
+      badge: "50+",
     },
     {
       id: "themes",
-      label: "Temas",
+      label: "Themes",
       icon: <Palette className="h-4 w-4" />,
-      description: "Personalização visual",
-    },
-    {
-      id: "playground",
-      label: "Playground",
-      icon: <Settings className="h-4 w-4" />,
-      description: "Teste os componentes",
     },
   ];
 
@@ -92,77 +481,181 @@ export function NavigationHeader({
         className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-xl"
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
+          <div className="flex items-center justify-between h-14">
+            {/* Simplified Logo */}
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-3 cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex items-center gap-2 cursor-pointer"
               onClick={() => onNavigate("home")}
             >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <span className="text-white font-bold text-sm">G</span>
+              <div className="w-7 h-7 rounded-md bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-sm">
+                <span className="text-white font-bold text-xs">G</span>
               </div>
-              <div>
-                <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  gltzUI
-                </span>
-                <Badge variant="secondary" className="ml-2 text-xs">
-                  v2.0
-                </Badge>
-              </div>
+              <span className="text-lg font-semibold">gltzUI</span>
             </motion.div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1">
+            {/* Enhanced Search */}
+            <div className="hidden lg:block relative" data-search-container>
+              <div className="relative">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setSearchOpen(!searchOpen)}
+                  className="w-80 justify-start text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Search className="h-4 w-4 mr-2" />
+                  Search components...
+                  <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
+                    <span className="text-xs">⌘</span>K
+                  </kbd>
+                </Button>
+              </div>
+
+              <AnimatePresence>
+                {searchOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    className="absolute top-full left-0 w-96 mt-2 bg-background border rounded-lg shadow-xl z-50 overflow-hidden"
+                  >
+                    <div className="p-3 border-b bg-muted/30">
+                      <div className="relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        <Input
+                          placeholder="Search all components..."
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          className="pl-10 border-0 bg-background/50 focus:bg-background"
+                          autoFocus
+                        />
+                      </div>
+                    </div>
+
+                    <div className="max-h-80 overflow-y-auto">
+                      {filteredSearchItems.length > 0 ? (
+                        <>
+                          <div className="px-3 py-2 text-xs font-medium text-muted-foreground bg-muted/20">
+                            {filteredSearchItems.length} component
+                            {filteredSearchItems.length !== 1 ? "s" : ""} found
+                          </div>
+                          {filteredSearchItems.map((item, index) => (
+                            <motion.button
+                              key={item.id}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.02 }}
+                              onClick={() => {
+                                // Navegar diretamente para a página do componente
+                                onNavigate("components", item.id);
+                                onSelectComponent?.(item.id);
+                                setSearchOpen(false);
+                                setSearchQuery("");
+                              }}
+                              className="w-full flex items-start gap-3 p-3 text-left hover:bg-accent/50 transition-colors border-b border-border/30 last:border-0"
+                            >
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2">
+                                  <span className="font-medium">
+                                    {item.label}
+                                  </span>
+                                  <Badge
+                                    variant="outline"
+                                    className={cn(
+                                      "text-xs",
+                                      getStatusColor(item.status)
+                                    )}
+                                  >
+                                    {item.status}
+                                  </Badge>
+                                </div>
+                                <div className="text-sm text-muted-foreground mt-1">
+                                  {item.description}
+                                </div>
+                                <div className="text-xs text-muted-foreground/70 mt-1">
+                                  {item.category}
+                                </div>
+                              </div>
+                              <ChevronDown className="h-4 w-4 text-muted-foreground rotate-[-90deg]" />
+                            </motion.button>
+                          ))}
+                        </>
+                      ) : searchQuery ? (
+                        <div className="text-center text-muted-foreground py-8">
+                          <Search className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                          <div className="font-medium">No components found</div>
+                          <div className="text-sm">
+                            Try adjusting your search terms
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="text-center text-muted-foreground py-8">
+                          <Search className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                          <div className="font-medium">
+                            Search our component library
+                          </div>
+                          <div className="text-sm">
+                            Type to find components by name, category, or
+                            description
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Simplified Navigation */}
+            <nav className="hidden md:flex items-center gap-2">
               {navigationItems.map((item, index) => (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.4 }}
+                  transition={{ delay: index * 0.05, duration: 0.3 }}
                 >
                   <Button
                     variant={currentSection === item.id ? "default" : "ghost"}
                     size="sm"
                     onClick={() => handleItemClick(item)}
                     className={cn(
-                      "relative group transition-all duration-200",
+                      "relative transition-all duration-200 h-8 px-3",
                       currentSection === item.id
-                        ? "bg-primary text-primary-foreground"
-                        : "hover:bg-accent"
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "hover:bg-accent text-muted-foreground hover:text-foreground"
                     )}
                   >
                     {item.icon}
-                    <span className="ml-2">{item.label}</span>
-                    {item.id === "components" &&
-                      currentSection === "components" &&
-                      sidebarOpen && (
-                        <ChevronDown className="h-3 w-3 ml-1 rotate-180 transition-transform" />
-                      )}
-                    {item.id === "components" &&
-                      currentSection === "components" &&
-                      !sidebarOpen && (
-                        <ChevronDown className="h-3 w-3 ml-1 transition-transform" />
-                      )}
+                    <span className="ml-1.5 text-sm font-medium">
+                      {item.label}
+                    </span>
+                    {item.badge && (
+                      <Badge
+                        variant="secondary"
+                        className="text-xs ml-1.5 h-4 px-1"
+                      >
+                        {item.badge}
+                      </Badge>
+                    )}
                   </Button>
                 </motion.div>
               ))}
             </nav>
 
-            {/* Actions */}
+            {/* Right Actions */}
             <div className="flex items-center gap-2">
               <Button
                 variant="ghost"
                 size="sm"
-                className="hidden md:flex"
+                className="hidden md:flex h-8 w-8 p-0"
                 onClick={() =>
                   window.open("https://github.com/glatztp/gltz", "_blank")
                 }
+                title="View on GitHub"
               >
-                <Github className="h-4 w-4 mr-2" />
-                GitHub
-                <ExternalLink className="h-3 w-3 ml-1" />
+                <Github className="h-4 w-4" />
               </Button>
 
               <ThemeToggle />
@@ -211,12 +704,12 @@ export function NavigationHeader({
                       className="w-full justify-start gap-3"
                     >
                       {item.icon}
-                      <div className="text-left">
-                        <div className="font-medium">{item.label}</div>
-                        <div className="text-xs text-muted-foreground">
-                          {item.description}
-                        </div>
-                      </div>
+                      <span className="font-medium">{item.label}</span>
+                      {item.badge && (
+                        <Badge variant="secondary" className="text-xs ml-auto">
+                          {item.badge}
+                        </Badge>
+                      )}
                     </Button>
                   </motion.div>
                 ))}
@@ -231,6 +724,7 @@ export function NavigationHeader({
                     }
                   >
                     <Github className="h-4 w-4" />
+
                     <div className="text-left">
                       <div className="font-medium">GitHub</div>
                       <div className="text-xs text-muted-foreground">
