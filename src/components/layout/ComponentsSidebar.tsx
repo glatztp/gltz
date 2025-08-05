@@ -21,6 +21,7 @@ import {
   Settings,
   Zap,
 } from "lucide-react";
+import { Sidebar, SidebarSimple } from "phosphor-react";
 
 interface ComponentsSidebarProps {
   isOpen: boolean;
@@ -28,6 +29,7 @@ interface ComponentsSidebarProps {
   onSelectComponent: (componentId: string) => void;
   selectedComponent: string;
   expandCategory?: string;
+  onToggle?: () => void;
 }
 
 export function ComponentsSidebar({
@@ -36,6 +38,7 @@ export function ComponentsSidebar({
   onSelectComponent,
   selectedComponent,
   expandCategory,
+  onToggle,
 }: ComponentsSidebarProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedCategories, setExpandedCategories] = useState<string[]>([
@@ -192,171 +195,192 @@ export function ComponentsSidebar({
   );
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
-            onClick={onClose}
-          />
+    <>
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
+              onClick={onClose}
+            />
 
-          {/* Sidebar */}
-          <motion.div
-            initial={{ x: -320, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -320, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-72 bg-background border-r z-40 flex flex-col"
-          >
-            <div className="p-4 border-b bg-muted/30">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <h2 className="text-lg font-semibold flex items-center gap-2">
-                    <Palette className="h-5 w-5 text-primary" />
-                    Componentes
-                  </h2>
-                  <p className="text-sm text-muted-foreground">
-                    {totalComponents} componentes • {newComponents} novos
-                  </p>
+            {/* Sidebar */}
+            <motion.div
+              initial={{ x: -320, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -320, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-72 bg-background border-r z-40 flex flex-col"
+            >
+              <div className="p-4 border-b bg-muted/30">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h2 className="text-lg font-semibold flex items-center gap-2">
+                      <Palette className="h-5 w-5 text-primary" />
+                      Componentes
+                    </h2>
+                    <p className="text-sm text-muted-foreground">
+                      {totalComponents} componentes • {newComponents} novos
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={onClose}
+                      className="opacity-70 hover:opacity-100 transition-opacity"
+                      title="Fechar sidebar"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={onClose}
-                    className="opacity-70 hover:opacity-100 transition-opacity"
-                    title="Fechar sidebar"
-                  >
-                    <X className="h-4 w-4" />
+
+                {/* Search */}
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Buscar componentes..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-10"
+                  />
+                </div>
+              </div>
+
+              {/* Categories */}
+              <div className="flex-1 overflow-y-auto">
+                <div className="p-2">
+                  {filteredCategories.map((category, categoryIndex) => (
+                    <motion.div
+                      key={category.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: categoryIndex * 0.05 }}
+                      className="mb-2"
+                    >
+                      <Button
+                        variant="ghost"
+                        onClick={() => toggleCategory(category.id)}
+                        className="w-full justify-start gap-2 p-3 h-auto group"
+                      >
+                        <div className="flex items-center gap-2 flex-1">
+                          <div className="text-primary group-hover:scale-110 transition-transform">
+                            {category.icon}
+                          </div>
+                          <div className="text-left flex-1">
+                            <div className="font-medium">{category.name}</div>
+                            <div className="text-xs text-muted-foreground">
+                              {category.description}
+                            </div>
+                          </div>
+                          <Badge variant="secondary" className="text-xs">
+                            {category.components.length}
+                          </Badge>
+                          {expandedCategories.includes(category.id) ? (
+                            <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                          ) : (
+                            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                          )}
+                        </div>
+                      </Button>
+
+                      <AnimatePresence>
+                        {expandedCategories.includes(category.id) && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="ml-6 mt-1 space-y-1">
+                              {category.components.map(
+                                (component, componentIndex) => (
+                                  <motion.div
+                                    key={component.id}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{
+                                      delay: componentIndex * 0.03,
+                                    }}
+                                  >
+                                    <Button
+                                      variant={
+                                        selectedComponent === component.id
+                                          ? "default"
+                                          : "ghost"
+                                      }
+                                      size="sm"
+                                      onClick={() => {
+                                        onSelectComponent(component.id);
+                                        // NÃO fechar a sidebar automaticamente
+                                      }}
+                                      className={cn(
+                                        "w-full justify-start gap-2 relative group",
+                                        selectedComponent === component.id
+                                          ? "bg-primary text-primary-foreground"
+                                          : "hover:bg-accent"
+                                      )}
+                                    >
+                                      <span className="flex-1 text-left">
+                                        {component.name}
+                                      </span>
+                                      {component.new && (
+                                        <Badge
+                                          variant="default"
+                                          className="text-xs bg-green-500 hover:bg-green-600"
+                                        >
+                                          <Zap className="h-3 w-3 mr-1" />
+                                          Novo
+                                        </Badge>
+                                      )}
+                                    </Button>
+                                  </motion.div>
+                                )
+                              )}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-4 border-t bg-muted/30">
+                <div className="text-center">
+                  <Button variant="outline" size="sm" className="w-full">
+                    <FileText className="h-4 w-4 mr-2" />
+                    Ver Documentação
                   </Button>
                 </div>
               </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
-              {/* Search */}
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Buscar componentes..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-            </div>
-
-            {/* Categories */}
-            <div className="flex-1 overflow-y-auto">
-              <div className="p-2">
-                {filteredCategories.map((category, categoryIndex) => (
-                  <motion.div
-                    key={category.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: categoryIndex * 0.05 }}
-                    className="mb-2"
-                  >
-                    <Button
-                      variant="ghost"
-                      onClick={() => toggleCategory(category.id)}
-                      className="w-full justify-start gap-2 p-3 h-auto group"
-                    >
-                      <div className="flex items-center gap-2 flex-1">
-                        <div className="text-primary group-hover:scale-110 transition-transform">
-                          {category.icon}
-                        </div>
-                        <div className="text-left flex-1">
-                          <div className="font-medium">{category.name}</div>
-                          <div className="text-xs text-muted-foreground">
-                            {category.description}
-                          </div>
-                        </div>
-                        <Badge variant="secondary" className="text-xs">
-                          {category.components.length}
-                        </Badge>
-                        {expandedCategories.includes(category.id) ? (
-                          <ChevronDown className="h-4 w-4 text-muted-foreground" />
-                        ) : (
-                          <ChevronRight className="h-4 w-4 text-muted-foreground" />
-                        )}
-                      </div>
-                    </Button>
-
-                    <AnimatePresence>
-                      {expandedCategories.includes(category.id) && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="ml-6 mt-1 space-y-1">
-                            {category.components.map(
-                              (component, componentIndex) => (
-                                <motion.div
-                                  key={component.id}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: componentIndex * 0.03 }}
-                                >
-                                  <Button
-                                    variant={
-                                      selectedComponent === component.id
-                                        ? "default"
-                                        : "ghost"
-                                    }
-                                    size="sm"
-                                    onClick={() => {
-                                      onSelectComponent(component.id);
-                                      // NÃO fechar a sidebar automaticamente
-                                    }}
-                                    className={cn(
-                                      "w-full justify-start gap-2 relative group",
-                                      selectedComponent === component.id
-                                        ? "bg-primary text-primary-foreground"
-                                        : "hover:bg-accent"
-                                    )}
-                                  >
-                                    <span className="flex-1 text-left">
-                                      {component.name}
-                                    </span>
-                                    {component.new && (
-                                      <Badge
-                                        variant="default"
-                                        className="text-xs bg-green-500 hover:bg-green-600"
-                                      >
-                                        <Zap className="h-3 w-3 mr-1" />
-                                        Novo
-                                      </Badge>
-                                    )}
-                                  </Button>
-                                </motion.div>
-                              )
-                            )}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            <div className="p-4 border-t bg-muted/30">
-              <div className="text-center">
-                <Button variant="outline" size="sm" className="w-full">
-                  <FileText className="h-4 w-4 mr-2" />
-                  Ver Documentação
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        </>
+      {/* Floating Toggle Button */}
+      {onToggle && (
+        <button
+          onClick={onToggle}
+          className={`fixed top-20 z-50 bg-background border border-border rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 ${
+            isOpen ? "left-56" : "left-6"
+          }`}
+          title={isOpen ? "Fechar Sidebar" : "Abrir Sidebar"}
+        >
+          {isOpen ? (
+            <SidebarSimple className="h-5 w-5" weight="bold" />
+          ) : (
+            <Sidebar className="h-5 w-5" weight="bold" />
+          )}
+        </button>
       )}
-    </AnimatePresence>
+    </>
   );
 }

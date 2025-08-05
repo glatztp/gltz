@@ -4,6 +4,8 @@ import { cn } from "../../../lib/utils";
 const NavigationMenuContext = React.createContext<{
   value?: string;
   onValueChange?: (value: string) => void;
+  openDropdown?: string | null;
+  setOpenDropdown?: (value: string | null) => void;
 }>({});
 
 interface NavigationMenuProps extends React.HTMLAttributes<HTMLElement> {
@@ -12,20 +14,31 @@ interface NavigationMenuProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const NavigationMenu = React.forwardRef<HTMLElement, NavigationMenuProps>(
-  ({ className, children, value, onValueChange, ...props }, ref) => (
-    <NavigationMenuContext.Provider value={{ value, onValueChange }}>
-      <nav
-        ref={ref}
-        className={cn(
-          "relative z-10 flex max-w-max flex-1 items-center justify-center",
-          className
-        )}
-        {...props}
+  ({ className, children, value, onValueChange, ...props }, ref) => {
+    const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
+
+    return (
+      <NavigationMenuContext.Provider
+        value={{
+          value,
+          onValueChange,
+          openDropdown,
+          setOpenDropdown,
+        }}
       >
-        {children}
-      </nav>
-    </NavigationMenuContext.Provider>
-  )
+        <nav
+          ref={ref}
+          className={cn(
+            "relative z-10 flex max-w-max flex-1 items-center justify-center overflow-visible navigation-menu-container",
+            className
+          )}
+          {...props}
+        >
+          {children}
+        </nav>
+      </NavigationMenuContext.Provider>
+    );
+  }
 );
 NavigationMenu.displayName = "NavigationMenu";
 
@@ -36,7 +49,7 @@ const NavigationMenuList = React.forwardRef<
   <ul
     ref={ref}
     className={cn(
-      "group flex flex-1 list-none items-center justify-center space-x-1",
+      "group flex flex-1 list-none items-center justify-center space-x-1 overflow-visible",
       className
     )}
     {...props}
@@ -52,9 +65,13 @@ const NavigationMenuItem = React.forwardRef<
   HTMLLIElement,
   NavigationMenuItemProps
 >(({ className, value, ...props }, ref) => {
-  const { value: selectedValue, onValueChange } = React.useContext(
-    NavigationMenuContext
-  );
+  const {
+    value: selectedValue,
+    onValueChange,
+    openDropdown,
+    setOpenDropdown,
+  } = React.useContext(NavigationMenuContext);
+
   const [isOpen, setIsOpen] = React.useState(false);
 
   const isSelected = selectedValue === value;
@@ -63,12 +80,21 @@ const NavigationMenuItem = React.forwardRef<
     setIsOpen(isSelected);
   }, [isSelected]);
 
+  React.useEffect(() => {
+    setIsOpen(openDropdown === value);
+  }, [openDropdown, value]);
+
   return (
     <li
       ref={ref}
-      className={className}
+      className={cn("relative navigation-menu-item", className)}
       {...props}
       data-state={isOpen ? "open" : "closed"}
+      onMouseLeave={() => {
+        if (openDropdown === value) {
+          setOpenDropdown?.(null);
+        }
+      }}
     />
   );
 });
@@ -76,49 +102,85 @@ NavigationMenuItem.displayName = "NavigationMenuItem";
 
 const NavigationMenuTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement>
->(({ className, children, ...props }, ref) => (
-  <button
-    ref={ref}
-    className={cn(
-      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
-      aria-hidden="true"
+  React.ButtonHTMLAttributes<HTMLButtonElement> & { value?: string }
+>(({ className, children, value, ...props }, ref) => {
+  const { openDropdown, setOpenDropdown } = React.useContext(
+    NavigationMenuContext
+  );
+  const isOpen = openDropdown === value;
+
+  const handleClick = () => {
+    if (isOpen) {
+      setOpenDropdown?.(null);
+    } else {
+      setOpenDropdown?.(value || null);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setOpenDropdown?.(value || null);
+  };
+
+  return (
+    <button
+      ref={ref}
+      className={cn(
+        "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+        isOpen && "bg-accent/50",
+        className
+      )}
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      data-state={isOpen ? "open" : "closed"}
+      {...props}
     >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
-  </button>
-));
+      {children}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={cn(
+          "relative top-[1px] ml-1 h-3 w-3 transition duration-200",
+          isOpen && "rotate-180"
+        )}
+        aria-hidden="true"
+      >
+        <path d="m6 9 6 6 6-6" />
+      </svg>
+    </button>
+  );
+});
 NavigationMenuTrigger.displayName = "NavigationMenuTrigger";
 
 const NavigationMenuContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "absolute left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto",
-      className
-    )}
-    {...props}
-  />
-));
+  React.HTMLAttributes<HTMLDivElement> & { value?: string }
+>(({ className, value, ...props }, ref) => {
+  const { openDropdown } = React.useContext(NavigationMenuContext);
+  const isOpen = openDropdown === value;
+
+  if (!isOpen) {
+    return null;
+  }
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "navigation-menu-content absolute left-0 top-full mt-1 z-[99999999] bg-popover text-popover-foreground border border-border rounded-md shadow-lg overflow-hidden animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+        className
+      )}
+      data-state={isOpen ? "open" : "closed"}
+      {...props}
+    />
+  );
+});
 NavigationMenuContent.displayName = "NavigationMenuContent";
 
 const NavigationMenuLink = React.forwardRef<
@@ -177,5 +239,3 @@ export {
   NavigationMenuIndicator,
   NavigationMenuViewport,
 };
-
-

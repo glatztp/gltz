@@ -17,7 +17,7 @@ export function DatePickerPage() {
   const [date, setDate] = React.useState<Date | undefined>();
 
   return (
-    <div className="flex gap-6 min-h-screen">
+    <div className="flex gap-6 min-h-screen pt-12">
       <div className="flex-1 overflow-auto">
         <div className="space-y-8 p-6">
           <div>
@@ -106,7 +106,7 @@ export function DatePickerPage() {
                       mode="single"
                       selected={undefined}
                       onSelect={() => {}}
-                      disabled ={(day) => true} // desabilita todas as datas
+                      disabled={(day) => true} // desabilita todas as datas
                     />
                   </PopoverContent>
                 </Popover>
@@ -124,7 +124,10 @@ export function DatePickerPage() {
               <CardContent>
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant="outline" className="w-[280px] justify-start">
+                    <Button
+                      variant="outline"
+                      className="w-[280px] justify-start"
+                    >
                       📅 Datas bloqueadas
                     </Button>
                   </PopoverTrigger>
@@ -173,9 +176,7 @@ function DateRangePickerDemo() {
           <Calendar
             mode="range"
             selected={
-              range.from
-                ? { from: range.from, to: range.to }
-                : undefined
+              range.from ? { from: range.from, to: range.to } : undefined
             }
             onSelect={(selectedRange) =>
               setRange(selectedRange as { from?: Date; to?: Date })

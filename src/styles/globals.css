@@ -846,3 +846,75 @@
 .z-\[100\] {
   z-index: 100;
 }
+
+/* Navigation Menu - Estilos específicos para corrigir posicionamento */
+[data-radix-navigation-menu-content],
+.navigation-menu-content {
+  z-index: 99999999 !important;
+}
+
+/* Garantir que os dropdowns tenham overflow visível */
+.navigation-menu-container {
+  overflow: visible !important;
+}
+
+/* Melhorar o posicionamento dos dropdowns */
+.navigation-menu-item {
+  position: relative;
+}
+
+.navigation-menu-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 99999999;
+  background: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.375rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  margin-top: 0.25rem;
+}
+
+/* Para menus verticais, posicionar ao lado */
+.navigation-menu-vertical .navigation-menu-content {
+  top: 0;
+  left: 100%;
+  margin-left: 0.25rem;
+  margin-top: 0;
+}
+
+/* Garantir que cards tenham overflow visível */
+.card-overflow-visible {
+  overflow: visible !important;
+}
+
+.card-overflow-visible .card-content {
+  overflow: visible !important;
+}
+
+/* Corrigir texto dos botões nos dropdowns */
+.navigation-menu-content a,
+.navigation-menu-content button {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.navigation-menu-content .text-sm {
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+/* Garantir que o texto não transborde */
+.navigation-menu-content div,
+.navigation-menu-content p {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

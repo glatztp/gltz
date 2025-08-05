@@ -324,7 +324,7 @@ export function ThemesPage() {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden pt-12">
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
@@ -370,8 +370,8 @@ export function ThemesPage() {
                     }}
                     className="relative"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-lg scale-110 opacity-50" />
-                    <div className="relative p-4 sm:p-6 bg-gradient-to-br from-primary via-primary/90 to-secondary rounded-2xl shadow-xl">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-lg scale-110 opacity-50" />
+                    <div className="relative p-4 sm:p-6 bg-gradient-to-br from-primary via-primary/90 to-secondary rounded-full shadow-xl">
                       <Palette className="h-8 w-8 sm:h-12 sm:w-12 text-white" />
                     </div>
                   </motion.div>

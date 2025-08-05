@@ -10,7 +10,7 @@ import {
 
 export function SkeletonPage() {
   return (
-    <div className="flex gap-6 min-h-screen">
+    <div className="flex gap-6 min-h-screen pt-12">
       {/* Main Content */}
       <div className="flex-1 overflow-auto">
         <div className="space-y-8 p-6">

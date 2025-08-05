@@ -221,7 +221,7 @@ export function NavigationHeader({
                   </motion.div>
                 ))}
 
-                <div className="pt-2 border-t">
+                <div className="pt-2 border-t space-y-2">
                   <Button
                     variant="ghost"
                     size="sm"

@@ -174,7 +174,7 @@ export function ComingSoonPage({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 pt-12">
       <div className="container mx-auto px-6 py-12">
         {/* Hero Section */}
         <motion.div

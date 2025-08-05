@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createContext, useContext } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -31,6 +31,23 @@ import { Card, CardContent } from "./ui/layout";
 import { NavigationHeader } from "./layout/NavigationHeader";
 import { ComponentsSidebar } from "./layout/ComponentsSidebar";
 import { DocumentationPage } from "./layout/documentation-page";
+
+// Context for sidebar state
+interface SidebarContextType {
+  sidebarOpen: boolean;
+  setSidebarOpen: (open: boolean) => void;
+  toggleSidebar: () => void;
+}
+
+const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
+
+const useSidebar = () => {
+  const context = useContext(SidebarContext);
+  if (!context) {
+    throw new Error("useSidebar must be used within SidebarProvider");
+  }
+  return context;
+};
 
 // Page Components
 import { PlaygroundPage } from "./pages/playground-page";
@@ -82,7 +99,7 @@ import { ThemeProvider } from "./providers/theme-provider";
 import MultiComboBoxPage from "./pages/multicombobox-page";
 
 // Mapeamento de componentes
-const componentPages: Record<string, React.ComponentType> = {
+const componentPages: Record<string, React.ComponentType<any>> = {
   alert: AlertPage,
   "alert-dialog": AlertDialogPage,
   "aspect-ratio": AspectRatioPage,
@@ -126,7 +143,7 @@ const componentPages: Record<string, React.ComponentType> = {
   tooltip: TooltipPage,
   resizable: ResizablePage,
   collapsible: CollapsiblePage,
-  multicombo: MultiComboBoxPage
+  multicombo: MultiComboBoxPage,
 };
 
 function HomePage() {
@@ -696,7 +713,7 @@ export function App() {
                 variant="outline"
                 className="px-8 py-4 text-lg font-black border-2 border-primary/40 bg-background/95 backdrop-blur-md shadow-2xl hover:shadow-primary/30 transition-all duration-500"
               >
-                 Última Chamada
+                Última Chamada
               </Badge>
             </motion.div>
 
@@ -956,53 +973,62 @@ function DashboardContent() {
     }
   };
 
+  const sidebarContextValue: SidebarContextType = {
+    sidebarOpen,
+    setSidebarOpen,
+    toggleSidebar,
+  };
+
   return (
-    <div className="min-h-screen bg-background">
-      <NavigationHeader
-        onNavigate={handleNavigation}
-        currentSection={currentSection}
-        onToggleSidebar={toggleSidebar}
-        sidebarOpen={sidebarOpen && currentSection === "components"}
-      />
-
-      {/* Sidebar só aparece na seção de componentes */}
-      {currentSection === "components" && (
-        <ComponentsSidebar
-          isOpen={sidebarOpen}
-          onClose={() => setSidebarOpen(false)}
-          onSelectComponent={handleComponentSelect}
-          selectedComponent={selectedComponent}
-          expandCategory={expandCategory}
+    <SidebarContext.Provider value={sidebarContextValue}>
+      <div className="min-h-screen bg-background">
+        <NavigationHeader
+          onNavigate={handleNavigation}
+          currentSection={currentSection}
+          onToggleSidebar={toggleSidebar}
+          sidebarOpen={sidebarOpen && currentSection === "components"}
         />
-      )}
 
-      {/* Main content com margem quando sidebar está aberta */}
-      <div
-        className={`transition-all duration-300 ${
-          sidebarOpen && currentSection === "components" ? "lg:ml-72" : ""
-        }`}
-      >
-        <main className="min-h-[calc(100vh-4rem)] overflow-auto">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/docs" element={<DocumentationPage />} />
-            <Route path="/themes" element={<ThemesPage />} />
-            <Route path="/playground" element={<PlaygroundPage />} />
-            <Route
-              path="/components"
-              element={
-                <ComponentsOverview onCategoryExpand={handleCategoryExpand} />
-              }
-            />
-            <Route
-              path="/components/:componentId"
-              element={<ComponentPage />}
-            />
-          </Routes>
-        </main>
+        {/* Sidebar só aparece na seção de componentes */}
+        {currentSection === "components" && (
+          <ComponentsSidebar
+            isOpen={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+            onSelectComponent={handleComponentSelect}
+            selectedComponent={selectedComponent}
+            expandCategory={expandCategory}
+            onToggle={toggleSidebar}
+          />
+        )}
+
+        {/* Main content com margem quando sidebar está aberta */}
+        <div
+          className={`transition-all duration-300 ${
+            sidebarOpen && currentSection === "components" ? "lg:ml-72" : ""
+          }`}
+        >
+          <main className="min-h-[calc(100vh-4rem)] overflow-auto">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/docs" element={<DocumentationPage />} />
+              <Route path="/themes" element={<ThemesPage />} />
+              <Route path="/playground" element={<PlaygroundPage />} />
+              <Route
+                path="/components"
+                element={
+                  <ComponentsOverview onCategoryExpand={handleCategoryExpand} />
+                }
+              />
+              <Route
+                path="/components/:componentId"
+                element={<ComponentPage />}
+              />
+            </Routes>
+          </main>
+        </div>
       </div>
-    </div>
+    </SidebarContext.Provider>
   );
 }
 
@@ -1114,15 +1140,6 @@ function ComponentsOverview({
           <p className="text-muted-foreground mb-4">
             👈 Use a sidebar para explorar todos os componentes
           </p>
-          <Button
-            variant="outline"
-            onClick={() =>
-              window.open("https://github.com/glatztp/gltz", "_blank")
-            }
-          >
-            <Github className="h-4 w-4 mr-2" />
-            Ver no GitHub
-          </Button>
         </div>
       </motion.div>
     </div>
@@ -1133,6 +1150,7 @@ function ComponentsOverview({
 function ComponentPage() {
   const location = useLocation();
   const componentId = location.pathname.split("/")[2];
+  const { sidebarOpen, toggleSidebar } = useSidebar();
 
   const ComponentPageComponent = componentPages[componentId];
 
@@ -1146,6 +1164,16 @@ function ComponentPage() {
           </p>
         </div>
       </div>
+    );
+  }
+
+  // Pass sidebar props only to NavigationMenuPage
+  if (componentId === "navigation-menu") {
+    return (
+      <ComponentPageComponent
+        sidebarOpen={sidebarOpen}
+        onToggleSidebar={toggleSidebar}
+      />
     );
   }
 

@@ -31,7 +31,7 @@ export function SliderPage() {
   const [rating, setRating] = React.useState([7.5]);
 
   return (
-    <div className="flex gap-6 min-h-screen">
+    <div className="flex gap-6 min-h-screen pt-12">
       {/* Main Content */}
       <div className="flex-1 overflow-auto">
         <div className="space-y-8 p-6">
@@ -828,8 +828,6 @@ export function SliderPage() {
           </div>
         </div>
       </div>
-
-     
     </div>
   );
 }
