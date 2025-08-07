@@ -1,252 +1,260 @@
-# Contribuindo para o gltzUI 🚀
+# Contributing to @gltz-packages/ui
 
-Obrigado por considerar contribuir com o gltzUI! Suas contribuições são muito bem-vindas e ajudam a tornar esta biblioteca ainda melhor.
+Thank you for considering contributing to @gltz-packages/ui! Your contributions are highly valued and help make this library even better.
 
-## 📋 Sumário
+## Table of Contents
 
-- [Código de Conduta](#código-de-conduta)
-- [Como Contribuir](#como-contribuir)
-- [Reportando Bugs](#reportando-bugs)
-- [Sugerindo Funcionalidades](#sugerindo-funcionalidades)
-- [Contribuindo com Código](#contribuindo-com-código)
-- [Processo de Development](#processo-de-development)
-- [Guia de Estilo](#guia-de-estilo)
+- [Code of Conduct](#code-of-conduct)
+- [Getting Started](#getting-started)
+- [Development Process](#development-process)
+- [Pull Request Process](#pull-request-process)
+- [Issue Guidelines](#issue-guidelines)
+- [Coding Standards](#coding-standards)
+- [Testing Guidelines](#testing-guidelines)
+- [Documentation](#documentation)
 
-## 📜 Código de Conduta
+## Code of Conduct
 
-Este projeto adere ao [Código de Conduta do Contributor Covenant](CODE_OF_CONDUCT.md). Ao participar, você deve seguir este código.
+This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
-## 🤝 Como Contribuir
+## Getting Started
 
-Existem várias maneiras de contribuir:
+There are several ways to contribute:
 
-### 🐛 Reportando Bugs
+- **Bug Reports** - Help us identify and fix issues
+- **Feature Suggestions** - Propose new components and functionality
+- **Documentation** - Improve guides, examples, and API documentation
+- **Code Contributions** - Fix bugs, add features, and enhance performance
 
-- Use o template de bug report
-- Inclua informações detalhadas sobre o ambiente
-- Forneça passos para reproduzir o problema
-- Adicione screenshots quando aplicável
+### Prerequisites
 
-### 💡 Sugerindo Funcionalidades
+Before you begin, ensure you have:
 
-- Use o template de feature request
-- Descreva claramente o problema que a funcionalidade resolve
-- Explique como deveria funcionar
-- Considere implementações alternativas
+- **Node.js** >= 18.0.0
+- **npm** >= 8.0.0 or **yarn** >= 1.22.0
+- **Git** for version control
+- A **GitHub account**
 
-### 📖 Melhorando Documentação
+### Local Development Setup
 
-- Corrija erros de digitação
-- Adicione exemplos mais claros
-- Melhore explicações existentes
-- Traduza conteúdo
+1. **Fork and clone the repository**
 
-### 🔧 Contribuindo com Código
+   ```bash
+   gh repo fork glatztp/gltz --clone
+   cd gltz
+   ```
 
-- Correções de bugs
-- Novos componentes
-- Melhorias de performance
-- Otimizações de acessibilidade
+2. **Install dependencies**
 
-## 🐛 Reportando Bugs
+   ```bash
+   npm install
+   ```
 
-Antes de reportar um bug, por favor:
+3. **Start the development server**
 
-1. **Verifique** se já não foi reportado
-2. **Search** nas issues existentes
-3. **Teste** na versão mais recente
+   ```bash
+   npm run dev
+   ```
 
-### Template de Bug Report
+4. **Verify the setup**
+   ```bash
+   npm run build
+   npm run test
+   npm run lint
+   ```
 
-```markdown
-**Descrição do Bug**
-Uma descrição clara e concisa do problema.
+## Development Process
 
-**Para Reproduzir**
-Passos para reproduzir o comportamento:
-
-1. Vá para '...'
-2. Clique em '....'
-3. Role para baixo até '....'
-4. Veja o erro
-
-**Comportamento Esperado**
-Uma descrição clara do que você esperava que acontecesse.
-
-**Screenshots**
-Se aplicável, adicione screenshots para ajudar a explicar o problema.
-
-**Ambiente:**
-
-- OS: [e.g. iOS]
-- Browser [e.g. chrome, safari]
-- Versão [e.g. 22]
-- gltzUI Versão [e.g. 1.0.0]
-
-**Contexto Adicional**
-Adicione qualquer outro contexto sobre o problema aqui.
-```
-
-## 💡 Sugerindo Funcionalidades
-
-### Template de Feature Request
-
-```markdown
-**Sua feature request está relacionada a um problema? Descreva.**
-Uma descrição clara e concisa do problema.
-
-**Descreva a solução que você gostaria**
-Uma descrição clara e concisa do que você quer que aconteça.
-
-**Descreva alternativas que você considerou**
-Uma descrição clara e concisa de soluções ou funcionalidades alternativas.
-
-**Contexto adicional**
-Adicione qualquer outro contexto ou screenshots sobre a feature request aqui.
-```
-
-## 🔧 Contribuindo com Código
-
-### 1. Fork e Clone
-
-```bash
-# Fork o repositório no GitHub
-# Clone seu fork
-git clone https://github.com/SEU_USERNAME/gltz.git
-cd gltz
-
-# Adicione o repositório original como upstream
-git remote add upstream https://github.com/glatztp/gltz.git
-```
-
-### 2. Setup do Ambiente
-
-```bash
-# Instale as dependências
-npm install
-
-# Inicie o servidor de desenvolvimento
-npm run dev
-```
-
-### 3. Crie uma Branch
-
-```bash
-# Crie uma branch para sua feature/bugfix
-git checkout -b feature/minha-feature
-# ou
-git checkout -b bugfix/corrige-bug
-```
-
-### 4. Faça suas Mudanças
-
-- Escreva código limpo e bem documentado
-- Adicione testes quando apropriado
-- Mantenha commits pequenos e focados
-- Use mensagens de commit descritivas
-
-### 5. Teste suas Mudanças
-
-```bash
-# Execute os testes
-npm run test
-
-# Verifique o linting
-npm run lint
-
-# Teste o build
-npm run build
-```
-
-### 6. Commit e Push
-
-```bash
-# Adicione suas mudanças
-git add .
-
-# Commit com mensagem descritiva
-git commit -m "feat: adiciona novo componente DatePicker"
-
-# Push para seu fork
-git push origin feature/minha-feature
-```
-
-### 7. Abra um Pull Request
-
-- Use o template de PR
-- Descreva suas mudanças claramente
-- Inclua screenshots se aplicável
-- Referencie issues relacionadas
-
-## 🛠️ Processo de Development
-
-### Estrutura do Projeto
+### Repository Structure
 
 ```
 src/
-├── components/          # Componentes React
-│   ├── ui/             # Componentes base
-│   ├── layout/         # Componentes de layout
-│   └── pages/          # Páginas da documentação
-├── lib/                # Utilitários e helpers
-├── styles/             # Estilos globais
-└── types/              # Definições de tipos TypeScript
+├── components/          # React components
+│   ├── ui/             # Core UI components
+│   ├── pages/          # Documentation pages
+│   └── layout/         # Layout components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions and helpers
+├── styles/             # CSS files and styling
+└── types/              # TypeScript type definitions
 ```
 
-### Tecnologias Utilizadas
+### Branch Strategy
 
-- **React** - Biblioteca principal
-- **TypeScript** - Tipagem estática
-- **Tailwind CSS** - Estilização
-- **Framer Motion** - Animações
-- **Radix UI** - Primitivos acessíveis
-- **Vite** - Build tool
+- `main` - Production-ready code
+- `develop` - Development branch for upcoming releases
+- `feature/*` - New features and enhancements
+- `fix/*` - Bug fixes and patches
+- `docs/*` - Documentation updates
 
-### Scripts Disponíveis
+### Technology Stack
+
+- **React** - UI library
+- **TypeScript** - Type safety and developer experience
+- **Tailwind CSS** - Utility-first styling
+- **Radix UI** - Accessible component primitives
+- **Framer Motion** - Smooth animations
+- **Vite** - Fast build tool and development server
+
+## Pull Request Process
+
+### 1. Create a Feature Branch
 
 ```bash
-npm run dev          # Servidor de desenvolvimento
-npm run build        # Build para produção
-npm run lint         # ESLint
-npm run lint:fix     # ESLint com auto-fix
-npm run type-check   # Verificação de tipos
-npm run test         # Testes unitários
-npm run test:watch   # Testes em modo watch
-npm run test:a11y    # Testes de acessibilidade
-npm run test:visual  # Testes visuais
+git checkout -b feature/amazing-feature
 ```
 
-## 🎨 Guia de Estilo
+### 2. Make Your Changes
 
-### Código
+- Follow our [coding standards](#coding-standards)
+- Add tests for new functionality
+- Update documentation as needed
+- Ensure accessibility compliance
 
-#### TypeScript
+### 3. Test Your Changes
 
-- Use TypeScript para todos os arquivos
-- Defina interfaces para props
-- Use tipos explícitos quando necessário
+```bash
+npm run test           # Run all tests
+npm run lint          # Check code style
+npm run type-check    # Verify TypeScript
+npm run build         # Test production build
+```
+
+### 4. Commit Your Changes
+
+We follow [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+```bash
+git commit -m "feat: add new DatePicker component"
+git commit -m "fix: resolve button focus issue"
+git commit -m "docs: update installation guide"
+```
+
+**Commit Types:**
+
+- `feat:` - New features
+- `fix:` - Bug fixes
+- `docs:` - Documentation changes
+- `style:` - Formatting and style changes
+- `refactor:` - Code refactoring
+- `test:` - Adding or updating tests
+- `chore:` - Maintenance tasks
+
+### 5. Push and Create Pull Request
+
+```bash
+git push origin feature/amazing-feature
+```
+
+Create a pull request with:
+
+- Clear title and description
+- Reference to related issues
+- Screenshots for UI changes
+- Testing notes
+
+## Issue Guidelines
+
+### Bug Reports
+
+Before reporting a bug:
+
+1. Search existing issues to avoid duplicates
+2. Test with the latest version
+3. Provide a minimal reproduction case
+
+**Bug Report Template:**
+
+```markdown
+**Describe the bug**
+A clear and concise description of what the bug is.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+**Expected behavior**
+A clear description of what you expected to happen.
+
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
+
+**Environment:**
+
+- OS: [e.g. macOS, Windows, Linux]
+- Browser: [e.g. Chrome, Firefox, Safari]
+- Version: [e.g. 22]
+- @gltz-packages/ui version: [e.g. 2.2.1]
+
+**Additional context**
+Add any other context about the problem here.
+```
+
+### Feature Requests
+
+**Feature Request Template:**
+
+```markdown
+**Is your feature request related to a problem?**
+A clear description of what the problem is.
+
+**Describe the solution you'd like**
+A clear description of what you want to happen.
+
+**Describe alternatives you've considered**
+Alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request.
+```
+
+## Coding Standards
+
+### TypeScript
+
+- Use TypeScript for all new code
+- Define interfaces for component props
+- Use strict type checking
+- Prefer interfaces over type aliases for object shapes
 
 ```typescript
 interface ButtonProps {
-  variant?: "default" | "destructive" | "outline";
-  size?: "sm" | "default" | "lg";
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
+  size?: "default" | "sm" | "lg" | "icon";
+  asChild?: boolean;
   children: React.ReactNode;
 }
 ```
 
-#### React Components
+### React Components
 
-- Use componentes funcionais
-- Prefira hooks ao invés de classes
-- Mantenha componentes pequenos e focados
+- Use functional components with hooks
+- Forward refs for component composition
+- Use `React.forwardRef` for proper ref handling
+- Include `displayName` for debugging
 
-```tsx
+```typescript
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = "default", size = "default", ...props }, ref) => {
+  (
+    { variant = "default", size = "default", asChild = false, ...props },
+    ref
+  ) => {
+    const Comp = asChild ? Slot : "button";
+
     return (
-      <button
-        ref={ref}
+      <Comp
         className={cn(buttonVariants({ variant, size }))}
+        ref={ref}
         {...props}
       />
     );
@@ -256,25 +264,34 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 ```
 
-#### Styling
+### Styling Guidelines
 
-- Use Tailwind CSS classes
-- Crie variantes com `cva` (class-variance-authority)
-- Mantenha consistência com o design system
+- Use Tailwind CSS utility classes
+- Create variants with `class-variance-authority`
+- Maintain consistent spacing and sizing
+- Follow the design system tokens
 
 ```typescript
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md font-medium",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
@@ -285,50 +302,128 @@ const buttonVariants = cva(
 );
 ```
 
-### Mensagens de Commit
+### Accessibility Standards
 
-Use o padrão [Conventional Commits](https://www.conventionalcommits.org/):
+- Follow WCAG 2.1 AA guidelines
+- Use semantic HTML elements
+- Provide proper ARIA attributes
+- Ensure keyboard navigation support
+- Include focus indicators
+- Test with screen readers
 
+## Testing Guidelines
+
+### Unit Testing
+
+- Write tests for all new components
+- Use Jest and React Testing Library
+- Test component behavior, not implementation details
+- Aim for high code coverage
+
+```typescript
+import { render, screen } from "@testing-library/react";
+import { Button } from "./Button";
+
+describe("Button", () => {
+  it("renders with default variant", () => {
+    render(<Button>Click me</Button>);
+
+    const button = screen.getByRole("button");
+    expect(button).toHaveClass("bg-primary");
+  });
+
+  it("handles click events", () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Click me</Button>);
+
+    screen.getByRole("button").click();
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
 ```
-type(scope): description
 
-feat: adiciona novo componente
-fix: corrige bug de acessibilidade
-docs: atualiza README
-style: formata código
-refactor: melhora performance
-test: adiciona testes unitários
-chore: atualiza dependências
-```
+### Accessibility Testing
 
-### Documentação
+- Use `@axe-core/react` for automated testing
+- Test keyboard navigation manually
+- Verify screen reader compatibility
+- Check color contrast ratios
 
-- Documente novos componentes
-- Inclua exemplos de uso
-- Mantenha JSDoc atualizado
-- Adicione screenshots quando relevante
+### Visual Testing
 
-## 🏷️ Labels das Issues
+- Create Storybook stories for components
+- Include all variants and states
+- Document usage examples
+- Test responsive behavior
 
-| Label              | Descrição                           |
-| ------------------ | ----------------------------------- |
-| `bug`              | Algo não está funcionando           |
-| `enhancement`      | Nova funcionalidade ou pedido       |
-| `documentation`    | Melhorias ou adições à documentação |
-| `good first issue` | Boa para novos contribuidores       |
-| `help wanted`      | Ajuda extra é solicitada            |
-| `question`         | Pergunta adicional ou discussão     |
+## Documentation
 
-## 🎉 Reconhecimento
+### Component Documentation
 
-Contribuidores são reconhecidos no README e no hall da fama do projeto. Muito obrigado por fazer o gltzUI melhor!
+- Add comprehensive JSDoc comments
+- Document all props and their purposes
+- Include usage examples
+- Note accessibility considerations
 
-## 📞 Dúvidas?
+````typescript
+/**
+ * A flexible button component that supports multiple variants and sizes.
+ *
+ * @example
+ * ```tsx
+ * <Button variant="outline" size="lg" onClick={handleClick}>
+ *   Click me
+ * </Button>
+ * ```
+ */
+export interface ButtonProps {
+  /**
+   * The visual style variant of the button
+   * @default "default"
+   */
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
 
-Se tiver qualquer dúvida:
+  /**
+   * The size of the button
+   * @default "default"
+   */
+  size?: "default" | "sm" | "lg" | "icon";
+}
+````
 
-- Abra uma [Discussion](https://github.com/glatztp/gltz/discussions)
+### Storybook Stories
 
----
+- Create comprehensive stories for each component
+- Include controls for all props
+- Document component behavior
+- Provide code examples
 
-**Obrigado por contribuir! 🚀**
+## Release Process
+
+Releases are managed by maintainers and follow semantic versioning:
+
+- **Patch** (x.x.1): Bug fixes and small improvements
+- **Minor** (x.1.x): New features and components
+- **Major** (1.x.x): Breaking changes
+
+## Getting Help
+
+- **Documentation**: [https://gltz.vercel.app/docs](https://gltz.vercel.app/docs)
+- **Issues**: [GitHub Issues](https://github.com/glatztp/gltz/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/glatztp/gltz/discussions)
+
+## Recognition
+
+Contributors are recognized in:
+
+- Project README
+- Release notes
+- Contributors section on our website
+
+Thank you for contributing to @gltz-packages/ui!

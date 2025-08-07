@@ -1,69 +1,103 @@
-﻿# gltz
+﻿<div align="**A comprehensive, accessible, and highly customizable React component library built with modern web standards.**
 
-<div align="center">
+[📖 Documentation](https://gltz.vercel.app/docs) • [🚀 Live Demo](https://gltz.vercel.app) • [📦 NPM Package](https://www.npmjs.com/package/@gltz-packages/ui) • [🐛 Report Issues](https://github.com/glatztp/gltz/issues) • [💬 Discussions](https://github.com/glatztp/gltz/discussions)ter">
 
-**Biblioteca de componentes React moderna, acessível e customizável**
+# @gltz-packages/ui
 
-[![GitHub stars](https://img.shields.io/github/stars/glatztp/gltz?style=for-the-badge&logo=github&color=yellow)](https://github.com/glatztp/gltz/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/glatztp/gltz?style=for-the-badge&logo=github&color=blue)](https://github.com/glatztp/gltz/network)
-[![GitHub issues](https://img.shields.io/github/issues/glatztp/gltz?style=for-the-badge&logo=github&color=red)](https://github.com/glatztp/gltz/issues)
-[![GitHub license](https://img.shields.io/github/license/glatztp/gltz?style=for-the-badge&color=green)](https://github.com/glatztp/gltz/blob/main/LICENSE)
+### Enterprise-Grade React Component Library
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![npm version](https://badge.fury.io/js/%40gltz-packages%2Fui.svg)](https://badge.fury.io/js/%40gltz-packages%2Fui)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-[🌟 **Demo Ao Vivo**](https://gltzui.vercel.app) · [📚 **Documentação**](https://gltzui.vercel.app/docs) · [🎨 **Componentes**](https://gltzui.vercel.app/components) · [🐛 **Reportar Bug**](https://github.com/glatztp/gltz/issues)
+**A comprehensive, accessible, and highly customizable React component library built with modern web standards.**
+
+[� Documentation](https://ui.gltz.dev/docs) • [🚀 Live Demo](https://ui.gltz.dev) • [📦 NPM Package](https://www.npmjs.com/package/@gltz-packages/ui) • [🐛 Report Issues](https://github.com/glatztp/gltz/issues) • [💬 Discussions](https://github.com/glatztp/gltz/discussions)
 
 </div>
 
 ---
 
-## ✨ Características
+## ⚡ Quick Start
 
-<div align="center">
+### Installation
 
-|      🎨 **Moderno**      |   🚀 **Performance**    |  ♿ **Acessível**  | 🎯 **TypeScript** |
-| :----------------------: | :---------------------: | :----------------: | :---------------: |
-| Design system atualizado | Otimizado para produção | WCAG 2.1 compliant |    100% tipado    |
-
-| 🌙 **Dark Mode** | 📱 **Responsivo** | 🎭 **Animações** | 🔧 **Customizável** |
-| :--------------: | :---------------: | :--------------: | :-----------------: |
-|  Suporte nativo  |   Mobile-first    |  Framer Motion   |    CSS Variables    |
-
-</div>
-
-### 🎯 **O que torna o gltzUI especial?**
-
-- 🔥 **50+ Componentes** prontos para produção
-- 🎨 **Sistema de temas** avançado com CSS variables
-- ⚡ **Performance otimizada** com tree-shaking automático
-- 🛡️ **Acessibilidade** como prioridade (WCAG 2.1)
-- 📱 **Mobile-first** e totalmente responsivo
-- 🌙 **Dark/Light mode** suporte nativo
-- 🎭 **Animações fluidas** com Framer Motion
-- 📦 **Zero configuração** - funciona out-of-the-box
-- 🔧 **Altamente customizável** sem perder funcionalidade
-
----
-
-## 🚀 Instalação Rápida
-
-### NPM
+Choose your preferred framework and install the library:
 
 ```bash
-npm install @gltzui/components @gltzui/core
+# NPM
+npm install @gltz-packages/ui
+
+# Yarn
+yarn add @gltz-packages/ui
+
+# PNPM
+pnpm add @gltz-packages/ui
 ```
 
-## ⚡ Uso Rápido
+### Basic Usage
 
 ```tsx
-import { Button, Card, Input } from "@gltzui/components";
-import { toast } from "@gltzui/core";
+import { Button, Card, Input } from "@gltz-packages/ui";
 
 export default function App() {
   return (
-    <Card className="p-6 max-w-md mx-auto">
+    <div className="container mx-auto p-6">
+      <Card className="p-6 max-w-md mx-auto">
+        <h1 className="text-2xl font-bold mb-4">Welcome to GLTZ UI</h1>
+        <Input placeholder="Enter your email" className="mb-4" />
+        <Button className="w-full">Get Started</Button>
+      </Card>
+    </div>
+  );
+}
+```
+
+### Framework Integration
+
+<details>
+<summary><strong>Next.js Setup</strong></summary>
+
+```bash
+npx create-next-app@latest my-app --typescript --tailwind --app
+cd my-app
+npm install @gltz-packages/ui
+```
+
+Add to your `globals.css`:
+
+```css
+@import "@gltz-packages/ui/dist/styles.css";
+```
+
+</details>
+
+<details>
+<summary><strong>Vite + React Setup</strong></summary>
+
+```bash
+npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install @gltz-packages/ui tailwindcss
+```
+
+Configure `tailwind.config.js`:
+
+```js
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@gltz-packages/ui/dist/**/*.js",
+  ],
+  theme: { extend: {} },
+  plugins: [],
+};
+```
+
+</details>
       <h1 className="text-2xl font-bold mb-4">Bem-vindo ao gltzUI! 🎉</h1>
 
       <div className="space-y-4">
@@ -74,9 +108,11 @@ export default function App() {
         </Button>
       </div>
     </Card>
-  );
+
+);
 }
-```
+
+````
 
 ---
 
@@ -183,7 +219,7 @@ function App() {
     </ThemeProvider>
   );
 }
-```
+````
 
 ### 🎨 Temas Customizados
 
@@ -336,7 +372,7 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 [![Discord](https://img.shields.io/badge/Discord-Join%20Us-7289da?style=for-the-badge&logo=discord)](https://discord.gg/gltzui)
 [![Email](https://img.shields.io/badge/Email-Contact-ea4335?style=for-the-badge&logo=gmail)](mailto:support@gltzui.com)
-[![Docs](https://img.shields.io/badge/Docs-Read-blue?style=for-the-badge&logo=gitbook)](https://gltzui.vercel.app/docs)
+[![Docs](https://img.shields.io/badge/Docs-Read-blue?style=for-the-badge&logo=gitbook)](https://gltz.vercel.app/docs)
 
 </div>
 
