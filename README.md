@@ -13,7 +13,7 @@
 [![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
-[🌟 **Demo Ao Vivo**](https://gltzui.vercel.app) · [📚 **Documentação**](https://gltzui.vercel.app/docs) · [🎨 **Componentes**](https://gltzui.vercel.app/components) · [🐛 **Reportar Bug**](https://github.com/glatztp/gltz/issues)
+[🌟 **Demo Ao Vivo**](https://gltz.vercel.app) · [📚 **Documentação**](https://gltz.vercel.app/docs) · [🎨 **Componentes**](https://gltz.vercel.app/components) · [🐛 **Reportar Bug**](https://github.com/glatztp/gltz/issues)
 
 </div>
 
