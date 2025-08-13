@@ -37,186 +37,187 @@ A comprehensive, accessible, and highly customizable React component library bui
 
 Built on a foundation of industry-leading technologies:
 
-- **React** 18+ - Latest React features with concurrent rendering
-- **TypeScript** 5+ - Full type safety and excellent developer experience
-- **Radix UI** - Unstyled, accessible component primitives
-- **Tailwind CSS** - Utility-first styling with design tokens
-- **Framer Motion** - Smooth, performant animations
-- **Class Variance Authority** - Type-safe component variants
+<div align="center">
+
+<img src="https://gltz.vercel.app/logo.svg" alt="GLTZ UI Logo" width="120" />
+
+# @gltz-packages/ui
+
+![Alt](https://repobeats.axiom.co/api/embed/daa29dc86cb7b8844337c5528be01db2239880ad.svg "Repobeats analytics image")
+
+**A maior e mais profissional biblioteca de componentes React para aplicações modernas.**
+
+[![npm version](https://img.shields.io/npm/v/@gltz-packages/ui?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/@gltz-packages/ui)
+[![Downloads](https://img.shields.io/npm/dm/@gltz-packages/ui?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/@gltz-packages/ui)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+
+[📖 **Documentação**](https://gltz.vercel.app/docs) • [🚀 **Live Demo**](https://gltz.vercel.app) • [📦 **NPM**](https://www.npmjs.com/package/@gltz-packages/ui) • [🐛 **Reportar Issues**](https://github.com/glatztp/gltz/issues) • [💬 **Discussões**](https://github.com/glatztp/gltz/discussions)
+
+</div>
 
 ---
 
-## Installation & Quick Start
+## Sobre
 
-### NPM Installation
+@gltz-packages/ui é uma biblioteca robusta de componentes React, criada para elevar o padrão de aplicações web modernas. São dezenas de componentes profissionais, acessíveis, altamente customizáveis e prontos para produção, com foco em performance, experiência do desenvolvedor e design consistente.
+
+- **+50 componentes**: UI, navegação, formulários, overlays, feedback, layout, dados e mais
+- **Acessibilidade**: Totalmente compatível com WCAG 2.1 AA
+- **Theming avançado**: Suporte completo a dark mode e customização via CSS variables
+- **TypeScript first**: Tipagem rigorosa e IntelliSense completo
+- **Compatível**: Next.js, Vite, CRA, Remix, Gatsby e outros
+- **Tree-shakeable**: Importação seletiva para bundles leves
+- **Documentação completa**: Exemplos, playground e guias detalhados
+
+---
+
+## Principais Diferenciais
+
+- **Componentes Profissionais**: Design enterprise, responsivo e pronto para produção
+- **Customização Total**: Props avançadas, variantes, integração fácil com tokens de design
+- **Performance**: Otimizado para SSR, lazy loading e animações fluidas
+- **Acessibilidade Real**: Foco em navegação por teclado, ARIA, contraste e testes automatizados
+- **Integração Simples**: Instale e use em qualquer stack React moderna
+
+---
+
+## Instalação
 
 ```bash
-# Install the library
 npm install @gltz-packages/ui lucide-react
-
-# Or with Yarn
+# ou
 yarn add @gltz-packages/ui lucide-react
-
-# Or with PNPM
+# ou
 pnpm add @gltz-packages/ui lucide-react
 ```
 
-### Framework Setup
+Veja a [documentação de instalação](https://gltz.vercel.app/docs/installation) para exemplos de setup em Next.js, Vite, CRA, Remix e Gatsby.
 
-<details>
-<summary><strong>Next.js (App Router)</strong></summary>
+---
 
-**1. Create a new Next.js project:**
-```bash
-npx create-next-app@latest my-app --typescript --tailwind --app
-cd my-app
-npm install @gltz-packages/ui lucide-react
-```
+## Exemplo Rápido
 
-**2. Configure Tailwind CSS** (`tailwind.config.js`):
-```javascript
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: ["class"],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-    './node_modules/@gltz-packages/ui/dist/**/*.{js,ts,jsx,tsx}',
-  ],
-  prefix: "",
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-    extend: {
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
-  },
-  plugins: [require("tailwindcss-animate")],
+```tsx
+import { Button, Card, Input } from "@gltz-packages/ui";
+
+export default function App() {
+  return (
+    <Card className="p-6 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Bem-vindo ao GLTZ UI</h1>
+      <Input placeholder="Seu e-mail" className="mb-4" />
+      <Button className="w-full">Começar</Button>
+    </Card>
+  );
 }
 ```
 
-**3. Add global styles** (`app/globals.css`):
+---
+
+## Componentes
+
+@gltz-packages/ui oferece uma coleção completa de componentes para todas as necessidades:
+
+- **Formulários**: Button, Input, Textarea, Checkbox, Radio, Switch, Label, Slider, DatePicker, Calendar, Input OTP
+- **Navegação**: NavigationMenu, Menubar, Tabs, Pagination, Breadcrumb, Command
+- **Overlays**: Dialog, AlertDialog, Popover, Tooltip, Sheet, Drawer, HoverCard, ContextMenu, DropdownMenu, Combobox
+- **Feedback**: Alert, Toast, Sonner, Progress, Skeleton, Badge
+- **Layout**: Card, Separator, ScrollArea, Accordion, Collapsible, Resizable, AspectRatio, Container
+- **Dados**: DataTable, Avatar, Table, List, Timeline
+
+Veja a [lista completa de componentes](https://gltz.vercel.app/docs/components) com exemplos e playground.
+
+---
+
+## Theming & Customização
+
+- **Dark Mode**: Suporte nativo e detecção automática
+- **Tokens de Design**: Customização via CSS variables
+- **Exemplo**:
+
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --background: 0 0% 100%;
+  --radius: 0.5rem;
+}
+```
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
+---
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
+## Acessibilidade
+
+Todos os componentes seguem as melhores práticas de acessibilidade:
+
+- Navegação por teclado
+- ARIA roles e labels
+- Contraste de cores
+- Foco visível
+- Testes automatizados com axe-core
+
+---
+
+## Performance
+
+- Importação seletiva (tree-shaking)
+- Lazy loading para componentes pesados
+- Animações otimizadas com Framer Motion
+- Bundle size monitorado via Bundlephobia
+
+---
+
+## Como Contribuir
+
+Contribuições são bem-vindas! Veja o [Guia de Contribuição](CONTRIBUTING.md) para detalhes.
+
+- [Abrir Issue](https://github.com/glatztp/gltz/issues/new?template=bug_report.md)
+- [Sugerir Feature](https://github.com/glatztp/gltz/issues/new?template=feature_request.md)
+- [Pull Requests](https://github.com/glatztp/gltz/pulls)
+
+---
+
+## Estatísticas
+
+- **+50 componentes**
+- **100% TypeScript**
+- **Cobertura de testes crescente**
+- **Milhares de downloads mensais**
+- **Utilizado em projetos enterprise e startups**
+
+---
+
+## Licença
+
+MIT License © 2025 [glatztp](https://github.com/glatztp)
+
+---
+
+<div align="center">
+
+**Feito com profissionalismo por [glatztp](https://github.com/glatztp)**
+
+⭐ Se este projeto te ajudou, deixe uma estrela no GitHub! ⭐
+
+[![GitHub stars](https://img.shields.io/github/stars/glatztp/gltz?style=social)](https://github.com/glatztp/gltz/stargazers)
+
+</div>
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
+
+- {
+  @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+  @apply bg-background text-foreground;
   }
-}
-```
+  }
+
+````
 
 </details>
 
@@ -229,9 +230,10 @@ npm create vite@latest my-app -- --template react-ts
 cd my-app
 npm install @gltz-packages/ui lucide-react tailwindcss postcss autoprefixer
 npx tailwindcss init -p
-```
+````
 
 **2. Configure Tailwind CSS** (`tailwind.config.js`):
+
 ```javascript
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -247,10 +249,11 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
 ```
 
 **3. Add styles** (`src/index.css`):
+
 ```css
 @tailwind base;
 @tailwind components;
@@ -264,6 +267,7 @@ export default {
 <summary><strong>Create React App</strong></summary>
 
 **1. Create a new CRA project:**
+
 ```bash
 npx create-react-app my-app --template typescript
 cd my-app
@@ -273,6 +277,7 @@ npx tailwindcss init -p
 ```
 
 **2. Configure Tailwind CSS** (`tailwind.config.js`):
+
 ```javascript
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -288,10 +293,11 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
 ```
 
 **3. Add styles** (`src/index.css`):
+
 ```css
 @tailwind base;
 @tailwind components;
@@ -304,17 +310,17 @@ module.exports = {
 ### Basic Usage Example
 
 ```tsx
-import React from 'react';
-import { 
-  Button, 
-  Card, 
-  CardContent, 
-  CardDescription, 
-  CardHeader, 
+import React from "react";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
   CardTitle,
   Input,
   Label,
-  Separator
+  Separator,
 } from "@gltz-packages/ui";
 
 export default function App() {
@@ -330,11 +336,7 @@ export default function App() {
         <CardContent className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
-            <Input 
-              id="email"
-              type="email" 
-              placeholder="Enter your email" 
-            />
+            <Input id="email" type="email" placeholder="Enter your email" />
           </div>
           <Separator />
           <Button className="w-full" size="lg">
@@ -357,90 +359,90 @@ export default function App() {
 
 Professional form controls with built-in validation and accessibility features.
 
-| Component | Description | Features |
-|-----------|-------------|----------|
-| **Button** | Versatile button component with multiple variants | 6 variants, 4 sizes, loading states, icon support |
-| **Input** | Text input with validation support | Type variants, validation states, icons, controlled/uncontrolled |
-| **Textarea** | Multi-line text input with auto-resize | Character counting, auto-resize, validation |
-| **Checkbox** | Accessible checkbox with custom styling | Indeterminate state, custom icons, form integration |
-| **Radio Group** | Radio button group component | Horizontal/vertical layout, validation |
-| **Switch** | Toggle switch component | Sizes, disabled state, controlled |
-| **Label** | Accessible form label | Auto-association, required indicators |
-| **Slider** | Range slider component | Single/double handles, custom marks, validation |
-| **Select** | Dropdown selection component | Multi-select, searchable, custom options |
-| **Date Picker** | Modern date selection | Range selection, presets, time picker |
-| **Calendar** | Full calendar component | Multi-date selection, custom day rendering |
-| **Input OTP** | One-time password input | Auto-focus, paste support, customizable length |
+| Component       | Description                                       | Features                                                         |
+| --------------- | ------------------------------------------------- | ---------------------------------------------------------------- |
+| **Button**      | Versatile button component with multiple variants | 6 variants, 4 sizes, loading states, icon support                |
+| **Input**       | Text input with validation support                | Type variants, validation states, icons, controlled/uncontrolled |
+| **Textarea**    | Multi-line text input with auto-resize            | Character counting, auto-resize, validation                      |
+| **Checkbox**    | Accessible checkbox with custom styling           | Indeterminate state, custom icons, form integration              |
+| **Radio Group** | Radio button group component                      | Horizontal/vertical layout, validation                           |
+| **Switch**      | Toggle switch component                           | Sizes, disabled state, controlled                                |
+| **Label**       | Accessible form label                             | Auto-association, required indicators                            |
+| **Slider**      | Range slider component                            | Single/double handles, custom marks, validation                  |
+| **Select**      | Dropdown selection component                      | Multi-select, searchable, custom options                         |
+| **Date Picker** | Modern date selection                             | Range selection, presets, time picker                            |
+| **Calendar**    | Full calendar component                           | Multi-date selection, custom day rendering                       |
+| **Input OTP**   | One-time password input                           | Auto-focus, paste support, customizable length                   |
 
 ### Navigation Components (6 Components)
 
 Comprehensive navigation solutions for complex applications.
 
-| Component | Description | Features |
-|-----------|-------------|----------|
+| Component           | Description                  | Features                                      |
+| ------------------- | ---------------------------- | --------------------------------------------- |
 | **Navigation Menu** | Hierarchical navigation menu | Nested menus, responsive, keyboard navigation |
-| **Menubar** | Application menu bar | Context menus, keyboard shortcuts |
-| **Breadcrumb** | Navigation breadcrumb | Custom separators, collapsible |
-| **Tabs** | Tabbed interface component | Vertical/horizontal, lazy loading |
-| **Pagination** | Data pagination controls | Customizable ranges, jump to page |
-| **Command** | Command palette interface | Keyboard shortcuts, search, grouping |
+| **Menubar**         | Application menu bar         | Context menus, keyboard shortcuts             |
+| **Breadcrumb**      | Navigation breadcrumb        | Custom separators, collapsible                |
+| **Tabs**            | Tabbed interface component   | Vertical/horizontal, lazy loading             |
+| **Pagination**      | Data pagination controls     | Customizable ranges, jump to page             |
+| **Command**         | Command palette interface    | Keyboard shortcuts, search, grouping          |
 
 ### Overlay Components (10 Components)
 
 Modal and overlay components for enhanced user interactions.
 
-| Component | Description | Features |
-|-----------|-------------|----------|
-| **Dialog** | Modal dialog component | Nested modals, scroll locking, focus management |
-| **Alert Dialog** | Confirmation dialog | Custom actions, accessibility |
-| **Popover** | Positioned popover content | Auto-positioning, arrow, trigger options |
-| **Tooltip** | Contextual tooltip | Delay configuration, rich content, positioning |
-| **Sheet** | Slide-out panel | Multiple sides, sizes, backdrop |
-| **Drawer** | Mobile-friendly drawer | Swipe gestures, snap points |
-| **Hover Card** | Hover-triggered card | Delay, rich content, positioning |
-| **Context Menu** | Right-click context menu | Nested menus, keyboard navigation |
-| **Dropdown Menu** | Dropdown menu component | Checkable items, separators, icons |
-| **Combobox** | Searchable select component | Async search, custom filtering |
+| Component         | Description                 | Features                                        |
+| ----------------- | --------------------------- | ----------------------------------------------- |
+| **Dialog**        | Modal dialog component      | Nested modals, scroll locking, focus management |
+| **Alert Dialog**  | Confirmation dialog         | Custom actions, accessibility                   |
+| **Popover**       | Positioned popover content  | Auto-positioning, arrow, trigger options        |
+| **Tooltip**       | Contextual tooltip          | Delay configuration, rich content, positioning  |
+| **Sheet**         | Slide-out panel             | Multiple sides, sizes, backdrop                 |
+| **Drawer**        | Mobile-friendly drawer      | Swipe gestures, snap points                     |
+| **Hover Card**    | Hover-triggered card        | Delay, rich content, positioning                |
+| **Context Menu**  | Right-click context menu    | Nested menus, keyboard navigation               |
+| **Dropdown Menu** | Dropdown menu component     | Checkable items, separators, icons              |
+| **Combobox**      | Searchable select component | Async search, custom filtering                  |
 
 ### Feedback Components (6 Components)
 
 User feedback and status indication components.
 
-| Component | Description | Features |
-|-----------|-------------|----------|
-| **Alert** | Contextual alert messages | 4 variants, dismissible, custom icons |
-| **Toast** | Notification toast system | Queue management, positioning, actions |
-| **Sonner** | Modern toast notifications | Rich content, promise handling |
-| **Progress** | Progress indication | Determinate/indeterminate, circular variant |
-| **Skeleton** | Loading state placeholders | Custom shapes, animation controls |
-| **Badge** | Status and labeling badges | Multiple variants, sizes, removable |
+| Component    | Description                | Features                                    |
+| ------------ | -------------------------- | ------------------------------------------- |
+| **Alert**    | Contextual alert messages  | 4 variants, dismissible, custom icons       |
+| **Toast**    | Notification toast system  | Queue management, positioning, actions      |
+| **Sonner**   | Modern toast notifications | Rich content, promise handling              |
+| **Progress** | Progress indication        | Determinate/indeterminate, circular variant |
+| **Skeleton** | Loading state placeholders | Custom shapes, animation controls           |
+| **Badge**    | Status and labeling badges | Multiple variants, sizes, removable         |
 
 ### Layout Components (8 Components)
 
 Structural components for organizing application layout.
 
-| Component | Description | Features |
-|-----------|-------------|----------|
-| **Card** | Content container card | Header, content, footer sections |
-| **Separator** | Visual content separator | Horizontal/vertical, custom styling |
-| **Scroll Area** | Custom scrollable area | Custom scrollbars, horizontal/vertical |
-| **Accordion** | Collapsible content sections | Multiple/single expansion, custom triggers |
-| **Collapsible** | Simple collapsible content | Smooth animations, trigger customization |
-| **Resizable** | Resizable panel layout | Horizontal/vertical, constraints, persistence |
-| **Aspect Ratio** | Responsive aspect ratio container | Common ratios, custom values |
-| **Container** | Responsive container component | Breakpoint-based max-widths |
+| Component        | Description                       | Features                                      |
+| ---------------- | --------------------------------- | --------------------------------------------- |
+| **Card**         | Content container card            | Header, content, footer sections              |
+| **Separator**    | Visual content separator          | Horizontal/vertical, custom styling           |
+| **Scroll Area**  | Custom scrollable area            | Custom scrollbars, horizontal/vertical        |
+| **Accordion**    | Collapsible content sections      | Multiple/single expansion, custom triggers    |
+| **Collapsible**  | Simple collapsible content        | Smooth animations, trigger customization      |
+| **Resizable**    | Resizable panel layout            | Horizontal/vertical, constraints, persistence |
+| **Aspect Ratio** | Responsive aspect ratio container | Common ratios, custom values                  |
+| **Container**    | Responsive container component    | Breakpoint-based max-widths                   |
 
 ### Data Display Components (5 Components)
 
 Components for displaying and organizing data.
 
-| Component | Description | Features |
-|-----------|-------------|----------|
-| **Data Table** | Feature-rich data table | Sorting, filtering, pagination, selection |
-| **Avatar** | User avatar component | Image, fallback, status indicator, sizes |
-| **Table** | Basic table components | Responsive, striped, hover states |
-| **List** | Structured list component | Ordered/unordered, custom styling |
-| **Timeline** | Event timeline component | Vertical/horizontal, custom markers |
+| Component      | Description               | Features                                  |
+| -------------- | ------------------------- | ----------------------------------------- |
+| **Data Table** | Feature-rich data table   | Sorting, filtering, pagination, selection |
+| **Avatar**     | User avatar component     | Image, fallback, status indicator, sizes  |
+| **Table**      | Basic table components    | Responsive, striped, hover states         |
+| **List**       | Structured list component | Ordered/unordered, custom styling         |
+| **Timeline**   | Event timeline component  | Vertical/horizontal, custom markers       |
 
 ---
 
@@ -459,16 +461,16 @@ The library uses HSL color space for maximum flexibility and includes semantic c
   /* Primary Colors */
   --primary: 222.2 47.4% 11.2%;
   --primary-foreground: 210 40% 98%;
-  
+
   /* Secondary Colors */
   --secondary: 210 40% 96%;
   --secondary-foreground: 222.2 84% 4.9%;
-  
+
   /* Semantic Colors */
   --destructive: 0 84.2% 60.2%;
   --warning: 38 92% 50%;
   --success: 142 71% 45%;
-  
+
   /* UI Colors */
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
@@ -487,11 +489,7 @@ import { ThemeProvider } from "@gltz-packages/ui";
 
 function App() {
   return (
-    <ThemeProvider
-      defaultTheme="system"
-      enableSystem
-      attribute="class"
-    >
+    <ThemeProvider defaultTheme="system" enableSystem attribute="class">
       <YourApp />
     </ThemeProvider>
   );
@@ -519,18 +517,18 @@ Consistent typography scale with responsive sizing:
 
 ```css
 :root {
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
   /* Type Scale */
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px */
-  --text-lg: 1.125rem;   /* 18px */
-  --text-xl: 1.25rem;    /* 20px */
-  --text-2xl: 1.5rem;    /* 24px */
-  --text-3xl: 1.875rem;  /* 30px */
-  --text-4xl: 2.25rem;   /* 36px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px */
 }
 ```
 
@@ -541,18 +539,18 @@ Consistent spacing scale based on 4px units:
 ```css
 :root {
   --spacing-0: 0;
-  --spacing-1: 0.25rem;  /* 4px */
-  --spacing-2: 0.5rem;   /* 8px */
-  --spacing-3: 0.75rem;  /* 12px */
-  --spacing-4: 1rem;     /* 16px */
-  --spacing-5: 1.25rem;  /* 20px */
-  --spacing-6: 1.5rem;   /* 24px */
-  --spacing-8: 2rem;     /* 32px */
-  --spacing-10: 2.5rem;  /* 40px */
-  --spacing-12: 3rem;    /* 48px */
-  --spacing-16: 4rem;    /* 64px */
-  --spacing-20: 5rem;    /* 80px */
-  --spacing-24: 6rem;    /* 96px */
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-3: 0.75rem; /* 12px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-5: 1.25rem; /* 20px */
+  --spacing-6: 1.5rem; /* 24px */
+  --spacing-8: 2rem; /* 32px */
+  --spacing-10: 2.5rem; /* 40px */
+  --spacing-12: 3rem; /* 48px */
+  --spacing-16: 4rem; /* 64px */
+  --spacing-20: 5rem; /* 80px */
+  --spacing-24: 6rem; /* 96px */
 }
 ```
 
@@ -585,7 +583,7 @@ Components include comprehensive ARIA support:
 // Form with proper labeling
 <div>
   <Label htmlFor="email" className="required">Email</Label>
-  <Input 
+  <Input
     id="email"
     type="email"
     required
@@ -613,12 +611,12 @@ npm install -D @testing-library/jest-dom @testing-library/user-event
 ```
 
 ```tsx
-import { axe, toHaveNoViolations } from '@axe-core/jest-axe';
-import { render } from '@testing-library/react';
+import { axe, toHaveNoViolations } from "@axe-core/jest-axe";
+import { render } from "@testing-library/react";
 
 expect.extend(toHaveNoViolations);
 
-test('Button is accessible', async () => {
+test("Button is accessible", async () => {
   const { container } = render(<Button>Click me</Button>);
   const results = await axe(container);
   expect(results).toHaveNoViolations();
@@ -664,7 +662,7 @@ npx bundlephobia @gltz-packages/ui
 Components are optimized with:
 
 - **React.memo** - Prevent unnecessary re-renders
-- **useCallback/useMemo** - Memoize expensive operations  
+- **useCallback/useMemo** - Memoize expensive operations
 - **Virtualization** - Large lists use virtual scrolling
 - **Lazy Loading** - Heavy components load on demand
 
@@ -707,46 +705,46 @@ Configure Jest:
 ```javascript
 // jest.config.js
 module.exports = {
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
-  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.js"],
+  testEnvironment: "jsdom",
   moduleNameMapping: {
-    '^@/(.*)$': '<rootDir>/src/$1',
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
 };
 ```
 
 ```javascript
 // src/setupTests.js
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 ```
 
 ### Component Testing Examples
 
 ```tsx
-import { render, screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Button } from '@gltz-packages/ui';
+import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { Button } from "@gltz-packages/ui";
 
-describe('Button Component', () => {
-  test('renders with text', () => {
+describe("Button Component", () => {
+  test("renders with text", () => {
     render(<Button>Click me</Button>);
-    expect(screen.getByRole('button')).toHaveTextContent('Click me');
+    expect(screen.getByRole("button")).toHaveTextContent("Click me");
   });
 
-  test('handles click events', async () => {
+  test("handles click events", async () => {
     const handleClick = jest.fn();
     const user = userEvent.setup();
-    
+
     render(<Button onClick={handleClick}>Click me</Button>);
-    await user.click(screen.getByRole('button'));
-    
+    await user.click(screen.getByRole("button"));
+
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  test('shows loading state', () => {
+  test("shows loading state", () => {
     render(<Button loading>Loading...</Button>);
-    expect(screen.getByRole('button')).toBeDisabled();
-    expect(screen.getByRole('button')).toHaveAttribute('aria-disabled', 'true');
+    expect(screen.getByRole("button")).toBeDisabled();
+    expect(screen.getByRole("button")).toHaveAttribute("aria-disabled", "true");
   });
 });
 ```
@@ -766,11 +764,11 @@ npm install -D @storybook/addon-visual-tests
 ### Accessibility Testing
 
 ```tsx
-import { axe, toHaveNoViolations } from '@axe-core/jest-axe';
+import { axe, toHaveNoViolations } from "@axe-core/jest-axe";
 
 expect.extend(toHaveNoViolations);
 
-test('Form is accessible', async () => {
+test("Form is accessible", async () => {
   const { container } = render(
     <form>
       <Label htmlFor="name">Name</Label>
@@ -778,7 +776,7 @@ test('Form is accessible', async () => {
       <Button type="submit">Submit</Button>
     </form>
   );
-  
+
   const results = await axe(container);
   expect(results).toHaveNoViolations();
 });
@@ -793,11 +791,13 @@ test('Form is accessible', async () => {
 Major changes in version 2.0:
 
 1. **Breaking Changes:**
+
    - Renamed `variant` prop values for consistency
    - Updated CSS custom property names
    - Removed deprecated components
 
 2. **New Features:**
+
    - Enhanced TypeScript definitions
    - New component variants
    - Improved accessibility support
@@ -811,7 +811,7 @@ npm install @gltz-packages/ui@^2.0.0
 # Update CSS custom properties
 # Old
 --primary-500: 59 130 246;
-# New  
+# New
 --primary: 217.2 91.2% 59.8%;
 ```
 
@@ -840,27 +840,32 @@ We welcome contributions from the community! Please read our [Contributing Guide
 ### Development Setup
 
 1. **Clone the repository:**
+
 ```bash
 git clone https://github.com/glatztp/gltz.git
 cd gltz
 ```
 
 2. **Install dependencies:**
+
 ```bash
 npm install
 ```
 
 3. **Start development server:**
+
 ```bash
 npm run dev
 ```
 
 4. **Run tests:**
+
 ```bash
 npm test
 ```
 
 5. **Build the library:**
+
 ```bash
 npm run build
 ```
@@ -963,17 +968,20 @@ Contact us at: enterprise@gltz.dev
 ### Version 2.2.1 (Current)
 
 #### Added
+
 - New `MultiCombobox` component for multi-selection
 - Enhanced `DatePicker` with range selection
 - Dark mode improvements across all components
 - Bundle size optimizations
 
 #### Fixed
+
 - Accessibility issues in `Dialog` component
 - TypeScript definitions for theme provider
 - Focus management in `Popover` component
 
 #### Changed
+
 - Updated dependencies to latest versions
 - Improved documentation with more examples
 - Enhanced Storybook stories
@@ -1017,7 +1025,7 @@ SOFTWARE.
 Special thanks to the open-source community and these amazing projects:
 
 - **[Radix UI](https://radix-ui.com)** - Accessible component primitives
-- **[Tailwind CSS](https://tailwindcss.com)** - Utility-first CSS framework  
+- **[Tailwind CSS](https://tailwindcss.com)** - Utility-first CSS framework
 - **[shadcn/ui](https://ui.shadcn.com)** - Design inspiration and patterns
 - **[Framer Motion](https://framer.com/motion)** - Animation library
 - **[Lucide](https://lucide.dev)** - Beautiful icon set
