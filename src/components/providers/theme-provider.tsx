@@ -9,7 +9,14 @@ type Theme =
   | "ocean"
   | "coffee"
   | "galaxy";
-type ColorScheme = "blue" | "emerald" | "violet" | "rose" | "orange" | "cyan";
+type ColorScheme =
+  | "blue"
+  | "emerald"
+  | "violet"
+  | "rose"
+  | "orange"
+  | "cyan"
+  | "premium";
 
 interface ThemeContextType {
   theme: Theme;
@@ -211,6 +218,92 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return themes[themeType];
   };
 
+  // Definição das cores para cada colorScheme
+  const colorSchemes: Record<
+    ColorScheme,
+    {
+      primary: string;
+      primaryHover: string;
+      primaryActive: string;
+      primaryForeground: string;
+      ring: string;
+      accent: string;
+      accentHover: string;
+      accentForeground: string;
+    }
+  > = {
+    blue: {
+      primary: "217 91% 60%",
+      primaryHover: "217 91% 55%",
+      primaryActive: "217 91% 50%",
+      primaryForeground: "0 0% 100%",
+      ring: "217 91% 60%",
+      accent: "217 91% 95%",
+      accentHover: "217 91% 90%",
+      accentForeground: "217 91% 25%",
+    },
+    emerald: {
+      primary: "151 91% 40%",
+      primaryHover: "151 91% 35%",
+      primaryActive: "151 91% 30%",
+      primaryForeground: "0 0% 100%",
+      ring: "151 91% 40%",
+      accent: "151 91% 95%",
+      accentHover: "151 91% 90%",
+      accentForeground: "151 91% 25%",
+    },
+    violet: {
+      primary: "262 91% 60%",
+      primaryHover: "262 91% 55%",
+      primaryActive: "262 91% 50%",
+      primaryForeground: "0 0% 100%",
+      ring: "262 91% 60%",
+      accent: "262 91% 95%",
+      accentHover: "262 91% 90%",
+      accentForeground: "262 91% 25%",
+    },
+    rose: {
+      primary: "340 91% 60%",
+      primaryHover: "340 91% 55%",
+      primaryActive: "340 91% 50%",
+      primaryForeground: "0 0% 100%",
+      ring: "340 91% 60%",
+      accent: "340 91% 95%",
+      accentHover: "340 91% 90%",
+      accentForeground: "340 91% 25%",
+    },
+    orange: {
+      primary: "24 91% 60%",
+      primaryHover: "24 91% 55%",
+      primaryActive: "24 91% 50%",
+      primaryForeground: "0 0% 100%",
+      ring: "24 91% 60%",
+      accent: "24 91% 95%",
+      accentHover: "24 91% 90%",
+      accentForeground: "24 91% 25%",
+    },
+    cyan: {
+      primary: "190 91% 60%",
+      primaryHover: "190 91% 55%",
+      primaryActive: "190 91% 50%",
+      primaryForeground: "0 0% 100%",
+      ring: "190 91% 60%",
+      accent: "190 91% 95%",
+      accentHover: "190 91% 90%",
+      accentForeground: "190 91% 25%",
+    },
+    premium: {
+      primary: "45 100% 51%", // dourado
+      primaryHover: "45 100% 45%",
+      primaryActive: "45 100% 40%",
+      primaryForeground: "0 0% 100%",
+      ring: "45 100% 51%",
+      accent: "45 100% 90%",
+      accentHover: "45 100% 80%",
+      accentForeground: "45 100% 30%",
+    },
+  };
+
   const applyTheme = (
     resolvedTheme:
       | "light"
@@ -219,7 +312,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       | "sunset"
       | "ocean"
       | "coffee"
-      | "galaxy"
+      | "galaxy",
+    scheme: ColorScheme
   ) => {
     const root = document.documentElement;
     root.classList.remove(
@@ -237,6 +331,26 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     Object.entries(themeColors).forEach(([property, value]) => {
       root.style.setProperty(`--${property}`, value);
     });
+
+    // Sobrescreve as cores principais e variantes com base no colorScheme
+    const schemeColors = colorSchemes[scheme];
+    root.style.setProperty("--primary", schemeColors.primary);
+    root.style.setProperty("--ring", schemeColors.ring);
+    root.style.setProperty("--accent", schemeColors.accent);
+    root.style.setProperty(
+      "--primary-foreground",
+      schemeColors.primaryForeground
+    );
+    root.style.setProperty(
+      "--accent-foreground",
+      schemeColors.accentForeground
+    );
+    // Só sobrescreve hover/active se for tema claro
+    if (resolvedTheme === "light") {
+      root.style.setProperty("--primary-hover", schemeColors.primaryHover);
+      root.style.setProperty("--primary-active", schemeColors.primaryActive);
+      root.style.setProperty("--accent-hover", schemeColors.accentHover);
+    }
   };
 
   const resolveTheme = (
@@ -254,14 +368,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (typeof window === "undefined") return;
     const resolved = resolveTheme(theme);
     setActualTheme(resolved);
-    applyTheme(resolved);
+    applyTheme(resolved, colorScheme);
     localStorage.setItem("gltzui-theme", theme);
-  }, [theme]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
     localStorage.setItem("gltzui-color-scheme", colorScheme);
-  }, [colorScheme]);
+  }, [theme, colorScheme]);
 
   const value = {
     theme,

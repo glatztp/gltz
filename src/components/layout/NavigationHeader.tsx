@@ -502,7 +502,7 @@ export function NavigationHeader({
                   variant="outline"
                   size="sm"
                   onClick={() => setSearchOpen(!searchOpen)}
-                  className="w-80 justify-start text-muted-foreground hover:text-foreground transition-colors"
+                  className="w-80 justify-start text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                 >
                   <Search className="h-4 w-4 mr-2" />
                   Search components...
@@ -624,7 +624,7 @@ export function NavigationHeader({
                       "relative transition-all duration-200 h-8 px-3",
                       currentSection === item.id
                         ? "bg-primary text-primary-foreground shadow-sm"
-                        : "hover:bg-accent text-muted-foreground hover:text-foreground"
+                        : "hover:bg-accent hover:text-accent-foreground text-muted-foreground"
                     )}
                   >
                     {item.icon}
@@ -701,7 +701,7 @@ export function NavigationHeader({
                       variant={currentSection === item.id ? "default" : "ghost"}
                       size="sm"
                       onClick={() => handleItemClick(item)}
-                      className="w-full justify-start gap-3"
+                      className="w-full justify-start gap-3 hover:bg-accent hover:text-accent-foreground"
                     >
                       {item.icon}
                       <span className="font-medium">{item.label}</span>
@@ -718,7 +718,7 @@ export function NavigationHeader({
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="w-full justify-start gap-3"
+                    className="w-full justify-start gap-3 hover:bg-accent hover:text-accent-foreground"
                     onClick={() =>
                       window.open("https://github.com/glatztp/gltz", "_blank")
                     }

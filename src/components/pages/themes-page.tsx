@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Card,
@@ -14,9 +14,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-  Input,
   Label,
-  Slider,
 } from "../../index";
 import {
   Palette,
@@ -25,29 +23,19 @@ import {
   Monitor,
   Eye,
   Download,
-  Sparkle,
   Gear,
   Check,
   ArrowCounterClockwise,
-  PaintBrush,
   Lightning,
-  Star,
   Fire,
   Snowflake,
-  Leaf,
   Coffee,
-  Rainbow,
   Planet,
-  Heart,
   Copy,
   Share,
-  PaintBucket,
   Swatches,
   Drop,
-  Aperture,
-  Circle,
   Stack,
-  MagicWand,
 } from "phosphor-react";
 import { useTheme } from "../providers/theme-provider";
 
@@ -229,11 +217,11 @@ const colorSchemes = [
   },
   {
     name: "Dourado Premium",
-    id: "gold",
-    primary: "hsl(45 93% 47%)",
+    id: "premium",
+    primary: "hsl(45 100% 51%)",
     secondary: "hsl(220 14% 96%)",
-    accent: "hsl(45 93% 95%)",
-    hex: "#f59e0b",
+    accent: "hsl(45 100% 90%)",
+    hex: "#FFD700",
     category: "Luxo",
     gradient: "from-yellow-400 to-orange-500",
   },

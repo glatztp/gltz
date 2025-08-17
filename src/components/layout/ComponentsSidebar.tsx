@@ -283,8 +283,18 @@ export function ComponentsSidebar({
       description: "Utilitários e outros",
       components: [
         { id: "toggle", name: "Toggle", new: false, status: "stable" },
-        { id: "toggle-group", name: "Toggle Group", new: false, status: "stable" },
-        { id: "theme-toggle", name: "Theme Toggle", new: false, status: "stable" },
+        {
+          id: "toggle-group",
+          name: "Toggle Group",
+          new: false,
+          status: "stable",
+        },
+        {
+          id: "theme-toggle",
+          name: "Theme Toggle",
+          new: false,
+          status: "stable",
+        },
       ],
     },
   ];
@@ -347,7 +357,6 @@ export function ComponentsSidebar({
                         <Palette className="h-3 w-3 text-white" />
                       </div>
                       Componentes
-                     
                     </h2>
                     <div className="flex items-center gap-4 mt-2">
                       <div className="flex items-center gap-1">
@@ -415,7 +424,7 @@ export function ComponentsSidebar({
                       <Button
                         variant="ghost"
                         onClick={() => toggleCategory(category.id)}
-                        className="w-full justify-start gap-2 p-3 h-auto group hover:bg-gradient-to-r hover:from-primary/5 hover:to-secondary/5 transition-all duration-200"
+                        className="w-full justify-start gap-2 p-3 h-auto group hover:bg-accent hover:text-accent-foreground transition-all duration-200"
                       >
                         <div className="flex items-center gap-3 flex-1">
                           {/* Gradient indicator */}
@@ -497,7 +506,7 @@ export function ComponentsSidebar({
                                         "w-full justify-start gap-2 relative group transition-all duration-200 h-auto p-3",
                                         selectedComponent === component.id
                                           ? "bg-primary text-primary-foreground shadow-md"
-                                          : "hover:bg-accent hover:shadow-sm"
+                                          : "hover:bg-accent hover:text-accent-foreground hover:shadow-sm"
                                       )}
                                     >
                                       <div className="flex items-center gap-2 flex-1">
