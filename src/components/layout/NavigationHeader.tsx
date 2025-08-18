@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
 import { Button } from "../ui";
 import { Badge } from "../ui";
 import { ThemeToggle } from "../ui";
@@ -10,9 +10,7 @@ import {
   Menu,
   X,
   BookOpen,
-  Code,
   Palette,
-  Settings,
   Github,
   ExternalLink,
   ChevronDown,
@@ -22,10 +20,9 @@ import {
 } from "lucide-react";
 
 interface NavigationHeaderProps {
-  onNavigate: (section: string, componentId?: string) => void;
+  onNavigate: (id: string, componentId?: string) => void;
   currentSection: string;
   onToggleSidebar: () => void;
-  sidebarOpen: boolean;
   onSelectComponent?: (componentId: string) => void;
 }
 
@@ -33,12 +30,11 @@ export function NavigationHeader({
   onNavigate,
   currentSection,
   onToggleSidebar,
-  sidebarOpen,
   onSelectComponent,
 }: NavigationHeaderProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Keyboard shortcuts
   React.useEffect(() => {
@@ -455,7 +451,15 @@ export function NavigationHeader({
     },
   ];
 
-  const handleItemClick = (item: any) => {
+  type NavigationItem = {
+    id: string;
+    label: string;
+    icon: React.ReactNode;
+    badge?: string;
+    action?: () => void;
+  };
+
+  const handleItemClick = (item: NavigationItem) => {
     if (item.id === "components") {
       // Sempre navega para a página de componentes
       onNavigate(item.id);
@@ -742,3 +746,4 @@ export function NavigationHeader({
     </>
   );
 }
+

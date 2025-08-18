@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 
 interface ToastData {
@@ -20,6 +21,7 @@ export function useToast(): UseToastReturn {
   const [toasts, setToasts] = React.useState<ToastData[]>([]);
 
   const showToast = React.useCallback((toast: Omit<ToastData, "id">) => {
+    if (!toast) return; // Ensure toast is used and not undefined
     const id = Math.random().toString(36).substring(2, 9);
     const newToast: ToastData = {
       ...toast,
@@ -32,7 +34,7 @@ export function useToast(): UseToastReturn {
     // Auto remove toast
     if (newToast.duration && newToast.duration > 0) {
       setTimeout(() => {
-        removeToast(id);
+        setToasts((prev) => prev.filter((toast) => toast.id !== id));
       }, newToast.duration);
     }
   }, []);

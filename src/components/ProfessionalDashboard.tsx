@@ -992,7 +992,6 @@ function DashboardContent() {
           onNavigate={handleNavigation}
           currentSection={currentSection}
           onToggleSidebar={toggleSidebar}
-          sidebarOpen={sidebarOpen && currentSection === "components"}
         />
 
         {/* Sidebar só aparece na seção de componentes */}

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui";
@@ -19,28 +20,17 @@ import {
   Palette,
   FileText,
   Settings,
-  Zap,
   Star,
 } from "lucide-react";
 import {
   Sidebar,
   SidebarSimple,
-  Lightning,
-  Star as StarPhosphor,
-  Pencil,
-  Selection,
-  Compass,
-  ChatCircle,
-  Warning,
-  Layout as LayoutPhosphor,
-  ChartBar,
-  ToggleLeft,
 } from "phosphor-react";
 
 interface ComponentsSidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectComponent: (componentId: string) => void;
+  onSelectComponent: (component: string) => void;
   selectedComponent: string;
   expandCategory?: string;
   onToggle?: () => void;

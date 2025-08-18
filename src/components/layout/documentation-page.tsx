@@ -18,8 +18,7 @@ import {
   Copy,
   CheckCircle,
   AlertCircle,
-  Info,
-  MessageCircle,
+
   FileText,
   Activity,
   ChevronRight,
