@@ -39,7 +39,6 @@ import {
 } from "phosphor-react";
 import { useTheme } from "../providers/theme-provider";
 
-// Enhanced themes with more variety
 const themes = {
   light: {
     name: "Claro Classic",
@@ -163,7 +162,6 @@ const themes = {
   },
 };
 
-// Expanded color schemes
 const colorSchemes = [
   {
     name: "Azul Clássico",
@@ -241,11 +239,9 @@ export function ThemesPage() {
     accent: "#dbeafe",
   });
 
-  // Aplicar efeitos dos switches
   useEffect(() => {
     const root = document.documentElement;
 
-    // Aplicar alto contraste
     if (highContrast) {
       root.style.setProperty("--contrast-multiplier", "1.5");
       root.classList.add("high-contrast");
@@ -254,7 +250,6 @@ export function ThemesPage() {
       root.classList.remove("high-contrast");
     }
 
-    // Aplicar modo reduzido
     if (reducedMode) {
       root.classList.add("reduced-motion");
       root.style.setProperty("--animation-duration", "0.1s");
@@ -263,7 +258,6 @@ export function ThemesPage() {
       root.style.setProperty("--animation-duration", "0.3s");
     }
 
-    // Aplicar animações
     if (animationsEnabled) {
       root.classList.remove("no-animations");
     } else {
@@ -271,7 +265,6 @@ export function ThemesPage() {
     }
   }, [highContrast, reducedMode, animationsEnabled]);
 
-  // Copiar cor para clipboard
   const copyColor = async (color: string, type: string) => {
     try {
       await navigator.clipboard.writeText(color);
@@ -282,7 +275,6 @@ export function ThemesPage() {
     }
   };
 
-  // Resetar para padrões
   const resetToDefaults = () => {
     setTheme("system");
     setColorScheme("blue");
@@ -291,13 +283,11 @@ export function ThemesPage() {
     setReducedMode(false);
   };
 
-  // Filtrar esquemas por categoria
   const filteredSchemes =
     selectedCategory === "all"
       ? colorSchemes
       : colorSchemes.filter((scheme) => scheme.category === selectedCategory);
 
-  // Categorias únicas
   const categories = [
     "all",
     ...Array.from(new Set(colorSchemes.map((scheme) => scheme.category))),

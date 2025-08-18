@@ -80,7 +80,7 @@ export function AlertDialogPage() {
               </AlertDialog>
 
               <AlertDialog>
-                <AlertDialogTrigger asChild>
+                <AlertDialogTrigger asChild className="ml-4">
                   <Button>Salvar Alterações</Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
