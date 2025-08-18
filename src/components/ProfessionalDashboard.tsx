@@ -1,4 +1,5 @@
-import React, { useState, createContext, useContext } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState, createContext } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -40,13 +41,6 @@ interface SidebarContextType {
 
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
-const useSidebar = () => {
-  const context = useContext(SidebarContext);
-  if (!context) {
-    throw new Error("useSidebar must be used within SidebarProvider");
-  }
-  return context;
-};
 
 // Page Components
 import { PlaygroundPage } from "./pages/playground-page";
@@ -74,7 +68,6 @@ import { InputPage } from "./pages/input-page";
 import { InputOTPPage } from "./pages/input-otp-page";
 import { LabelPage } from "./pages/label-page";
 import { MenubarPage } from "./pages/menubar-page";
-import { NavigationMenuPage } from "./pages/navigation-menu-page";
 import { PaginationPage } from "./pages/pagination-page";
 import { PopoverPage } from "./pages/popover-page";
 import { ProgressPage } from "./pages/progress-page";
@@ -97,9 +90,10 @@ import { CollapsiblePage } from "./pages/collapsible-page";
 import { ThemeProvider } from "./providers/theme-provider";
 import MultiComboBoxPage from "./pages/multicombobox-page";
 import DocumentationPage from "./layout/documentation-page";
+import { NavigationMenuPage } from "./pages/navigation-menu-page";
 
 // Mapeamento de componentes
-const componentPages: Record<string, React.ComponentType<any>> = {
+const componentPages: Record<string, unknown> = {
   alert: AlertPage,
   "alert-dialog": AlertDialogPage,
   "aspect-ratio": AspectRatioPage,
@@ -1155,9 +1149,10 @@ function ComponentsOverview({
 function ComponentPage() {
   const location = useLocation();
   const componentId = location.pathname.split("/")[2];
-  const { sidebarOpen, toggleSidebar } = useSidebar();
 
-  const ComponentPageComponent = componentPages[componentId];
+  const ComponentPageComponent = componentPages[componentId] as
+    | React.ComponentType<unknown>
+    | undefined;
 
   if (!ComponentPageComponent) {
     return (
@@ -1172,15 +1167,7 @@ function ComponentPage() {
     );
   }
 
-  // Pass sidebar props only to NavigationMenuPage
-  if (componentId === "navigation-menu") {
-    return (
-      <ComponentPageComponent
-        sidebarOpen={sidebarOpen}
-        onToggleSidebar={toggleSidebar}
-      />
-    );
-  }
+
 
   return <ComponentPageComponent />;
 }
