@@ -2,7 +2,7 @@
 
 <img src="./public/logo.png" alt="GLTZ UI Logo" width="160" height="160" style="margin-bottom: 16px;" />
 
-# @gltz-packages/ui
+# gltz
 
 ![Alt](https://repobeats.axiom.co/api/embed/daa29dc86cb7b8844337c5528be01db2239880ad.svg "Repobeats analytics image")
 
