@@ -1,5 +1,6 @@
-
 <div align="center">
+
+<img src="./public/logo.png" alt="GLTZ UI Logo" width="160" height="160" style="margin-bottom: 16px;" />
 
 # @gltz-packages/ui
 
@@ -162,4 +163,3 @@ MIT License © 2025 [glatztp](https://github.com/glatztp)
 [![GitHub stars](https://img.shields.io/github/stars/glatztp/gltz?style=social)](https://github.com/glatztp/gltz/stargazers)
 
 </div>
-

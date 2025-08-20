@@ -66,7 +66,6 @@ export function NavigationHeader({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [searchOpen]);
 
-  // Lista completa de todos os componentes da biblioteca
   const allComponents = [
     // Forms
     {
@@ -486,129 +485,135 @@ export function NavigationHeader({
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-14">
-            {/* Simplified Logo */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2 cursor-pointer"
-              onClick={() => onNavigate("home")}
-            >
-              <div className="w-7 h-7 rounded-md bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-sm">
-                <span className="text-white font-bold text-xs">G</span>
-              </div>
-              <span className="text-lg font-semibold">gltzUI</span>
-            </motion.div>
+            <div className="flex items-center gap-2 lg:gap-4">
+              <motion.div
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center cursor-pointer pl-24 lg:pl-32"
+                onClick={() => onNavigate("home")}
+              >
+                <div className="rounded-md flex items-center justify-center shadow-sm">
+                  <img
+                    src="/logo.png"
+                    alt="gltzUI Logo"
+                    className="w-6 h-6 lg:w-8 lg:h-8"
+                  />
+                </div>
+              </motion.div>
 
-            {/* Enhanced Search */}
-            <div className="hidden lg:block relative" data-search-container>
-              <div className="relative">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setSearchOpen(!searchOpen)}
-                  className="w-80 justify-start text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  <Search className="h-4 w-4 mr-2" />
-                  Search components...
-                  <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
-                    <span className="text-xs">⌘</span>K
-                  </kbd>
-                </Button>
-              </div>
-
-              <AnimatePresence>
-                {searchOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    className="absolute top-full left-0 w-96 mt-2 bg-background border rounded-lg shadow-xl z-50 overflow-hidden"
+              <div className="hidden lg:block relative" data-search-container>
+                <div className="relative">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setSearchOpen(!searchOpen)}
+                    className="w-80 justify-start text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                   >
-                    <div className="p-3 border-b bg-muted/30">
-                      <div className="relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                        <Input
-                          placeholder="Search all components..."
-                          value={searchQuery}
-                          onChange={(e) => setSearchQuery(e.target.value)}
-                          className="pl-10 border-0 bg-background/50 focus:bg-background"
-                          autoFocus
-                        />
-                      </div>
-                    </div>
+                    <Search className="h-4 w-4 mr-2" />
+                    Search components...
+                    <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
+                      <span className="text-xs">⌘</span>K
+                    </kbd>
+                  </Button>
+                </div>
 
-                    <div className="max-h-80 overflow-y-auto">
-                      {filteredSearchItems.length > 0 ? (
-                        <>
-                          <div className="px-3 py-2 text-xs font-medium text-muted-foreground bg-muted/20">
-                            {filteredSearchItems.length} component
-                            {filteredSearchItems.length !== 1 ? "s" : ""} found
-                          </div>
-                          {filteredSearchItems.map((item, index) => (
-                            <motion.button
-                              key={item.id}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: index * 0.02 }}
-                              onClick={() => {
-                                // Navegar diretamente para a página do componente
-                                onNavigate("components", item.id);
-                                onSelectComponent?.(item.id);
-                                setSearchOpen(false);
-                                setSearchQuery("");
-                              }}
-                              className="w-full flex items-start gap-3 p-3 text-left hover:bg-accent/50 transition-colors border-b border-border/30 last:border-0"
-                            >
-                              <div className="flex-1">
-                                <div className="flex items-center gap-2">
-                                  <span className="font-medium">
-                                    {item.label}
-                                  </span>
-                                  <Badge
-                                    variant="outline"
-                                    className={cn(
-                                      "text-xs",
-                                      getStatusColor(item.status)
-                                    )}
-                                  >
-                                    {item.status}
-                                  </Badge>
-                                </div>
-                                <div className="text-sm text-muted-foreground mt-1">
-                                  {item.description}
-                                </div>
-                                <div className="text-xs text-muted-foreground/70 mt-1">
-                                  {item.category}
-                                </div>
-                              </div>
-                              <ChevronDown className="h-4 w-4 text-muted-foreground rotate-[-90deg]" />
-                            </motion.button>
-                          ))}
-                        </>
-                      ) : searchQuery ? (
-                        <div className="text-center text-muted-foreground py-8">
-                          <Search className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                          <div className="font-medium">No components found</div>
-                          <div className="text-sm">
-                            Try adjusting your search terms
-                          </div>
+                <AnimatePresence>
+                  {searchOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      className="absolute top-full left-0 w-96 mt-2 bg-background border rounded-lg shadow-xl z-50 overflow-hidden"
+                    >
+                      <div className="p-3 border-b bg-muted/30">
+                        <div className="relative">
+                          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                          <Input
+                            placeholder="Search all components..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="pl-10 border-0 bg-background/50 focus:bg-background"
+                            autoFocus
+                          />
                         </div>
-                      ) : (
-                        <div className="text-center text-muted-foreground py-8">
-                          <Search className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                          <div className="font-medium">
-                            Search our component library
+                      </div>
+
+                      <div className="max-h-80 overflow-y-auto">
+                        {filteredSearchItems.length > 0 ? (
+                          <>
+                            <div className="px-3 py-2 text-xs font-medium text-muted-foreground bg-muted/20">
+                              {filteredSearchItems.length} component
+                              {filteredSearchItems.length !== 1 ? "s" : ""}{" "}
+                              found
+                            </div>
+                            {filteredSearchItems.map((item, index) => (
+                              <motion.button
+                                key={item.id}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.02 }}
+                                onClick={() => {
+                                  // Navegar diretamente para a página do componente
+                                  onNavigate("components", item.id);
+                                  onSelectComponent?.(item.id);
+                                  setSearchOpen(false);
+                                  setSearchQuery("");
+                                }}
+                                className="w-full flex items-start gap-3 p-3 text-left hover:bg-accent/50 transition-colors border-b border-border/30 last:border-0"
+                              >
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-medium">
+                                      {item.label}
+                                    </span>
+                                    <Badge
+                                      variant="outline"
+                                      className={cn(
+                                        "text-xs",
+                                        getStatusColor(item.status)
+                                      )}
+                                    >
+                                      {item.status}
+                                    </Badge>
+                                  </div>
+                                  <div className="text-sm text-muted-foreground mt-1">
+                                    {item.description}
+                                  </div>
+                                  <div className="text-xs text-muted-foreground/70 mt-1">
+                                    {item.category}
+                                  </div>
+                                </div>
+                                <ChevronDown className="h-4 w-4 text-muted-foreground rotate-[-90deg]" />
+                              </motion.button>
+                            ))}
+                          </>
+                        ) : searchQuery ? (
+                          <div className="text-center text-muted-foreground py-8">
+                            <Search className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                            <div className="font-medium">
+                              No components found
+                            </div>
+                            <div className="text-sm">
+                              Try adjusting your search terms
+                            </div>
                           </div>
-                          <div className="text-sm">
-                            Type to find components by name, category, or
-                            description
+                        ) : (
+                          <div className="text-center text-muted-foreground py-8">
+                            <Search className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                            <div className="font-medium">
+                              Search our component library
+                            </div>
+                            <div className="text-sm">
+                              Type to find components by name, category, or
+                              description
+                            </div>
                           </div>
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
 
             {/* Simplified Navigation */}
@@ -746,4 +751,3 @@ export function NavigationHeader({
     </>
   );
 }
-

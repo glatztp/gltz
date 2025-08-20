@@ -1,4 +1,5 @@
-﻿import React, { createContext, useContext, useEffect, useState } from "react";
+﻿/* eslint-disable no-unused-vars */
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 type Theme =
   | "light"
@@ -233,14 +234,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   > = {
     blue: {
-      primary: "217 91% 60%",
-      primaryHover: "217 91% 55%",
-      primaryActive: "217 91% 50%",
+      primary: "191 100% 42%",
+      primaryHover: "191 100% 38%",
+      primaryActive: "191 100% 34%",
       primaryForeground: "0 0% 100%",
-      ring: "217 91% 60%",
-      accent: "217 91% 95%",
-      accentHover: "217 91% 90%",
-      accentForeground: "217 91% 25%",
+      ring: "191 100% 42%",
+      accent: "191 100% 95%",
+      accentHover: "191 100% 90%",
+      accentForeground: "191 100% 25%",
     },
     emerald: {
       primary: "151 91% 40%",

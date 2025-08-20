@@ -41,7 +41,6 @@ interface SidebarContextType {
 
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
-
 // Page Components
 import { PlaygroundPage } from "./pages/playground-page";
 import { ThemesPage } from "./pages/themes-page";
@@ -203,22 +202,18 @@ function HomePage() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Animated Background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-secondary/10 via-transparent to-transparent" />
 
-        {/* Floating geometric shapes */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-40 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-primary/3 rounded-full blur-2xl animate-pulse delay-2000" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-red-500 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-40 right-10 w-96 h-96 bg-secondary rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-primary rounded-full blur-2xl animate-pulse delay-2000" />
 
-        {/* Grid pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
       </div>
 
-      {/* Hero Section */}
       <section className="relative overflow-hidden min-h-screen flex items-center">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/60" />
         <div className="relative w-full">
@@ -229,73 +224,48 @@ function HomePage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center max-w-6xl mx-auto"
             >
-              {/* Floating badges */}
-              <div className="relative mb-8 sm:mb-12">
-                <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{
-                    delay: 0.3,
-                    duration: 0.8,
-                    type: "spring",
-                    stiffness: 100,
-                  }}
-                  className="inline-block"
-                >
-                  <Badge
-                    variant="outline"
-                    className="relative px-4 sm:px-6 py-3 text-sm sm:text-base font-bold border-2 bg-background/90 backdrop-blur-md hover:bg-primary/10 transition-all duration-500 shadow-2xl shadow-primary/20 hover:shadow-primary/40 hover:scale-105"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-full blur-xl" />
-                    <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 animate-spin-slow text-primary" />
-                    <span className="relative bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                      v2.5 • Revolucionário e Poderoso
-                    </span>
-                  </Badge>
-                </motion.div>
-              </div>
-
-              {/* Hero Title with advanced typography */}
               <motion.div
                 initial={{ opacity: 0, y: 40, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
                 className="mb-6 sm:mb-8 lg:mb-12"
               >
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-none">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-none flex items-center justify-center gap-6 mb-4">
+                  <img
+                    src="/logo.png"
+                    alt="gltzUI Logo"
+                    className="h-20 w-20 sm:h-24 sm:w-24 lg:h-32 lg:w-32 xl:h-28 xl:w-28 mt-8"
+                  />
                   <span className="relative inline-block">
-                    <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent blur-sm opacity-50 scale-110">
-                      gltzUI
-                    </span>
                     <span className="relative bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent drop-shadow-2xl">
-                      gltzUI
+                      gltz
                     </span>
                   </span>
                 </h1>
+
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
-                  className="h-1 sm:h-2 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mt-4 sm:mt-6 max-w-md opacity-80"
+                  className="h-1 sm:h-2 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mt-4 sm:mt-6 max-w-xs opacity-80"
                 />
               </motion.div>
 
-              {/* Enhanced subtitle */}
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.8 }}
                 className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-12 lg:mb-16 leading-relaxed max-w-4xl mx-auto px-4 font-medium"
               >
-                A biblioteca de componentes React mais{" "}
+                A biblioteca de componentes React mais
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
                   avançada
-                </span>{" "}
-                e{" "}
+                </span>
+                e
                 <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-bold">
                   elegante
-                </span>{" "}
-                do mercado. Transforme suas ideias em interfaces que{" "}
+                </span>
+                do mercado. Transforme suas ideias em interfaces que
                 <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent font-bold">
                   impressionam
                 </span>
@@ -346,41 +316,64 @@ function HomePage() {
                   </span>
                 </Button>
               </motion.div>
-
-              {/* Floating elements around the hero */}
-              <div className="absolute top-20 left-10 hidden lg:block">
+              {/* Elementos animados melhor posicionados para equilíbrio visual */}
+              <div className="absolute top-16 left-16 hidden lg:block">
                 <motion.div
-                  animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                  animate={{ y: [0, -24, 0], rotate: [0, 8, 0] }}
                   transition={{
                     duration: 4,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="w-16 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl backdrop-blur-sm shadow-2xl"
+                  className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full backdrop-blur-lg shadow-2xl"
                 />
               </div>
-              <div className="absolute top-32 right-20 hidden lg:block">
+              <div className="absolute top-32 left-1/4 hidden lg:block">
                 <motion.div
-                  animate={{ y: [0, 15, 0], rotate: [0, -8, 0] }}
+                  animate={{ y: [0, -18, 0], rotate: [0, 6, 0] }}
                   transition={{
                     duration: 5,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: 1,
+                    delay: 0.5,
                   }}
-                  className="w-12 h-12 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-full backdrop-blur-sm shadow-2xl"
+                  className="w-14 h-14 bg-gradient-to-br from-secondary to-primary rounded-2xl backdrop-blur-md shadow-xl"
                 />
               </div>
-              <div className="absolute bottom-20 left-20 hidden lg:block">
+              <div className="absolute top-24 right-24 hidden lg:block">
                 <motion.div
-                  animate={{ y: [0, -10, 0], rotate: [0, 10, 0] }}
+                  animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
                   transition={{
                     duration: 6,
                     repeat: Infinity,
                     ease: "easeInOut",
+                    delay: 1,
+                  }}
+                  className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-2xl backdrop-blur-md shadow-xl"
+                />
+              </div>
+              <div className="absolute bottom-24 left-32 hidden lg:block">
+                <motion.div
+                  animate={{ y: [0, -14, 0], rotate: [0, 12, 0] }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1.5,
+                  }}
+                  className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-3xl backdrop-blur-lg shadow-2xl"
+                />
+              </div>
+              <div className="absolute bottom-16 right-40 hidden lg:block">
+                <motion.div
+                  animate={{ y: [0, 12, 0], rotate: [0, -8, 0] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
                     delay: 2,
                   }}
-                  className="w-20 h-20 bg-gradient-to-br from-primary/15 to-secondary/15 rounded-3xl backdrop-blur-sm shadow-2xl"
+                  className="w-20 h-20 bg-gradient-to-br from-secondary to-primary rounded-full backdrop-blur-lg shadow-2xl"
                 />
               </div>
             </motion.div>
@@ -481,11 +474,11 @@ function HomePage() {
               className="h-2 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-8 max-w-lg"
             />
             <p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4 font-medium">
-              Cada componente foi{" "}
+              Cada componente foi
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
                 meticulosamente crafted
-              </span>{" "}
-              pensando na experiência do desenvolvedor e na{" "}
+              </span>
+              pensando na experiência do desenvolvedor e na
               <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-bold">
                 satisfação do usuário final
               </span>
@@ -734,14 +727,14 @@ export function App() {
             />
 
             <p className="text-2xl sm:text-3xl lg:text-4xl text-muted-foreground mb-12 sm:mb-16 lg:mb-20 leading-relaxed max-w-4xl mx-auto px-4 font-medium">
-              Junte-se a{" "}
+              Junte-se a
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-black">
                 milhares de desenvolvedores
-              </span>{" "}
-              que já estão criando interfaces{" "}
+              </span>
+              que já estão criando interfaces
               <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-black">
                 extraordinárias
-              </span>{" "}
+              </span>
               com o gltzUI.
             </p>
 
@@ -825,7 +818,7 @@ export function App() {
                 <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary rounded-full mb-6" />
               </div>
               <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-sm font-medium">
-                Componentes React modernos para interfaces{" "}
+                Componentes React modernos para interfaces
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
                   extraordinárias
                 </span>
@@ -1145,7 +1138,6 @@ function ComponentsOverview({
   );
 }
 
-// Página individual do componente
 function ComponentPage() {
   const location = useLocation();
   const componentId = location.pathname.split("/")[2];
@@ -1166,8 +1158,6 @@ function ComponentPage() {
       </div>
     );
   }
-
-
 
   return <ComponentPageComponent />;
 }
