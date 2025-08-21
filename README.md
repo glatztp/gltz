@@ -8,12 +8,12 @@
 
 **A maior e mais profissional biblioteca de componentes React para aplicações modernas.**
 
-[![npm version](https://img.shields.io/npm/v/@gltz-packages/ui?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/@gltz-packages/ui)
-[![Downloads](https://img.shields.io/npm/dm/@gltz-packages/ui?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/@gltz-packages/ui)
+[![npm version](https://img.shields.io/npm/v/@glacien/ui?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/@glacien/ui)
+[![Downloads](https://img.shields.io/npm/dm/@glacien/ui?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/@glacien/ui)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-[📖 **Documentação**](https://Glacien.vercel.app/docs) • [🚀 **Live Demo**](https://Glacien.vercel.app) • [📦 **NPM**](https://www.npmjs.com/package/@gltz-packages/ui) • [🐛 **Reportar Issues**](https://github.com/glatztp/Glacien/issues) • [💬 **Discussões**](https://github.com/glatztp/Glacien/discussions)
+[📖 **Documentação**](https://Glacien.vercel.app/docs) • [🚀 **Live Demo**](https://Glacien.vercel.app) • [📦 **NPM**](https://www.npmjs.com/package/@glacien/ui) • [🐛 **Reportar Issues**](https://github.com/glatztp/Glacien/issues) • [💬 **Discussões**](https://github.com/glatztp/Glacien/discussions)
 
 </div>
 
@@ -46,21 +46,21 @@
 ## Instalação
 
 ```bash
-npm install @gltz-packages/ui lucide-react
+npm install @glacien/ui lucide-react
 # ou
-yarn add @gltz-packages/ui lucide-react
+yarn add @glacien/ui lucide-react
 # ou
-pnpm add @gltz-packages/ui lucide-react
+pnpm add @glacien/ui lucide-react
 ```
 
-Veja a [documentação de instalação](https://gltz.vercel.app/docs/installation) para exemplos de setup em Next.js, Vite, CRA, Remix e Gatsby.
+Veja a [documentação de instalação](https://glacien.vercel.app/docs/installation) para exemplos de setup em Next.js, Vite, CRA, Remix e Gatsby.
 
 ---
 
 ## Exemplo Rápido
 
 ```tsx
-import { Button, Card, Input } from "@gltz-packages/ui";
+import { Button, Card, Input } from "@glacien/ui";
 
 export default function App() {
   return (
@@ -77,7 +77,7 @@ export default function App() {
 
 ## Componentes
 
-@gltz-packages/ui oferece uma coleção completa de componentes para todas as necessidades:
+@glacien/ui oferece uma coleção completa de componentes para todas as necessidades:
 
 - **Formulários**: Button, Input, Textarea, Checkbox, Radio, Switch, Label, Slider, DatePicker, Calendar, Input OTP
 - **Navegação**: NavigationMenu, Menubar, Tabs, Pagination, Breadcrumb, Command
@@ -86,7 +86,7 @@ export default function App() {
 - **Layout**: Card, Separator, ScrollArea, Accordion, Collapsible, Resizable, AspectRatio, Container
 - **Dados**: DataTable, Avatar, Table, List, Timeline
 
-Veja a [lista completa de componentes](https://gltz.vercel.app/docs/components) com exemplos e playground.
+Veja a [lista completa de componentes](https://glacien.vercel.app/docs/components) com exemplos e playground.
 
 ---
 
@@ -132,9 +132,9 @@ Todos os componentes seguem as melhores práticas de acessibilidade:
 
 Contribuições são bem-vindas! Veja o [Guia de Contribuição](CONTRIBUTING.md) para detalhes.
 
-- [Abrir Issue](https://github.com/glatztp/gltz/issues/new?template=bug_report.md)
-- [Sugerir Feature](https://github.com/glatztp/gltz/issues/new?template=feature_request.md)
-- [Pull Requests](https://github.com/glatztp/gltz/pulls)
+- [Abrir Issue](https://github.com/glatztp/glacien/issues/new?template=bug_report.md)
+- [Sugerir Feature](https://github.com/glatztp/glacien/issues/new?template=feature_request.md)
+- [Pull Requests](https://github.com/glatztp/glacien/pulls)
 
 ---
 
@@ -160,6 +160,6 @@ MIT License © 2025 [glatztp](https://github.com/glatztp)
 
 ⭐ Se este projeto te ajudou, deixe uma estrela no GitHub! ⭐
 
-[![GitHub stars](https://img.shields.io/github/stars/glatztp/gltz?style=social)](https://github.com/glatztp/gltz/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/glatztp/glacien?style=social)](https://github.com/glatztp/glacien/stargazers)
 
 </div>

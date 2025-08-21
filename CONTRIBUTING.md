@@ -1,6 +1,6 @@
-# Contributing to @gltz-packages/ui
+# Contributing to @glacien/ui
 
-Thank you for considering contributing to @gltz-packages/ui! Your contributions are highly valued and help make this library even better.
+Thank you for considering contributing to @glacien/ui! Your contributions are highly valued and help make this library even better.
 
 ## Table of Contents
 
@@ -188,7 +188,7 @@ If applicable, add screenshots to help explain your problem.
 - OS: [e.g. macOS, Windows, Linux]
 - Browser: [e.g. Chrome, Firefox, Safari]
 - Version: [e.g. 22]
-- @gltz-packages/ui version: [e.g. 2.2.1]
+- @glacien/ui version: [e.g. 2.2.1]
 
 **Additional context**
 Add any other context about the problem here.

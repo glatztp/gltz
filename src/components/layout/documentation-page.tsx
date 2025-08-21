@@ -436,15 +436,13 @@ export default function DocumentationPage() {
                           size="sm"
                           variant="ghost"
                           onClick={() =>
-                            copyToClipboard("npm install @gltz-packages/ui")
+                            copyToClipboard("npm install @glacien/ui")
                           }
                         >
                           <Copy size={14} />
                         </Button>
                       </div>
-                      <code className="text-sm">
-                        npm install @gltz-packages/ui
-                      </code>
+                      <code className="text-sm">npm install @glacien/ui</code>
                     </div>
 
                     <Button
@@ -554,10 +552,10 @@ export default function DocumentationPage() {
                         </svg>
                       ),
                       steps: [
-                        "   npm install @gltz-packages/ui",
-                        "   import '@gltz-packages/ui/dist/index.css';",
-                        `   import { Button, Card } from '@gltz-packages/ui';\n\n   export default function Page() {\n     return (\n       <Card><Button>Olá Next.js</Button></Card>\n     );\n   }`,
-                        "   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/@gltz-packages/ui/dist/**/*.js']",
+                        "   npm install @glacien/ui",
+                        "   import '@glacien/ui/dist/index.css';",
+                        `   import { Button, Card } from '@glacien/ui';\n\n   export default function Page() {\n     return (\n       <Card><Button>Olá Next.js</Button></Card>\n     );\n   }`,
+                        "   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/@glacien/ui/dist/**/*.js']",
                       ],
                     },
                     {
@@ -575,10 +573,10 @@ export default function DocumentationPage() {
                         </svg>
                       ),
                       steps: [
-                        "   npm install @gltz-packages/ui",
-                        "   import '@gltz-packages/ui/dist/index.css';",
-                        `   import { Button, Card } from '@gltz-packages/ui';\n\n   function App() {\n     return (\n       <Card><Button>Olá Vite</Button></Card>\n     );\n   }`,
-                        "   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/@gltz-packages/ui/dist/**/*.js']",
+                        "   npm install @glacien/ui",
+                        "   import '@glacien/ui/dist/index.css';",
+                        `   import { Button, Card } from '@glacien/ui';\n\n   function App() {\n     return (\n       <Card><Button>Olá Vite</Button></Card>\n     );\n   }`,
+                        "   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/@glacien/ui/dist/**/*.js']",
                       ],
                     },
                     {
@@ -596,10 +594,10 @@ export default function DocumentationPage() {
                         </svg>
                       ),
                       steps: [
-                        "   npm install @gltz-packages/ui",
-                        "   import '@gltz-packages/ui/dist/index.css';",
-                        `   import { Button, Card } from '@gltz-packages/ui';\n\n   function App() {\n     return (\n       <Card><Button>Olá CRA</Button></Card>\n     );\n   }`,
-                        "   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/@gltz-packages/ui/dist/**/*.js']",
+                        "   npm install @glacien/ui",
+                        "   import '@glacien/ui/dist/index.css';",
+                        `   import { Button, Card } from '@glacien/ui';\n\n   function App() {\n     return (\n       <Card><Button>Olá CRA</Button></Card>\n     );\n   }`,
+                        "   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/@glacien/ui/dist/**/*.js']",
                       ],
                     },
                     {
@@ -617,10 +615,10 @@ export default function DocumentationPage() {
                         </svg>
                       ),
                       steps: [
-                        "   npm install @gltz-packages/ui",
-                        "   import '@gltz-packages/ui/dist/index.css';",
-                        `   import { Button, Card } from '@gltz-packages/ui';\n\n   export default function Index() {\n     return (\n       <Card><Button>Olá Remix</Button></Card>\n     );\n   }`,
-                        "   content: ['./app/**/*.{js,ts,jsx,tsx}', './node_modules/@gltz-packages/ui/dist/**/*.js']",
+                        "   npm install @glacien/ui",
+                        "   import '@glacien/ui/dist/index.css';",
+                        `   import { Button, Card } from '@glacien/ui';\n\n   export default function Index() {\n     return (\n       <Card><Button>Olá Remix</Button></Card>\n     );\n   }`,
+                        "   content: ['./app/**/*.{js,ts,jsx,tsx}', './node_modules/@glacien/ui/dist/**/*.js']",
                       ],
                     },
                     {
@@ -638,10 +636,10 @@ export default function DocumentationPage() {
                         </svg>
                       ),
                       steps: [
-                        "   npm install @gltz-packages/ui",
-                        "   import '@gltz-packages/ui/dist/index.css';",
-                        `   import { Button, Card } from '@gltz-packages/ui';\n\n   export default function Home() {\n     return (\n       <Card><Button>Olá Gatsby</Button></Card>\n     );\n   }`,
-                        "   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/@gltz-packages/ui/dist/**/*.js']",
+                        "   npm install @glacien/ui",
+                        "   import '@glacien/ui/dist/index.css';",
+                        `   import { Button, Card } from '@glacien/ui';\n\n   export default function Home() {\n     return (\n       <Card><Button>Olá Gatsby</Button></Card>\n     );\n   }`,
+                        "   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/@glacien/ui/dist/**/*.js']",
                       ],
                     },
                     {
@@ -659,10 +657,10 @@ export default function DocumentationPage() {
                         </svg>
                       ),
                       steps: [
-                        "   npm install @gltz-packages/ui",
-                        "   import '@gltz-packages/ui/dist/index.css';",
-                        `   import { Button, Card } from '@gltz-packages/ui';\n\n   // Exemplo:\n   <Card><Button>Olá Manual</Button></Card>`,
-                        "   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/@gltz-packages/ui/dist/**/*.js']",
+                        "   npm install @glacien/ui",
+                        "   import '@glacien/ui/dist/index.css';",
+                        `   import { Button, Card } from '@glacien/ui';\n\n   // Exemplo:\n   <Card><Button>Olá Manual</Button></Card>`,
+                        "   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/@glacien/ui/dist/**/*.js']",
                       ],
                     },
                   ];
@@ -1004,10 +1002,10 @@ export default function DocumentationPage() {
                     <div className="bg-gray-900 dark:bg-gray-100 text-gray-100 dark:text-gray-900 p-4 rounded-lg">
                       <pre className="text-sm font-mono">
                         {`// 1. Instale a biblioteca
-npm install @gltz-packages/ui
+npm install @glacien/ui
 
 // 2. Importe apenas os componentes que usar
-import { Button } from '@gltz-packages/ui';
+import { Button } from '@glacien/ui';
 
 // 3. Use junto com componentes existentes
 function ExistingComponent() {

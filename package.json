@@ -1,5 +1,5 @@
 {
-  "name": "@gltz-packages/ui",
+  "name": "@glacien/ui",
   "version": "2.2.1",
   "type": "module",
   "description": "A comprehensive, accessible, and highly customizable React/TypeScript component library built with modern web standards. Features Radix UI primitives, Tailwind CSS integration, and enterprise-grade design systems.",
@@ -85,13 +85,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/glatztp/gltz.git"
+    "url": "https://github.com/glatztp/glacien.git"
   },
   "bugs": {
-    "url": "https://github.com/glatztp/gltz/issues",
-    "email": "bugs@gltz.dev"
+    "url": "https://github.com/glatztp/glacien/issues",
+    "email": "bugs@glacien.dev"
   },
-  "homepage": "https://ui.gltz.dev",
+  "homepage": "https://ui.glacien.dev",
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/glatztp"
@@ -121,7 +121,7 @@
     "vite": "^7.0.5"
   },
   "dependencies": {
-    "@gltz-packages/ui": "^2.1.1",
+    "@glacien/ui": "^2.1.1",
     "@mlw-packages/react-components": "^1.3.18",
     "@phosphor-icons/react": "^2.1.10",
     "@radix-ui/react-accordion": "^1.2.11",

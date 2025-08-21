@@ -1,9 +1,9 @@
-# Como usar @gltz-packages/ui
+# Como usar @glacien/ui
 
 ## Instalação Rápida
 
 ```bash
-npm install @gltz-packages/ui
+npm install @glacien/ui
 ```
 
 ## Importação de Estilos
@@ -12,13 +12,13 @@ npm install @gltz-packages/ui
 
 ```tsx
 // No seu main.tsx, index.tsx ou _app.tsx
-import "@gltz-packages/ui/dist/index.css";
+import "@glacien/ui/dist/index.css";
 ```
 
 ## Uso Básico
 
 ```tsx
-import { Button, Card, CardContent } from "@gltz-packages/ui";
+import { Button, Card, CardContent } from "@glacien/ui";
 
 function App() {
   return (
@@ -41,7 +41,7 @@ Este erro ocorre quando há conflito com Tailwind CSS. **Soluções:**
 
    ```tsx
    // ✅ Faça isso
-   import "@gltz-packages/ui/dist/index.css";
+   import "@glacien/ui/dist/index.css";
 
    // ❌ NÃO configure Tailwind no seu projeto se usar nossa lib
    ```
@@ -58,7 +58,7 @@ Este erro ocorre quando há conflito com Tailwind CSS. **Soluções:**
      content: [
        "./src/**/*.{js,ts,jsx,tsx}",
        // ❌ NÃO inclua nossa biblioteca aqui
-       // "./node_modules/@gltz-packages/ui/**/*.{js,ts,jsx,tsx}"
+       // "./node_modules/@glacien/ui/**/*.{js,ts,jsx,tsx}"
      ],
      // ...
    };
@@ -69,7 +69,7 @@ Este erro ocorre quando há conflito com Tailwind CSS. **Soluções:**
 Verifique se você importou o CSS:
 
 ```tsx
-import "@gltz-packages/ui/dist/index.css";
+import "@glacien/ui/dist/index.css";
 ```
 
 ### Erros de TypeScript
@@ -94,5 +94,5 @@ npm install @types/react @types/react-dom
 
 ## Suporte
 
-- GitHub: https://github.com/glatztp/gltz
-- NPM: https://www.npmjs.com/package/@gltz-packages/ui
+- GitHub: https://github.com/glatztp/glacien
+- NPM: https://www.npmjs.com/package/@glacien/ui

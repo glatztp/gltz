@@ -46,7 +46,7 @@ No `package.json` do projeto, remova ou comente:
 }
 ```
 
-## Para seu projeto @gltz-packages/ui:
+## Para seu projeto @glacien/ui:
 
 ✅ Já está funcionando corretamente com a estrutura MLW
 ✅ PostCSS configurado corretamente

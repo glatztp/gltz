@@ -781,7 +781,7 @@ export function App() {
                 className="group relative overflow-hidden w-full sm:w-auto px-12 py-6 text-xl font-black shadow-2xl shadow-primary/40 hover:shadow-primary/60 transition-all duration-700 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary border-0 transform hover:scale-105"
                 onClick={() =>
                   window.open(
-                    "https://www.npmjs.com/package/@gltz-packages/ui",
+                    "https://www.npmjs.com/package/@glacien/ui",
                     "_blank"
                   )
                 }

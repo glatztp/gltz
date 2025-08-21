@@ -508,7 +508,7 @@ export function PlaygroundPage() {
 
   const handleCopyCode = async () => {
     const fullCode = `import React from 'react';
-import { ${currentTemplate.imports.join(", ")} } from '@gltz-packages/ui';
+import { ${currentTemplate.imports.join(", ")} } from '@glacien/ui';
 
 export function Component() {
   return (
@@ -527,7 +527,7 @@ export function Component() {
 
   const handleDownload = () => {
     const fullCode = `import React from 'react';
-import { ${currentTemplate.imports.join(", ")} } from '@gltz-packages/ui';
+import { ${currentTemplate.imports.join(", ")} } from '@glacien/ui';
 
 export function Component() {
   return (
