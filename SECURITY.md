@@ -2,7 +2,7 @@
 
 ## 🔒 Versões Suportadas
 
-Atualmente, oferecemos suporte de segurança para as seguintes versões da gltzUI:
+Atualmente, oferecemos suporte de segurança para as seguintes versões da gltz:
 
 | Versão | Suporte             |
 | ------ | ------------------- |
@@ -12,7 +12,7 @@ Atualmente, oferecemos suporte de segurança para as seguintes versões da gltzU
 
 ## 🚨 Reportando Vulnerabilidades
 
-A segurança da gltzUI é uma prioridade. Se você descobrir uma vulnerabilidade de segurança, por favor, reporte-a de forma responsável seguindo este processo:
+A segurança da gltz é uma prioridade. Se você descobrir uma vulnerabilidade de segurança, por favor, reporte-a de forma responsável seguindo este processo:
 
 ### 📧 Como Reportar
 
@@ -43,7 +43,7 @@ Inclua as seguintes informações em seu relatório:
    - Qual a severidade estimada?
 
 4. **Informações do ambiente**
-   - Versão da gltzUI
+   - Versão da gltz
    - Versão do React
    - Navegador e versão
    - Sistema operacional

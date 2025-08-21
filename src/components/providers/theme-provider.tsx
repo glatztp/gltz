@@ -39,7 +39,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("gltzui-theme") as Theme) || "system";
+      return (localStorage.getItem("gltz-theme") as Theme) || "system";
     }
     return "system";
   });
@@ -47,7 +47,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(() => {
     if (typeof window !== "undefined") {
       return (
-        (localStorage.getItem("gltzui-color-scheme") as ColorScheme) || "blue"
+        (localStorage.getItem("gltz-color-scheme") as ColorScheme) || "blue"
       );
     }
     return "blue";
@@ -333,24 +333,26 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       root.style.setProperty(`--${property}`, value);
     });
 
-    // Sobrescreve as cores principais e variantes com base no colorScheme
-    const schemeColors = colorSchemes[scheme];
-    root.style.setProperty("--primary", schemeColors.primary);
-    root.style.setProperty("--ring", schemeColors.ring);
-    root.style.setProperty("--accent", schemeColors.accent);
-    root.style.setProperty(
-      "--primary-foreground",
-      schemeColors.primaryForeground
-    );
-    root.style.setProperty(
-      "--accent-foreground",
-      schemeColors.accentForeground
-    );
-    // Só sobrescreve hover/active se for tema claro
-    if (resolvedTheme === "light") {
-      root.style.setProperty("--primary-hover", schemeColors.primaryHover);
-      root.style.setProperty("--primary-active", schemeColors.primaryActive);
-      root.style.setProperty("--accent-hover", schemeColors.accentHover);
+    // Só sobrescreve as cores principais e variantes com base no colorScheme se o tema for light ou dark
+    if (resolvedTheme === "light" || resolvedTheme === "dark") {
+      const schemeColors = colorSchemes[scheme];
+      root.style.setProperty("--primary", schemeColors.primary);
+      root.style.setProperty("--ring", schemeColors.ring);
+      root.style.setProperty("--accent", schemeColors.accent);
+      root.style.setProperty(
+        "--primary-foreground",
+        schemeColors.primaryForeground
+      );
+      root.style.setProperty(
+        "--accent-foreground",
+        schemeColors.accentForeground
+      );
+      // Só sobrescreve hover/active se for tema claro
+      if (resolvedTheme === "light") {
+        root.style.setProperty("--primary-hover", schemeColors.primaryHover);
+        root.style.setProperty("--primary-active", schemeColors.primaryActive);
+        root.style.setProperty("--accent-hover", schemeColors.accentHover);
+      }
     }
   };
 
@@ -370,8 +372,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const resolved = resolveTheme(theme);
     setActualTheme(resolved);
     applyTheme(resolved, colorScheme);
-    localStorage.setItem("gltzui-theme", theme);
-    localStorage.setItem("gltzui-color-scheme", colorScheme);
+    localStorage.setItem("gltz-theme", theme);
+    localStorage.setItem("gltz-color-scheme", colorScheme);
   }, [theme, colorScheme]);
 
   const value = {

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -233,11 +234,6 @@ export function ThemesPage() {
   const [animationsEnabled, setAnimationsEnabled] = useState(true);
   const [highContrast, setHighContrast] = useState(false);
   const [reducedMode, setReducedMode] = useState(false);
-  const [customColors, setCustomColors] = useState({
-    primary: "#3b82f6",
-    secondary: "#f1f5f9",
-    accent: "#dbeafe",
-  });
 
   useEffect(() => {
     const root = document.documentElement;
@@ -448,7 +444,9 @@ export function ThemesPage() {
                                     ? "ring-4 ring-primary/50 border-primary shadow-2xl shadow-primary/20"
                                     : "border-primary/20 hover:border-primary/40 hover:shadow-xl"
                                 }`}
-                                onClick={() => setTheme(key as any)}
+                                onClick={() =>
+                                  setTheme(key as keyof typeof themes)
+                                }
                               >
                                 <div
                                   className={`absolute inset-0 bg-gradient-to-br ${themeObj.gradient} opacity-20`}
@@ -603,7 +601,21 @@ export function ThemesPage() {
                                   ? "ring-4 ring-primary/50 border-primary shadow-2xl"
                                   : "border-primary/20 hover:border-primary/40"
                               }`}
-                              onClick={() => setColorScheme(scheme.id as any)}
+                              onClick={() => {
+                                const coloredThemes = [
+                                  "neon",
+                                  "sunset",
+                                  "ocean",
+                                  "coffee",
+                                  "galaxy",
+                                ];
+                                if (coloredThemes.includes(theme)) {
+                                  setCopiedColor("color-warning");
+                                  setTimeout(() => setCopiedColor(null), 3000);
+                                  return;
+                                }
+                                setColorScheme(scheme.id as ColorScheme);
+                              }}
                             >
                               <CardContent className="p-6 space-y-4">
                                 <div className="flex items-center justify-between">
@@ -794,7 +806,9 @@ export function ThemesPage() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.8 }}
                 className={`fixed bottom-8 right-8 z-50 p-4 rounded-xl shadow-2xl text-white ${
-                  copiedColor.includes("config-copied")
+                  copiedColor === "color-warning"
+                    ? "bg-gradient-to-r from-yellow-500 to-orange-500"
+                    : copiedColor.includes("config-copied")
                     ? "bg-gradient-to-r from-blue-500 to-cyan-500"
                     : copiedColor.includes("css-downloaded")
                     ? "bg-gradient-to-r from-purple-500 to-pink-500"
@@ -802,9 +816,15 @@ export function ThemesPage() {
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5" />
+                  {copiedColor === "color-warning" ? (
+                    <Lightning className="h-5 w-5" />
+                  ) : (
+                    <Check className="h-5 w-5" />
+                  )}
                   <span className="font-semibold">
-                    {copiedColor.includes("config-copied")
+                    {copiedColor === "color-warning"
+                      ? "O esquema de cor só é aplicado nos temas padrão (Claro, Escuro, Sistema)."
+                      : copiedColor.includes("config-copied")
                       ? "Configuração copiada!"
                       : copiedColor.includes("css-downloaded")
                       ? "CSS baixado!"

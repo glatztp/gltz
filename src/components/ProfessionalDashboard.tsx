@@ -7,6 +7,7 @@ import {
   useNavigate,
   useLocation,
 } from "react-router-dom";
+
 import { motion } from "framer-motion";
 import {
   Zap,
@@ -24,15 +25,21 @@ import {
   Globe,
 } from "lucide-react";
 
-// UI Components
+import { LogoLoop } from "./ui/loop";
+import {
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiNpm,
+  SiVercel,
+  SiGithub,
+  SiVite,
+} from "react-icons/si";
+
 import { Button, Badge } from "./ui";
 import { Card, CardContent } from "./ui/layout";
-
-// Layout Components
 import { NavigationHeader } from "./layout/NavigationHeader";
 import { ComponentsSidebar } from "./layout/ComponentsSidebar";
-
-// Context for sidebar state
 interface SidebarContextType {
   sidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
@@ -41,7 +48,6 @@ interface SidebarContextType {
 
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
-// Page Components
 import { PlaygroundPage } from "./pages/playground-page";
 import { ThemesPage } from "./pages/themes-page";
 import { AlertPage } from "./pages/alert-page";
@@ -233,7 +239,7 @@ function HomePage() {
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-none flex items-center justify-center gap-6 mb-4">
                   <img
                     src="/logo.png"
-                    alt="gltzUI Logo"
+                    alt="gltz Logo"
                     className="h-20 w-20 sm:h-24 sm:w-24 lg:h-32 lg:w-32 xl:h-28 xl:w-28 mt-8"
                   />
                   <span className="relative inline-block">
@@ -426,6 +432,37 @@ function HomePage() {
               </motion.div>
             ))}
           </motion.div>
+          <div
+            className="mt-32 w-screen left-0 right-0 relative px-0"
+            style={{ marginLeft: "calc(-50vw + 50%)" }}
+          >
+            <LogoLoop
+              logos={[
+                { node: <SiReact className="text-primary" title="React" /> },
+                {
+                  node: (
+                    <SiTypescript className="text-primary" title="TypeScript" />
+                  ),
+                },
+                {
+                  node: (
+                    <SiTailwindcss className="text-primary" title="Tailwind" />
+                  ),
+                },
+                { node: <SiNpm className="text-primary" title="NPM" /> },
+                { node: <SiVercel className="text-primary" title="Vercel" /> },
+                { node: <SiGithub className="text-primary" title="GitHub" /> },
+                { node: <SiVite className="text-primary" title="Vitest" /> },
+              ]}
+              speed={40}
+              direction="left"
+              logoHeight={80}
+              gap={40}
+              scaleOnHover={true}
+              ariaLabel="Tecnologias utilizadas"
+              className="w-full"
+            />
+          </div>
         </div>
       </section>
 
@@ -463,7 +500,7 @@ function HomePage() {
               </span>
               <br />
               <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-                gltzUI?
+                gltz?
               </span>
             </h2>
             <motion.div
@@ -616,7 +653,7 @@ function HomePage() {
                       <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg animate-pulse delay-200"></div>
                     </div>
                     <span className="ml-4 text-sm sm:text-base font-mono font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                      App.tsx • gltzUI Magic ✨
+                      App.tsx • gltz Magic ✨
                     </span>
                   </div>
                 </div>
@@ -631,7 +668,7 @@ function HomePage() {
                       transition={{ delay: 0.8, duration: 1.5 }}
                       viewport={{ once: true }}
                     >
-                      {`import { Button, Card, Toast, Avatar } from '@gltzui/components'
+                      {`import { Button, Card, Toast, Avatar } from '@gltz/components'
 
 export function App() {
   return (
@@ -648,7 +685,7 @@ export function App() {
         <h1 className="text-3xl font-bold bg-gradient-to-r 
                        from-primary to-secondary bg-clip-text 
                        text-transparent">
-          Bem-vindo ao gltzUI
+          Bem-vindo ao gltz
         </h1>
         
         <Button 
@@ -735,7 +772,7 @@ export function App() {
               <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-black">
                 extraordinárias
               </span>
-              com o gltzUI.
+              com o gltz.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-10 justify-center max-w-2xl mx-auto">
@@ -813,7 +850,7 @@ export function App() {
             >
               <div className="mb-8">
                 <h3 className="font-black text-3xl sm:text-4xl mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-                  gltzUI
+                  gltz
                 </h3>
                 <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary rounded-full mb-6" />
               </div>
@@ -915,8 +952,8 @@ export function App() {
               <div className="h-1 w-32 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-6" />
             </div>
             <p className="text-base sm:text-lg font-bold bg-gradient-to-r from-muted-foreground via-primary to-muted-foreground bg-clip-text text-transparent">
-              &copy; 2025 gltzUI. Todos os direitos reservados. Feito com ❤️
-              para a comunidade dev.
+              &copy; 2025 gltz. Todos os direitos reservados. Feito com ❤️ para
+              a comunidade dev.
             </p>
           </motion.div>
         </div>
