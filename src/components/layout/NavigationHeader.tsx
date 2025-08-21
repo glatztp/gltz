@@ -660,7 +660,7 @@ export function NavigationHeader({
                 size="sm"
                 className="hidden md:flex h-8 w-8 p-0"
                 onClick={() =>
-                  window.open("https://github.com/glatztp/gltz", "_blank")
+                  window.open("https://github.com/glatztp/Glacien", "_blank")
                 }
                 title="View on GitHub"
               >
@@ -729,7 +729,10 @@ export function NavigationHeader({
                     size="sm"
                     className="w-full justify-start gap-3 hover:bg-accent hover:text-accent-foreground"
                     onClick={() =>
-                      window.open("https://github.com/glatztp/gltz", "_blank")
+                      window.open(
+                        "https://github.com/glatztp/Glacien",
+                        "_blank"
+                      )
                     }
                   >
                     <Github className="h-4 w-4" />

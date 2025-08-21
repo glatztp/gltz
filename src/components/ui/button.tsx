@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Spinner } from "phosphor-react";
-import { motion, type HTMLMotionProps, type Variants } from "framer-motion";
+import { motion,type Variants } from "framer-motion";
 
 import { cn } from "../../lib/utils";
 
@@ -326,17 +328,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       );
     }
 
-    // Filtrar props que conflitam entre HTML e Motion
-    const {
-      onDrag,
-      onDragStart,
-      onDragEnd,
-      onAnimationStart,
-      onAnimationEnd,
-      onAnimationIteration,
-      ...filteredProps
-    } = props;
-
     return (
       <motion.button
         className={cn(
@@ -357,7 +348,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onTapStart={onMotionTapStart}
         onTap={onMotionTapEnd}
         onAnimationComplete={onMotionAnimationComplete}
-        {...filteredProps}
       >
         {loading ? (
           <>

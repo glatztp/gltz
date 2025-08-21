@@ -5,12 +5,6 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
 } from "../../index";
 
 export function ContextMenuPage() {

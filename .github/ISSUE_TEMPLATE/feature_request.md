@@ -47,7 +47,7 @@ Quais componentes existentes seriam afetados ou relacionados?
 
 ```tsx
 // Exemplos práticos de como a funcionalidade seria usada
-import { NewComponent } from "@gltz/ui";
+import { NewComponent } from "@Glacien/ui";
 
 function MyApp() {
   return <NewComponent>Exemplo de uso</NewComponent>;

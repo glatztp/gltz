@@ -9,23 +9,15 @@ import {
   Calendar,
   Button,
   Badge,
-  Input,
-  Label,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
 } from "../../index";
 import {
   Calendar as CalendarIcon,
   Clock,
-  MapPin,
   Users,
   Plus,
   Funnel,
-  CaretDown,
   Star,
   Bell,
-  Repeat,
   X,
   Check,
   Warning,
@@ -42,7 +34,7 @@ export function CalendarPage() {
     to: undefined,
   });
   const [multipleDates, setMultipleDates] = React.useState<Date[]>([]);
-  const [events, setEvents] = React.useState([
+  const [events] = React.useState([
     {
       id: 1,
       title: "Reunião de Equipe",

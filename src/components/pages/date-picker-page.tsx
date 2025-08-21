@@ -106,7 +106,7 @@ export function DatePickerPage() {
                       mode="single"
                       selected={undefined}
                       onSelect={() => {}}
-                      disabled={(day) => true} // desabilita todas as datas
+                      disabled={() => true} // desabilita todas as datas
                     />
                   </PopoverContent>
                 </Popover>

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Card,
   CardHeader,
@@ -21,18 +20,13 @@ import { Button, Badge, Input, Label } from "../ui";
 import {
   Trash,
   Warning,
-  Info,
   CheckCircle,
   XCircle,
   Download,
-  Upload,
   Shield,
   Gear,
   SignOut,
   UserPlus,
-  Lock,
-  Eye,
-  EyeSlash,
   Heart,
   Star,
   Gift,

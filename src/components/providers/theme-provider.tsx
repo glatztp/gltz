@@ -39,7 +39,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("gltz-theme") as Theme) || "system";
+      return (localStorage.getItem("Glacien-theme") as Theme) || "system";
     }
     return "system";
   });
@@ -47,7 +47,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(() => {
     if (typeof window !== "undefined") {
       return (
-        (localStorage.getItem("gltz-color-scheme") as ColorScheme) || "blue"
+        (localStorage.getItem("Glacien-color-scheme") as ColorScheme) || "blue"
       );
     }
     return "blue";
@@ -372,8 +372,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const resolved = resolveTheme(theme);
     setActualTheme(resolved);
     applyTheme(resolved, colorScheme);
-    localStorage.setItem("gltz-theme", theme);
-    localStorage.setItem("gltz-color-scheme", colorScheme);
+    localStorage.setItem("Glacien-theme", theme);
+    localStorage.setItem("Glacien-color-scheme", colorScheme);
   }, [theme, colorScheme]);
 
   const value = {

@@ -40,8 +40,8 @@ Before you begin, ensure you have:
 1. **Fork and clone the repository**
 
    ```bash
-   gh repo fork glatztp/gltz --clone
-   cd gltz
+   gh repo fork glatztp/Glacien--clone
+   cd Glacien
    ```
 
 2. **Install dependencies**
@@ -414,9 +414,9 @@ Releases are managed by maintainers and follow semantic versioning:
 
 ## Getting Help
 
-- **Documentation**: [https://gltz.vercel.app/docs](https://gltz.vercel.app/docs)
-- **Issues**: [GitHub Issues](https://github.com/glatztp/gltz/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/glatztp/gltz/discussions)
+- **Documentation**: [https://Glacien.vercel.app/docs](https://Glacien.vercel.app/docs)
+- **Issues**: [GitHub Issues](https://github.com/glatztp/Glacien/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/glatztp/Glacien/discussions)
 
 ## Recognition
 
@@ -426,4 +426,4 @@ Contributors are recognized in:
 - Release notes
 - Contributors section on our website
 
-Thank you for contributing to @gltz-packages/ui!
+Thank you for contributing to @Glacien-packages/ui!

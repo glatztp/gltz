@@ -201,7 +201,7 @@ export function ComingSoonPage({
               size="lg"
               className="gap-2"
               onClick={() =>
-                window.open("https://github.com/glatztp/gltz", "_blank")
+                window.open("https://github.com/glatztp/Glacien", "_blank")
               }
             >
               <Github className="h-5 w-5" />
@@ -212,7 +212,7 @@ export function ComingSoonPage({
               size="lg"
               className="gap-2"
               onClick={() =>
-                window.open("https://github.com/glatztp/gltz", "_blank")
+                window.open("https://github.com/glatztp/Glacien", "_blank")
               }
             >
               <Star className="h-5 w-5" />
@@ -322,7 +322,7 @@ export function ComingSoonPage({
                 <Button
                   className="gap-2"
                   onClick={() =>
-                    window.open("https://github.com/glatztp/gltz", "_blank")
+                    window.open("https://github.com/glatztp/Glacien", "_blank")
                   }
                 >
                   <Github className="h-4 w-4" />
@@ -333,7 +333,7 @@ export function ComingSoonPage({
                   className="gap-2"
                   onClick={() =>
                     window.open(
-                      "https://github.com/glatztp/gltz/issues/new",
+                      "https://github.com/glatztp/Glacien/issues/new",
                       "_blank"
                     )
                   }

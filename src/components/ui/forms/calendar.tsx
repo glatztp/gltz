@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { cn } from "../../../lib/utils";
 
@@ -6,7 +7,7 @@ interface CalendarProps
   mode?: "single" | "multiple" | "range";
   selected?: Date | Date[] | { from: Date; to?: Date };
   onSelect?: (
-    date: Date | Date[] | { from: Date; to?: Date } | undefined
+    selected: Date | Date[] | { from: Date; to?: Date } | undefined
   ) => void;
   disabled?: (date: Date) => boolean;
   showOutsideDays?: boolean;

@@ -19,7 +19,6 @@ import {
   Sparkle,
   Rocket,
   Heart,
-  Users,
   Download,
   GithubLogo,
   ArrowRight,
@@ -155,7 +154,7 @@ const HomePage = () => {
               variant="outline"
               className="hover-lift group"
               onClick={() =>
-                window.open("https://github.com/glatztp/gltz", "_blank")
+                window.open("https://github.com/glatztp/Glacien", "_blank")
               }
             >
               <GithubLogo
@@ -331,7 +330,7 @@ const HomePage = () => {
                 variant="outline"
                 className="border-white text-white hover:bg-white/10 hover-lift"
                 onClick={() =>
-                  window.open("https://github.com/glatztp/gltz", "_blank")
+                  window.open("https://github.com/glatztp/Glacien", "_blank")
                 }
               >
                 <GithubLogo size={20} className="mr-2" />

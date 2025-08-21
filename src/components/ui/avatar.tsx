@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import * as React from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { motion, type Variants } from "framer-motion";
@@ -160,14 +161,8 @@ const Avatar = React.forwardRef<
       statusDot = false,
       statusColor,
 
-      // Props de comportamento
-      lazy = false,
-      placeholder,
       fallbackDelay = 600,
 
-      // Callbacks
-      onImageLoad,
-      onImageError,
       onMotionHoverStart,
       onMotionHoverEnd,
       onMotionTapStart,
@@ -178,8 +173,8 @@ const Avatar = React.forwardRef<
     ref
   ) => {
     // Estados internos
-    const [isImageLoaded, setIsImageLoaded] = React.useState(false);
-    const [showFallback, setShowFallback] = React.useState(false);
+    const [isImageLoaded] = React.useState(false);
+    const [, setShowFallback] = React.useState(false);
 
     // Controle de delay para fallback
     React.useEffect(() => {

@@ -83,7 +83,7 @@ function GroupsShortcutsExample() {
 
 // Exemplo de busca dinâmica
 function DynamicSearchCommandExample() {
-  const [search, setSearch] = React.useState("");
+  const [search] = React.useState("");
   const items = ["Email", "Calendário", "Buscar", "Perfil", "Configurações"];
   const filtered = items.filter((item) =>
     item.toLowerCase().includes(search.toLowerCase())

@@ -239,12 +239,12 @@ function HomePage() {
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-none flex items-center justify-center gap-6 mb-4">
                   <img
                     src="/logo.png"
-                    alt="gltz Logo"
+                    alt="GlacienLogo"
                     className="h-20 w-20 sm:h-24 sm:w-24 lg:h-32 lg:w-32 xl:h-28 xl:w-28 mt-8"
                   />
                   <span className="relative inline-block">
                     <span className="relative bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent drop-shadow-2xl">
-                      gltz
+                      Glacien
                     </span>
                   </span>
                 </h1>
@@ -301,7 +301,7 @@ function HomePage() {
                   size="lg"
                   className="group relative w-full sm:w-auto px-6 py-3 text-base font-bold border-2 border-primary/30 hover:border-primary/60 bg-background/80 backdrop-blur-md hover:bg-primary/5 transition-all duration-500 shadow-xl hover:shadow-2xl"
                   onClick={() =>
-                    window.open("https://github.com/glatztp/gltz", "_blank")
+                    window.open("https://github.com/glatztp/Glacien", "_blank")
                   }
                 >
                   <Github className="h-5 w-5 sm:h-6 sm:w-6 mr-3 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110" />
@@ -500,7 +500,7 @@ function HomePage() {
               </span>
               <br />
               <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-                gltz?
+                Glacien?
               </span>
             </h2>
             <motion.div
@@ -653,7 +653,7 @@ function HomePage() {
                       <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg animate-pulse delay-200"></div>
                     </div>
                     <span className="ml-4 text-sm sm:text-base font-mono font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                      App.tsx • gltz Magic ✨
+                      App.tsx • GlacienMagic ✨
                     </span>
                   </div>
                 </div>
@@ -668,7 +668,7 @@ function HomePage() {
                       transition={{ delay: 0.8, duration: 1.5 }}
                       viewport={{ once: true }}
                     >
-                      {`import { Button, Card, Toast, Avatar } from '@gltz/components'
+                      {`import { Button, Card, Toast, Avatar } from '@Glacien/components'
 
 export function App() {
   return (
@@ -685,7 +685,7 @@ export function App() {
         <h1 className="text-3xl font-bold bg-gradient-to-r 
                        from-primary to-secondary bg-clip-text 
                        text-transparent">
-          Bem-vindo ao gltz
+          Bem-vindo ao Glacien
         </h1>
         
         <Button 
@@ -772,7 +772,7 @@ export function App() {
               <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-black">
                 extraordinárias
               </span>
-              com o gltz.
+              com o Glacien.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-10 justify-center max-w-2xl mx-auto">
@@ -850,7 +850,7 @@ export function App() {
             >
               <div className="mb-8">
                 <h3 className="font-black text-3xl sm:text-4xl mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-                  gltz
+                  Glacien
                 </h3>
                 <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary rounded-full mb-6" />
               </div>
@@ -882,7 +882,10 @@ export function App() {
                   {
                     name: "GitHub",
                     action: () =>
-                      window.open("https://github.com/glatztp/gltz", "_blank"),
+                      window.open(
+                        "https://github.com/glatztp/Glacien",
+                        "_blank"
+                      ),
                   },
                   { name: "Discord", action: () => {} },
                   { name: "Twitter", action: () => {} },
@@ -952,8 +955,8 @@ export function App() {
               <div className="h-1 w-32 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-6" />
             </div>
             <p className="text-base sm:text-lg font-bold bg-gradient-to-r from-muted-foreground via-primary to-muted-foreground bg-clip-text text-transparent">
-              &copy; 2025 gltz. Todos os direitos reservados. Feito com ❤️ para
-              a comunidade dev.
+              &copy; 2025 Glacien. Todos os direitos reservados. Feito com ❤️
+              para a comunidade dev.
             </p>
           </motion.div>
         </div>

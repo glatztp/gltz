@@ -13,20 +13,11 @@ import {
   NavigationMenuContent,
   NavigationMenuTrigger,
   NavigationMenuLink,
-  NavigationMenuIndicator,
-  NavigationMenuViewport,
   Badge,
 } from "../../index";
 
-interface NavigationMenuPageProps {
-  sidebarOpen?: boolean;
-  onToggleSidebar?: () => void;
-}
 
-export function NavigationMenuPage({
-  sidebarOpen,
-  onToggleSidebar,
-}: NavigationMenuPageProps) {
+export function NavigationMenuPage() {
   return (
     <div className="flex gap-6 min-h-screen relative pt-12">
       {/* Main Content */}

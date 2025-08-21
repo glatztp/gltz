@@ -8,7 +8,6 @@ import {
   RadioGroup,
   RadioGroupItem,
   Label,
-  Button,
 } from "../../index";
 
 export function RadioGroupPage() {

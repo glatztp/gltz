@@ -1,17 +1,18 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { cn } from "../../../lib/utils";
 
-interface Column<T = any> {
+interface Column<T = unknown> {
   id: string;
   header: string;
-  accessor?: keyof T | ((item: T) => any);
-  cell?: (value: any, item: T, index: number) => React.ReactNode;
+  accessor?: keyof T | ((item: T) => unknown);
+  cell?: (value: unknown, item: T, index: number) => React.ReactNode;
   sortable?: boolean;
   width?: string | number;
   align?: "left" | "center" | "right";
 }
 
-interface DataTableProps<T = any> {
+interface DataTableProps<T = unknown> {
   data: T[];
   columns: Column<T>[];
   pagination?: {
@@ -36,7 +37,7 @@ interface DataTableProps<T = any> {
   className?: string;
 }
 
-const DataTable = <T extends Record<string, any>>({
+const DataTable = <T extends Record<string, unknown>>({
   data,
   columns,
   pagination,

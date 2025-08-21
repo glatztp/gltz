@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import {
   Card,
@@ -13,15 +14,11 @@ import {
   Button,
 } from "../../index";
 import {
-  User,
   Crown,
   Star,
   Heart,
   Bell,
-  Camera,
   Shield,
-  CheckCircle,
-  XCircle,
 } from "phosphor-react";
 
 export function AvatarPage() {

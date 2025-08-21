@@ -601,7 +601,7 @@ export function SliderPage() {
                           color: "bg-green-500",
                         },
                         { name: "Design", value: 25, color: "bg-purple-500" },
-                      ].map((item, index) => (
+                      ].map((item) => (
                         <div key={item.name} className="space-y-2">
                           <div className="flex justify-between text-sm">
                             <span>{item.name}</span>

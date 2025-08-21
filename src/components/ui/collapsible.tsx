@@ -2,7 +2,7 @@ import React from "react";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import { cn } from "../../lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { ChevronDown, Plus, Minus } from "lucide-react";
+import { ChevronDown, Plus } from "lucide-react";
 
 const collapsibleVariants = cva(
   "border rounded-lg transition-all duration-200 focus-within:ring-1 focus-within:ring-primary/30 focus-within:ring-offset-1",

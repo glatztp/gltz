@@ -1,8 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { cn } from "../../../lib/utils";
 import {
   Toast,
-  ToastAction,
   ToastClose,
   ToastTitle,
   ToastDescription,
@@ -19,7 +19,7 @@ interface ToastData {
 
 interface ToastContainerProps {
   toasts: ToastData[];
-  onRemove: (id: string) => void;
+  onRemove: (_: string) => void;
   position?:
     | "top-left"
     | "top-right"

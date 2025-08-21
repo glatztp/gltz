@@ -226,7 +226,7 @@ export default function DocumentationPage() {
               {/* Header */}
               <div>
                 <h2 className="text-lg font-semibold tracking-tight mb-1">
-                  @gltz/ui
+                  @Glacien/ui
                 </h2>
                 <p className="text-sm text-muted-foreground">
                   Component library documentation
@@ -1194,7 +1194,7 @@ function ExistingComponent() {
 module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/@gltz-packages/ui/dist/**/*.js'
+    './node_modules/@Glacien-packages/ui/dist/**/*.js'
   ],
   theme: {
     extend: {

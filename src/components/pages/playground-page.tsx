@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Download,
   Copy,
@@ -8,7 +8,6 @@ import {
   Component,
   Zap,
   Layout,
-  Palette,
   Settings,
   Monitor,
   Smartphone,

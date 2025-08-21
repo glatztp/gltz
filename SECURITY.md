@@ -2,7 +2,7 @@
 
 ## 🔒 Versões Suportadas
 
-Atualmente, oferecemos suporte de segurança para as seguintes versões da gltz:
+Atualmente, oferecemos suporte de segurança para as seguintes versões da Glacien:
 
 | Versão | Suporte             |
 | ------ | ------------------- |
@@ -12,13 +12,13 @@ Atualmente, oferecemos suporte de segurança para as seguintes versões da gltz:
 
 ## 🚨 Reportando Vulnerabilidades
 
-A segurança da gltz é uma prioridade. Se você descobrir uma vulnerabilidade de segurança, por favor, reporte-a de forma responsável seguindo este processo:
+A segurança da Glaciené uma prioridade. Se você descobrir uma vulnerabilidade de segurança, por favor, reporte-a de forma responsável seguindo este processo:
 
 ### 📧 Como Reportar
 
 **NÃO** crie uma issue pública para vulnerabilidades de segurança.
 
-Em vez disso, envie um email para: **security@gltz.dev**
+Em vez disso, envie um email para: **security@Glacien.dev**
 
 ### 📋 Informações Necessárias
 
@@ -43,7 +43,7 @@ Inclua as seguintes informações em seu relatório:
    - Qual a severidade estimada?
 
 4. **Informações do ambiente**
-   - Versão da gltz
+   - Versão da Glacien
    - Versão do React
    - Navegador e versão
    - Sistema operacional
@@ -102,7 +102,7 @@ Reconhecemos e agradecemos pesquisadores de segurança que reportam vulnerabilid
 
 Para vulnerabilidades críticas que estão sendo exploradas ativamente:
 
-- **Email**: emergency-security@gltz.dev
+- **Email**: emergency-security@Glacien.dev
 - **Telefone**: +55 (11) 99999-9999 (disponível 24/7)
 
 ### 🔐 Criptografia

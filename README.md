@@ -4,7 +4,6 @@
 
 ---
 
-
 ![Alt](https://repobeats.axiom.co/api/embed/daa29dc86cb7b8844337c5528be01db2239880ad.svg "Repobeats analytics image")
 
 **A maior e mais profissional biblioteca de componentes React para aplicações modernas.**
@@ -14,7 +13,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-[📖 **Documentação**](https://gltz.vercel.app/docs) • [🚀 **Live Demo**](https://gltz.vercel.app) • [📦 **NPM**](https://www.npmjs.com/package/@gltz-packages/ui) • [🐛 **Reportar Issues**](https://github.com/glatztp/gltz/issues) • [💬 **Discussões**](https://github.com/glatztp/gltz/discussions)
+[📖 **Documentação**](https://Glacien.vercel.app/docs) • [🚀 **Live Demo**](https://Glacien.vercel.app) • [📦 **NPM**](https://www.npmjs.com/package/@gltz-packages/ui) • [🐛 **Reportar Issues**](https://github.com/glatztp/Glacien/issues) • [💬 **Discussões**](https://github.com/glatztp/Glacien/discussions)
 
 </div>
 
@@ -22,7 +21,7 @@
 
 ## Sobre
 
-@gltz-packages/ui é uma biblioteca robusta de componentes React, criada para elevar o padrão de aplicações web modernas. São dezenas de componentes profissionais, acessíveis, altamente customizáveis e prontos para produção, com foco em performance, experiência do desenvolvedor e design consistente.
+@Glacien-packages/ui é uma biblioteca robusta de componentes React, criada para elevar o padrão de aplicações web modernas. São dezenas de componentes profissionais, acessíveis, altamente customizáveis e prontos para produção, com foco em performance, experiência do desenvolvedor e design consistente.
 
 - **+50 componentes**: UI, navegação, formulários, overlays, feedback, layout, dados e mais
 - **Acessibilidade**: Totalmente compatível com WCAG 2.1 AA
