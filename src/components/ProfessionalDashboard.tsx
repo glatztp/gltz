@@ -240,10 +240,10 @@ function HomePage() {
                   <img
                     src="/logo.png"
                     alt="GlacienLogo"
-                    className="h-20 w-20 sm:h-24 sm:w-24 lg:h-32 lg:w-32 xl:h-28 xl:w-28 mt-8"
+                    className="h-20 w-20 sm:h-24 sm:w-24 lg:h-32 lg:w-32 xl:h-28 xl:w-28 mt-3"
                   />
                   <span className="relative inline-block">
-                    <span className="relative bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent drop-shadow-2xl">
+                    <span className="relative bg-gradient-to-r from-primary  to-primary bg-clip-text text-transparent drop-shadow-2xl">
                       Glacien
                     </span>
                   </span>
@@ -438,6 +438,15 @@ function HomePage() {
           >
             <LogoLoop
               logos={[
+                {
+                  node: (
+                    <img
+                      src="/logo-nobg.png"
+                      alt="Logo Glacien"
+                      style={{ height: 80 }}
+                    />
+                  ),
+                },
                 { node: <SiReact className="text-primary" title="React" /> },
                 {
                   node: (

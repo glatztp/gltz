@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./public/logo.png" alt="GLTZ UI Logo" width="160" height="160" />
+<img src="./public/logo.png" alt="glacien UI Logo" width="160" height="160" />
 
 ---
 
@@ -65,7 +65,7 @@ import { Button, Card, Input } from "@glacien/ui";
 export default function App() {
   return (
     <Card className="p-6 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Bem-vindo ao GLTZ UI</h1>
+      <h1 className="text-2xl font-bold mb-4">Bem-vindo ao glacien UI</h1>
       <Input placeholder="Seu e-mail" className="mb-4" />
       <Button className="w-full">Começar</Button>
     </Card>
