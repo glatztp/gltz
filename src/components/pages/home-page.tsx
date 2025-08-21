@@ -120,7 +120,7 @@ const HomePage = () => {
             variants={itemVariants}
             className="text-5xl md:text-7xl font-bold mb-7 text-gradient-primary "
           >
-            Gltz
+            glacien
           </motion.h1>
 
           <motion.p
@@ -183,7 +183,7 @@ const HomePage = () => {
             </Badge>
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Por que escolher
-              <span className="text-gradient-primary"> gltzUI</span>?
+              <span className="text-gradient-primary"> glacienUI</span>?
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Recursos pensados para desenvolvedores modernos que buscam
@@ -347,7 +347,7 @@ const HomePage = () => {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <h3 className="font-bold text-lg mb-4 text-gradient-primary">
-                gltzUI
+                glacienUI
               </h3>
               <p className="text-muted-foreground text-sm">
                 Design system moderno para React. Construa interfaces incríveis
@@ -385,7 +385,7 @@ const HomePage = () => {
 
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border">
             <p className="text-sm text-muted-foreground">
-              © 2025 gltzUI. Todos os direitos reservados.
+              © 2025 glacienUI. Todos os direitos reservados.
             </p>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
               <Badge variant="outline">

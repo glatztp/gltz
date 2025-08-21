@@ -42,7 +42,7 @@ Se aplicável, adicione screenshots para ajudar a explicar seu problema.
 - Browser: [ex: stock browser, safari]
 - Versão: [ex: 22]
 
-## 📦 Versão da gltzUI
+## 📦 Versão da glacienUI
 
 Qual versão da biblioteca você está usando?
 

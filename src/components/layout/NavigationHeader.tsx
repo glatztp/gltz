@@ -495,7 +495,7 @@ export function NavigationHeader({
                 <div className="rounded-md flex items-center justify-center shadow-sm">
                   <img
                     src="/logo.png"
-                    alt="gltzUI Logo"
+                    alt="glacienUI Logo"
                     className="w-6 h-6 lg:w-8 lg:h-8"
                   />
                 </div>

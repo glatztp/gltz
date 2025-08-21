@@ -22,12 +22,12 @@ export function CollapsiblePage() {
   const faqItems = [
     {
       id: "item-1",
-      title: "Como instalar o gltzUI?",
+      title: "Como instalar o glacienUI?",
       content: (
         <div className="space-y-2">
-          <p>Você pode instalar o gltzUI usando npm ou yarn:</p>
+          <p>Você pode instalar o glacienUI usando npm ou yarn:</p>
           <code className="block bg-muted p-2 rounded text-sm">
-            npm install @gltzui/components
+            npm install @glacienui/components
           </code>
         </div>
       ),
@@ -37,7 +37,7 @@ export function CollapsiblePage() {
       title: "Quais são os requisitos?",
       content: (
         <div className="space-y-2">
-          <p>O gltzUI requer:</p>
+          <p>O glacienUI requer:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>React 18 ou superior</li>
             <li>Node.js 16 ou superior</li>
