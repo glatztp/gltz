@@ -21,7 +21,7 @@
 
 ## Sobre
 
-@Glacien-packages/ui é uma biblioteca robusta de componentes React, criada para elevar o padrão de aplicações web modernas. São dezenas de componentes profissionais, acessíveis, altamente customizáveis e prontos para produção, com foco em performance, experiência do desenvolvedor e design consistente.
+@gltz-packages/ui é uma biblioteca robusta de componentes React, criada para elevar o padrão de aplicações web modernas. São dezenas de componentes profissionais, acessíveis, altamente customizáveis e prontos para produção, com foco em performance, experiência do desenvolvedor e design consistente.
 
 - **+50 componentes**: UI, navegação, formulários, overlays, feedback, layout, dados e mais
 - **Acessibilidade**: Totalmente compatível com WCAG 2.1 AA
