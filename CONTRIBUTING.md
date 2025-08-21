@@ -426,4 +426,4 @@ Contributors are recognized in:
 - Release notes
 - Contributors section on our website
 
-Thank you for contributing to @Glacien-packages/ui!
+Thank you for contributing to @glacien/ui!

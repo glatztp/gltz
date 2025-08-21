@@ -1192,7 +1192,7 @@ function ExistingComponent() {
 module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/@Glacien-packages/ui/dist/**/*.js'
+    './node_modules/@glacien/ui/dist/**/*.js'
   ],
   theme: {
     extend: {
