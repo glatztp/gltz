@@ -21,7 +21,9 @@ import {
   FileText,
   Activity,
   ChevronRight,
+  Monitor,
 } from "lucide-react";
+import { Lightning } from "phosphor-react";
 
 interface NavigationItem {
   id: string;
@@ -687,10 +689,28 @@ export default function DocumentationPage() {
                       </div>
                     );
                   } else {
-                    // Passo a passo detalhado
+                    // Passo a passo detalhado estilizado
                     const fw = frameworks.find(
                       (f) => f.name === selectedFramework
                     );
+                    const stepIcons = [
+                      <Copy key="copy" className="text-blue-500" size={18} />,
+                      <Monitor
+                        key="monitor"
+                        className="text-green-500"
+                        size={18}
+                      />,
+                      <Lightning
+                        key="lightning"
+                        className="text-purple-500"
+                        size={18}
+                      />,
+                      <FileText
+                        key="file"
+                        className="text-orange-500"
+                        size={18}
+                      />,
+                    ];
                     return (
                       <div className="space-y-6">
                         <Button
@@ -704,11 +724,35 @@ export default function DocumentationPage() {
                         </h2>
                         <ol className="space-y-4">
                           {fw?.steps.map((step, i) => (
-                            <li
+                            <motion.li
                               key={i}
-                              className="bg-gray-900 dark:bg-gray-100 text-gray-100 dark:text-gray-900 p-4 rounded-lg relative"
+                              initial={{ opacity: 0, y: 30 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{
+                                delay: 0.2 + i * 0.35,
+                                duration: 0.6,
+                                ease: "easeOut",
+                              }}
+                              className="relative flex items-start gap-4 bg-gradient-to-br from-secondary/60 to-background/80 dark:from-secondary/80 dark:to-background/60 border border-border p-4 rounded-xl shadow-sm"
                             >
-                              <pre className="text-sm font-mono">{step}</pre>
+                              <div className="flex flex-col items-center justify-center">
+                                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-1">
+                                  {stepIcons[i] || (
+                                    <FileText
+                                      className="text-primary"
+                                      size={18}
+                                    />
+                                  )}
+                                </div>
+                                <span className="text-xs text-muted-foreground font-bold">
+                                  {i + 1}
+                                </span>
+                              </div>
+                              <div className="flex-1">
+                                <pre className="text-sm font-mono whitespace-pre-wrap leading-relaxed">
+                                  {step}
+                                </pre>
+                              </div>
                               <Button
                                 size="sm"
                                 variant="ghost"
@@ -716,16 +760,25 @@ export default function DocumentationPage() {
                                 onClick={() =>
                                   navigator.clipboard.writeText(step)
                                 }
+                                title="Copiar passo"
                               >
                                 <Copy size={14} />
                               </Button>
-                            </li>
+                            </motion.li>
                           ))}
                         </ol>
-                        <p className="text-sm text-muted-foreground">
+                        <motion.p
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            delay: 0.2 + (fw?.steps.length || 0) * 0.35,
+                            duration: 0.6,
+                          }}
+                          className="text-sm text-muted-foreground"
+                        >
                           Siga os passos acima para instalar e usar a biblioteca
                           no seu projeto {fw?.name}.
-                        </p>
+                        </motion.p>
                       </div>
                     );
                   }

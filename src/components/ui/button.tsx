@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
+
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -166,7 +165,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const [isConfirming, setIsConfirming] = React.useState(false);
-    const debounceTimer = React.useRef<NodeJS.Timeout>();
+    const debounceTimer = React.useRef<ReturnType<typeof setTimeout>>();
 
     // Auto focus effect
     React.useEffect(() => {

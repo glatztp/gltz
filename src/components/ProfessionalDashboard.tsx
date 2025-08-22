@@ -96,6 +96,7 @@ import { ThemeProvider } from "./providers/theme-provider";
 import MultiComboBoxPage from "./pages/multicombobox-page";
 import DocumentationPage from "./layout/documentation-page";
 import { NavigationMenuPage } from "./pages/navigation-menu-page";
+import ShinyText from "./ui/shiny";
 
 // Mapeamento de componentes
 const componentPages: Record<string, unknown> = {
@@ -243,8 +244,13 @@ function HomePage() {
                     className="h-20 w-20 sm:h-24 sm:w-24 lg:h-32 lg:w-32 xl:h-28 xl:w-28 mt-3"
                   />
                   <span className="relative inline-block">
-                    <span className="relative bg-gradient-to-r from-primary  to-primary bg-clip-text text-transparent drop-shadow-2xl">
-                      Glacien
+                    <span className="relative bg-primary bg-clip-text text-transparent drop-shadow-2xl">
+                      <ShinyText
+                        text="Glacien"
+                        disabled={false}
+                        speed={3}
+                        className="custom-class"
+                      />
                     </span>
                   </span>
                 </h1>
@@ -322,7 +328,6 @@ function HomePage() {
                   </span>
                 </Button>
               </motion.div>
-              {/* Elementos animados melhor posicionados para equilíbrio visual */}
               <div className="absolute top-16 left-16 hidden lg:block">
                 <motion.div
                   animate={{ y: [0, -24, 0], rotate: [0, 8, 0] }}
@@ -331,8 +336,13 @@ function HomePage() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full backdrop-blur-lg shadow-2xl"
-                />
+                  className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full backdrop-blur-lg shadow-2xl relative overflow-hidden"
+                >
+                  <span
+                    className="absolute inset-0 pointer-events-none shine-circle"
+                    style={{ animationDelay: "0s" }}
+                  />
+                </motion.div>
               </div>
               <div className="absolute top-32 left-1/4 hidden lg:block">
                 <motion.div
@@ -343,8 +353,13 @@ function HomePage() {
                     ease: "easeInOut",
                     delay: 0.5,
                   }}
-                  className="w-14 h-14 bg-gradient-to-br from-secondary to-primary rounded-2xl backdrop-blur-md shadow-xl"
-                />
+                  className="w-14 h-14 bg-gradient-to-br from-secondary to-primary rounded-3xl backdrop-blur-md shadow-xl relative overflow-hidden"
+                >
+                  <span
+                    className="absolute inset-0 pointer-events-none shine-cube"
+                    style={{ animationDelay: "1.2s" }}
+                  />
+                </motion.div>
               </div>
               <div className="absolute top-24 right-24 hidden lg:block">
                 <motion.div
@@ -355,8 +370,13 @@ function HomePage() {
                     ease: "easeInOut",
                     delay: 1,
                   }}
-                  className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-2xl backdrop-blur-md shadow-xl"
-                />
+                  className="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-2xl backdrop-blur-md shadow-xl relative overflow-hidden"
+                >
+                  <span
+                    className="absolute inset-0 pointer-events-none shine-cube"
+                    style={{ animationDelay: "2.4s" }}
+                  />
+                </motion.div>
               </div>
               <div className="absolute bottom-24 left-32 hidden lg:block">
                 <motion.div
@@ -367,8 +387,13 @@ function HomePage() {
                     ease: "easeInOut",
                     delay: 1.5,
                   }}
-                  className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-3xl backdrop-blur-lg shadow-2xl"
-                />
+                  className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-3xl backdrop-blur-lg shadow-2xl relative overflow-hidden"
+                >
+                  <span
+                    className="absolute inset-0 pointer-events-none shine-cube"
+                    style={{ animationDelay: "3.6s" }}
+                  />
+                </motion.div>
               </div>
               <div className="absolute bottom-16 right-40 hidden lg:block">
                 <motion.div
@@ -379,8 +404,13 @@ function HomePage() {
                     ease: "easeInOut",
                     delay: 2,
                   }}
-                  className="w-20 h-20 bg-gradient-to-br from-secondary to-primary rounded-full backdrop-blur-lg shadow-2xl"
-                />
+                  className="w-20 h-20 bg-gradient-to-br from-secondary to-primary rounded-full backdrop-blur-lg shadow-2xl relative overflow-hidden"
+                >
+                  <span
+                    className="absolute inset-0 pointer-events-none shine-circle"
+                    style={{ animationDelay: "2.8s" }}
+                  />
+                </motion.div>
               </div>
             </motion.div>
           </div>
