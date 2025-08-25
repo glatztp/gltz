@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/globals.css";
 import { SonnerProvider } from "./components/ui/feedback/sonner";
-import ProfessionalDashboard from "./components/ProfessionalDashboard";
+import ProfessionalDashboard from "./components/home";
 
 import { Analytics } from "@vercel/analytics/react";
 

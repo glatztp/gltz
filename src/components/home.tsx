@@ -270,15 +270,15 @@ function HomePage() {
                 className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-12 lg:mb-16 leading-relaxed max-w-4xl mx-auto px-4 font-medium"
               >
                 A biblioteca de componentes React mais
-                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold mx-2">
                   avançada
                 </span>
                 e
-                <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-bold">
+                <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-bold mx-2">
                   elegante
                 </span>
                 do mercado. Transforme suas ideias em interfaces que
-                <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent font-bold">
+                <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent font-bold ml-2">
                   impressionam
                 </span>
                 .
@@ -551,11 +551,11 @@ function HomePage() {
             />
             <p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4 font-medium">
               Cada componente foi
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
-                meticulosamente crafted
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold mx-3">
+                meticulosamente pensados
               </span>
               pensando na experiência do desenvolvedor e na
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-bold">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-bold ml-3">
                 satisfação do usuário final
               </span>
               .
@@ -804,11 +804,11 @@ export function App() {
 
             <p className="text-2xl sm:text-3xl lg:text-4xl text-muted-foreground mb-12 sm:mb-16 lg:mb-20 leading-relaxed max-w-4xl mx-auto px-4 font-medium">
               Junte-se a
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-black">
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-black mx-3">
                 milhares de desenvolvedores
               </span>
               que já estão criando interfaces
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-black">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-black mx-3">
                 extraordinárias
               </span>
               com o Glacien.
@@ -895,7 +895,7 @@ export function App() {
               </div>
               <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-sm font-medium">
                 Componentes React modernos para interfaces
-                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold ml-2">
                   extraordinárias
                 </span>
                 . Construindo o futuro do desenvolvimento web.
@@ -994,8 +994,7 @@ export function App() {
               <div className="h-1 w-32 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-6" />
             </div>
             <p className="text-base sm:text-lg font-bold bg-gradient-to-r from-muted-foreground via-primary to-muted-foreground bg-clip-text text-transparent">
-              &copy; 2025 Glacien. Todos os direitos reservados. Feito com ❤️
-              para a comunidade dev.
+              &copy; 2025 Glacien. Todos os direitos reservados. 
             </p>
           </motion.div>
         </div>
