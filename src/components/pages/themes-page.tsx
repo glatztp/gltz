@@ -297,7 +297,6 @@ export function ThemesPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-secondary/10 via-transparent to-transparent" />
       </div>
 
-      {/* Floating Elements */}
       <motion.div
         animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -348,11 +347,9 @@ export function ThemesPage() {
                   transition={{ delay: 0.4, duration: 0.6 }}
                   className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent leading-tight"
                 >
-                  Sistema de Temas
+                  Temas
                   <br />
-                  <span className="text-3xl sm:text-4xl lg:text-5xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    Revolucionário
-                  </span>
+              
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -418,7 +415,7 @@ export function ThemesPage() {
                         <div className="p-2 bg-gradient-to-br from-primary to-secondary rounded-xl text-white shadow-lg">
                           <Planet className="h-6 w-6" />
                         </div>
-                        Temas Revolucionários
+                        Temas
                       </CardTitle>
                       <CardDescription className="text-lg font-medium">
                         Explore nossa coleção de temas únicos, cada um com

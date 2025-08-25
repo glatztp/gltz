@@ -518,20 +518,6 @@ function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16 sm:mb-20 lg:mb-28"
           >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="mb-8"
-            >
-              <Badge
-                variant="outline"
-                className="px-6 py-3 text-base font-bold border-2 border-primary/30 bg-background/90 backdrop-blur-md shadow-xl"
-              >
-                ✨ Recursos Inovadores
-              </Badge>
-            </motion.div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 sm:mb-8">
               <span className="bg-gradient-to-r from-foreground via-primary to-secondary bg-clip-text text-transparent">
@@ -631,20 +617,6 @@ function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16 sm:mb-20 lg:mb-28"
           >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="mb-8"
-            >
-              <Badge
-                variant="outline"
-                className="px-6 py-3 text-base font-bold border-2 border-secondary/30 bg-background/90 backdrop-blur-md shadow-xl"
-              >
-                🚀 Developer Experience
-              </Badge>
-            </motion.div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 sm:mb-8">
               <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
@@ -765,21 +737,6 @@ export function App() {
             viewport={{ once: true }}
             className="max-w-5xl mx-auto"
           >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="mb-12"
-            >
-              <Badge
-                variant="outline"
-                className="px-8 py-4 text-lg font-black border-2 border-primary/40 bg-background/95 backdrop-blur-md shadow-2xl hover:shadow-primary/30 transition-all duration-500"
-              >
-                Última Chamada
-              </Badge>
-            </motion.div>
-
             <h2 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-black mb-8 sm:mb-12 lg:mb-16 leading-none">
               <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
                 Pronto para
@@ -843,32 +800,6 @@ export function App() {
                 </span>
               </Button>
             </div>
-
-            {/* Trust indicators */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="mt-16 sm:mt-20 lg:mt-24"
-            >
-              <p className="text-sm sm:text-base text-muted-foreground mb-6 font-medium">
-                Confiado por desenvolvedores em mais de 50 países
-              </p>
-              <div className="flex justify-center items-center gap-8 sm:gap-12 opacity-60">
-                <div className="text-2xl sm:text-3xl font-black text-primary">
-                  100K+
-                </div>
-                <div className="w-1 h-8 bg-gradient-to-b from-primary to-secondary rounded-full" />
-                <div className="text-2xl sm:text-3xl font-black text-secondary">
-                  12K ⭐
-                </div>
-                <div className="w-1 h-8 bg-gradient-to-b from-secondary to-primary rounded-full" />
-                <div className="text-2xl sm:text-3xl font-black text-primary">
-                  5K+ Devs
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
