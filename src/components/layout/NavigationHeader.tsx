@@ -18,6 +18,7 @@ import {
   Search,
   Home,
 } from "lucide-react";
+import { useTheme } from "../providers/theme-provider";
 
 interface NavigationHeaderProps {
   onNavigate: (id: string, componentId?: string) => void;
@@ -32,6 +33,7 @@ export function NavigationHeader({
   onToggleSidebar,
   onSelectComponent,
 }: NavigationHeaderProps) {
+  const { colorScheme } = useTheme();
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -492,11 +494,25 @@ export function NavigationHeader({
                 className="flex items-center cursor-pointer pl-24 lg:pl-32"
                 onClick={() => onNavigate("home")}
               >
-                <div className="rounded-md flex items-center justify-center shadow-sm">
+                <div className="flex items-center justify-center">
                   <img
-                    src="/logo.png"
+                    src={
+                      colorScheme === "violet"
+                        ? "/logo-p-nobg.png"
+                        : "/logo-nobg.png"
+                    }
                     alt="glacienUI Logo"
-                    className="w-6 h-6 lg:w-8 lg:h-8"
+                    className="w-6 h-6 lg:w-8 lg:h-8 transition-all duration-300 hover:scale-105 "
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.src =
+                        colorScheme === "violet" ? "/logo-p.png" : "/logo.png")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.src =
+                        colorScheme === "violet"
+                          ? "/logo-p-nobg.png"
+                          : "/logo-nobg.png")
+                    }
                   />
                 </div>
               </motion.div>

@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 
 import { LogoLoop } from "./ui/loop";
+import { useTheme } from "./providers/theme-provider";
 import {
   SiReact,
   SiTypescript,
@@ -147,6 +148,7 @@ const componentPages: Record<string, unknown> = {
 };
 
 function HomePage() {
+  const { colorScheme } = useTheme();
   const navigate = useNavigate();
 
   const features = [
@@ -283,7 +285,7 @@ function HomePage() {
               >
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-none flex items-center justify-center gap-6 mb-4">
                   <img
-                    src="/logo.png"
+                    src={colorScheme === "violet" ? "/logo-p.png" : "/logo.png"}
                     alt="GlacienLogo"
                     className="h-20 w-20 sm:h-24 sm:w-24 lg:h-32 lg:w-32 xl:h-28 xl:w-28 mt-3"
                   />
@@ -515,7 +517,11 @@ function HomePage() {
                 {
                   node: (
                     <img
-                      src="/logo-nobg.png"
+                      src={
+                        colorScheme === "violet"
+                          ? "/logo-p-nobg.png"
+                          : "/logo-nobg.png"
+                      }
                       alt="Logo Glacien"
                       style={{ height: 80 }}
                     />
