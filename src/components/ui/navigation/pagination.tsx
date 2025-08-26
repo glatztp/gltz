@@ -4,6 +4,7 @@ import { cn } from "../../../lib/utils";
 interface PaginationProps extends React.HTMLAttributes<HTMLElement> {
   currentPage: number;
   totalPages: number;
+  // eslint-disable-next-line no-unused-vars
   onPageChange: (page: number) => void;
   showFirstLast?: boolean;
   showPrevNext?: boolean;

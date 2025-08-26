@@ -9,6 +9,7 @@ import {
 
 interface ComboboxProps {
   value?: string;
+  // eslint-disable-next-line no-unused-vars
   onValueChange?: (value: string) => void;
   placeholder?: string;
   options: Array<{

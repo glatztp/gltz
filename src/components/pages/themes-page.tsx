@@ -40,6 +40,9 @@ import {
 } from "phosphor-react";
 import { useTheme } from "../providers/theme-provider";
 
+// Define ColorScheme type based on colorSchemes ids
+type ColorScheme = "blue" | "emerald" | "violet" | "rose" | "orange" | "premium";
+
 const themes = {
   light: {
     name: "Claro Classic",

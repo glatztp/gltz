@@ -142,8 +142,6 @@ export function CalendarPage() {
                       onSelect={(dates) =>
                         Array.isArray(dates)
                           ? setMultipleDates(dates)
-                          : dates instanceof Date
-                          ? setMultipleDates([dates])
                           : setMultipleDates([])
                       }
                       className="rounded-md border"

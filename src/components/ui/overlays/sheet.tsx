@@ -3,12 +3,14 @@ import { cn } from "../../../lib/utils";
 
 interface SheetProps {
   open?: boolean;
+  // eslint-disable-next-line no-unused-vars
   onOpenChange?: (open: boolean) => void;
   children: React.ReactNode;
 }
 
 const SheetContext = React.createContext<{
   open: boolean;
+  // eslint-disable-next-line no-unused-vars
   onOpenChange: (open: boolean) => void;
 }>({
   open: false,

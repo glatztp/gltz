@@ -82,7 +82,7 @@ export function NavigationMenuPage() {
                       <NavigationMenuTrigger value="produtos">
                         Produtos
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent value="produtos">
+                      <NavigationMenuContent>
                         <div className="grid gap-3 p-6 w-[500px] max-w-[90vw] lg:grid-cols-[.75fr_1fr]">
                           <div className="row-span-3">
                             <NavigationMenuLink
@@ -129,7 +129,7 @@ export function NavigationMenuPage() {
                       <NavigationMenuTrigger value="servicos">
                         Serviços
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent value="servicos">
+                      <NavigationMenuContent>
                         <ul className="grid gap-3 p-6 w-[500px] max-w-[90vw] lg:grid-cols-2">
                           <li className="row-span-3">
                             <NavigationMenuLink
@@ -229,7 +229,7 @@ export function NavigationMenuPage() {
                           3
                         </Badge>
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent value="notificacoes">
+                      <NavigationMenuContent>
                         <div className="w-[350px] max-w-[90vw] p-4">
                           <div className="space-y-3">
                             <div className="text-sm font-medium">
@@ -298,7 +298,7 @@ export function NavigationMenuPage() {
                           <NavigationMenuTrigger value="empresa">
                             Empresa
                           </NavigationMenuTrigger>
-                          <NavigationMenuContent value="empresa">
+                          <NavigationMenuContent >
                             <div className="grid gap-3 p-6 w-[500px] max-w-[90vw] lg:grid-cols-2">
                               <NavigationMenuLink
                                 href="/sobre"
@@ -639,7 +639,7 @@ export function MainNavigation() {
                             <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
                             João Silva
                           </NavigationMenuTrigger>
-                          <NavigationMenuContent value="perfil">
+                          <NavigationMenuContent>
                             <div className="w-[280px] max-w-[90vw] p-4">
                               <div className="space-y-3">
                                 <div className="flex items-center gap-3">

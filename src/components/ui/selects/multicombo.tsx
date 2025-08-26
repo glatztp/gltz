@@ -24,6 +24,7 @@ export interface MultiComboOption {
 interface MultiComboProps {
   options: MultiComboOption[];
   selected: string[];
+  // eslint-disable-next-line no-unused-vars
   onChange: (selected: string[]) => void;
   placeholder?: string;
   searchPlaceholder?: string;

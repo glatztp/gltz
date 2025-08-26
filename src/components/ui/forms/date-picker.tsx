@@ -6,7 +6,8 @@ import { Button } from "../button";
 
 interface DatePickerProps {
   date?: Date;
-  onDateChange?: () => void;
+  // eslint-disable-next-line no-unused-vars
+  onDateChange?: (date: Date) => void;
   placeholder?: string;
   disabled?: boolean;
   className?: string;
@@ -88,6 +89,7 @@ DatePicker.displayName = "DatePicker";
 interface DateRangePickerProps {
   dateRange?: { from: Date; to?: Date };
   onDateRangeChange?: (
+    // eslint-disable-next-line no-unused-vars
     dateRange: { from: Date; to?: Date } | undefined
   ) => void;
   placeholder?: string;
