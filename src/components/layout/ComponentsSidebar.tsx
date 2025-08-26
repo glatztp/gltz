@@ -21,11 +21,9 @@ import {
   FileText,
   Settings,
   Star,
+  ChevronsDownUp,
 } from "lucide-react";
-import {
-  Sidebar,
-  SidebarSimple,
-} from "phosphor-react";
+import { Sidebar, SidebarSimple } from "phosphor-react";
 
 interface ComponentsSidebarProps {
   isOpen: boolean;
@@ -51,7 +49,14 @@ export function ComponentsSidebar({
     "feedback",
   ]);
 
-  // Expandir categoria automaticamente quando expandCategory mudar
+  const handleToggleAll = () => {
+    if (expandedCategories.length === filteredCategories.length) {
+      setExpandedCategories([]);
+    } else {
+      setExpandedCategories(filteredCategories.map((cat) => cat.id));
+    }
+  };
+
   React.useEffect(() => {
     if (expandCategory && !expandedCategories.includes(expandCategory)) {
       setExpandedCategories((prev) => [...prev, expandCategory]);
@@ -306,17 +311,6 @@ export function ComponentsSidebar({
     }))
     .filter((category) => category.components.length > 0);
 
-  const totalComponents = componentCategories.reduce(
-    (total, category) => total + category.components.length,
-    0
-  );
-
-  const newComponents = componentCategories.reduce(
-    (total, category) =>
-      total + category.components.filter((c) => c.new).length,
-    0
-  );
-
   return (
     <>
       <AnimatePresence>
@@ -331,7 +325,6 @@ export function ComponentsSidebar({
               onClick={onClose}
             />
 
-            {/* Sidebar */}
             <motion.div
               initial={{ x: -320, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -347,46 +340,38 @@ export function ComponentsSidebar({
                         <Palette className="h-3 w-3 text-white" />
                       </div>
                       Componentes
-                    </h2>
-                    <div className="flex items-center gap-4 mt-2">
-                      <div className="flex items-center gap-1">
-                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span className="text-sm text-muted-foreground">
-                          {totalComponents} total
-                        </span>
-                      </div>
-                      {newComponents > 0 && (
-                        <div className="flex items-center gap-1">
-                          <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
-                          <span className="text-sm text-muted-foreground">
-                            {newComponents} novos
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={onClose}
-                      className="opacity-70 hover:opacity-100 transition-all hover:bg-destructive/10 hover:text-destructive"
-                      title="Fechar sidebar (Esc)"
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
+                    </h2 >
                   </div>
                 </div>
 
-                {/* Search */}
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    placeholder="Buscar componentes... (⌘K)"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 bg-background/50 backdrop-blur-sm"
-                  />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 z-20" />
+                  <div className="flex items-center">
+                    <Input
+                      placeholder="Buscar componentes"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-10 bg-background/50 backdrop-blur-sm"
+                    />
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={handleToggleAll}
+                      className="ml-2"
+                      title={
+                        expandedCategories.length === filteredCategories.length
+                          ? "Colapsar Todos"
+                          : "Expandir Todos"
+                      }
+                    >
+                      {expandedCategories.length ===
+                      filteredCategories.length ? (
+                        <ChevronsDownUp className="h-4 w-4" />
+                      ) : (
+                        <ChevronsDownUp className="h-4 w-4" />
+                      )}
+                    </Button>
+                  </div>
                   {searchQuery && (
                     <Button
                       variant="ghost"
@@ -400,7 +385,6 @@ export function ComponentsSidebar({
                 </div>
               </div>
 
-              {/* Categories */}
               <div className="flex-1 overflow-y-auto">
                 <div className="p-2">
                   {filteredCategories.map((category, categoryIndex) => (
@@ -417,14 +401,6 @@ export function ComponentsSidebar({
                         className="w-full justify-start gap-2 p-3 h-auto group hover:bg-accent hover:text-accent-foreground transition-all duration-200"
                       >
                         <div className="flex items-center gap-3 flex-1">
-                          {/* Gradient indicator */}
-                          <div
-                            className={cn(
-                              "w-1 h-8 rounded-full bg-gradient-to-b",
-                              category.gradient || "from-gray-400 to-gray-600"
-                            )}
-                          ></div>
-
                           <div className="text-primary group-hover:scale-110 transition-transform duration-200">
                             {category.icon}
                           </div>
@@ -433,7 +409,7 @@ export function ComponentsSidebar({
                             <div className="font-medium flex items-center gap-2">
                               {category.name}
                               {category.id === "popular" && (
-                                <span className="text-xs">🔥</span>
+                                <span className="text-xs"></span>
                               )}
                             </div>
                             <div className="text-xs text-muted-foreground">
@@ -445,7 +421,7 @@ export function ComponentsSidebar({
                             <Badge
                               variant="secondary"
                               className={cn(
-                                "text-xs",
+                                "text-xs h-6 w-6 flex items-center justify-center p-0",
                                 category.id === "popular" &&
                                   "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
                               )}
@@ -490,7 +466,6 @@ export function ComponentsSidebar({
                                       size="sm"
                                       onClick={() => {
                                         onSelectComponent(component.id);
-                                        // NÃO fechar a sidebar automaticamente
                                       }}
                                       className={cn(
                                         "w-full justify-start gap-2 relative group transition-all duration-200 h-auto p-3",
@@ -500,7 +475,6 @@ export function ComponentsSidebar({
                                       )}
                                     >
                                       <div className="flex items-center gap-2 flex-1">
-                                        {/* Status indicator */}
                                         <div
                                           className={cn(
                                             "w-2 h-2 rounded-full",
@@ -528,7 +502,6 @@ export function ComponentsSidebar({
                                             )}
                                           </div>
 
-                                          {/* Popularity bar for popular category */}
                                           {category.id === "popular" &&
                                             component.popularity && (
                                               <div className="mt-1">
@@ -549,7 +522,6 @@ export function ComponentsSidebar({
                                             )}
                                         </div>
 
-                                        {/* Status badge */}
                                         {component.status !== "stable" && (
                                           <Badge
                                             variant="outline"
@@ -595,19 +567,18 @@ export function ComponentsSidebar({
         )}
       </AnimatePresence>
 
-      {/* Floating Toggle Button */}
       {onToggle && (
         <button
           onClick={onToggle}
-          className={`fixed top-20 z-50 bg-background border border-border rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 ${
+          className={`fixed top-20 z-50 bg-background border border-border rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300 ml-3.5 ${
             isOpen ? "left-56" : "left-6"
           }`}
           title={isOpen ? "Fechar Sidebar" : "Abrir Sidebar"}
         >
           {isOpen ? (
-            <SidebarSimple className="h-5 w-5" weight="bold" />
+            <SidebarSimple className="h-4 w-4" weight="bold" />
           ) : (
-            <Sidebar className="h-5 w-5" weight="bold" />
+            <Sidebar className="h-4 w-4" weight="bold" />
           )}
         </button>
       )}

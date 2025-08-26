@@ -88,10 +88,8 @@
     "url": "https://github.com/glatztp/glacien.git"
   },
   "bugs": {
-    "url": "https://github.com/glatztp/glacien/issues",
-    "email": "bugs@glacien.dev"
+    "url": "https://github.com/glatztp/glacien/issues"
   },
-  "homepage": "https://ui.glacien.dev",
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/glatztp"

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -188,24 +188,68 @@ function HomePage() {
     },
   ];
 
-  const stats = [
+  const [stats, setStats] = useState([
     { label: "Componentes", value: "50+", icon: <Code2 className="h-4 w-4" /> },
-    {
-      label: "Downloads",
-      value: "100K+",
-      icon: <Download className="h-4 w-4" />,
-    },
-    {
-      label: "GitHub Stars",
-      value: "12K+",
-      icon: <Star className="h-4 w-4" />,
-    },
+    { label: "Downloads", value: "-", icon: <Download className="h-4 w-4" /> },
+    { label: "GitHub Stars", value: "-", icon: <Star className="h-4 w-4" /> },
     {
       label: "Desenvolvedores",
-      value: "5K+",
+      value: "-",
       icon: <Users className="h-4 w-4" />,
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        // GitHub repo info
+        const repoRes = await fetch(
+          "https://api.github.com/repos/glatztp/Glacien"
+        );
+        const repoData = await repoRes.json();
+        // GitHub contributors
+        const contribRes = await fetch(
+          "https://api.github.com/repos/glatztp/Glacien/contributors"
+        );
+        const contribData = await contribRes.json();
+        // NPM downloads
+        const npmRes = await fetch(
+          "https://api.npmjs.org/downloads/point/last-month/@glacien/ui"
+        );
+        const npmData = await npmRes.json();
+
+        setStats([
+          {
+            label: "Componentes",
+            value: "50+",
+            icon: <Code2 className="h-4 w-4" />,
+          },
+          {
+            label: "Downloads",
+            value: npmData.downloads ? npmData.downloads.toLocaleString() : "-",
+            icon: <Download className="h-4 w-4" />,
+          },
+          {
+            label: "GitHub Stars",
+            value: repoData.stargazers_count
+              ? repoData.stargazers_count.toLocaleString()
+              : "-",
+            icon: <Star className="h-4 w-4" />,
+          },
+          {
+            label: "Desenvolvedores",
+            value: Array.isArray(contribData)
+              ? contribData.length.toLocaleString()
+              : "-",
+            icon: <Users className="h-4 w-4" />,
+          },
+        ]);
+      } catch (err) {
+        // fallback: mantém valores default
+      }
+    }
+    fetchStats();
+  }, []);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -518,7 +562,6 @@ function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16 sm:mb-20 lg:mb-28"
           >
-
             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 sm:mb-8">
               <span className="bg-gradient-to-r from-foreground via-primary to-secondary bg-clip-text text-transparent">
                 Por que escolher o
@@ -617,7 +660,6 @@ function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16 sm:mb-20 lg:mb-28"
           >
-
             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 sm:mb-8">
               <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
                 Simples de usar,
@@ -858,8 +900,6 @@ export function App() {
                       ),
                   },
                   { name: "Discord", action: () => {} },
-                  { name: "Twitter", action: () => {} },
-                  { name: "Blog", action: () => {} },
                 ],
               },
               {
@@ -868,7 +908,6 @@ export function App() {
                   { name: "FAQ", action: () => {} },
                   { name: "Issues", action: () => {} },
                   { name: "Contribuir", action: () => {} },
-                  { name: "Roadmap", action: () => {} },
                 ],
               },
             ].map((section, sectionIndex) => (
@@ -925,7 +964,7 @@ export function App() {
               <div className="h-1 w-32 bg-gradient-to-r from-primary via-secondary to-primary rounded-full mx-auto mb-6" />
             </div>
             <p className="text-base sm:text-lg font-bold bg-gradient-to-r from-muted-foreground via-primary to-muted-foreground bg-clip-text text-transparent">
-              &copy; 2025 Glacien. Todos os direitos reservados. 
+              &copy; 2025 Glacien. Todos os direitos reservados.
             </p>
           </motion.div>
         </div>
@@ -1067,7 +1106,7 @@ function ComponentsOverview({
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 mt-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -1078,17 +1117,6 @@ function ComponentsOverview({
           <p className="text-xl text-muted-foreground mb-8">
             Componentes React modernos e acessíveis para suas aplicações
           </p>
-          <div className="flex justify-center gap-4">
-            <Badge variant="secondary" className="text-sm">
-              50+ Componentes
-            </Badge>
-            <Badge variant="secondary" className="text-sm">
-              TypeScript
-            </Badge>
-            <Badge variant="secondary" className="text-sm">
-              Acessível
-            </Badge>
-          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
